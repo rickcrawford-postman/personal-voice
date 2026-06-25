@@ -16,6 +16,8 @@ It does two things:
 
 CI builds `personal-voice.skill` on every push to `main` and publishes it to the [latest release](https://github.com/rickcrawford-postman/personal-voice/releases/latest). You can also run the **Package skill** workflow manually from the [Actions tab](https://github.com/rickcrawford-postman/personal-voice/actions/workflows/package-skill.yml). The file is a zip of `SKILL.md` and `references/`.
 
+**Workflow not running?** Check **Settings → Actions → General** and confirm Actions are enabled for this repository. In the Postman org, an admin may also need to approve new or updated workflows under **Actions → General → Fork pull request workflows** / workflow approval policies. Pushes made by GitHub Apps using `GITHUB_TOKEN` do not trigger workflows; push from your machine with `git push` instead.
+
 Download:
 
 ```bash
