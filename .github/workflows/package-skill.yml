@@ -1,0 +1,35 @@
+name: Package skill
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  release:
+    types: [published]
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create .skill package
+        run: |
+          mkdir -p dist
+          rm -f dist/personal-voice.skill
+          zip -r dist/personal-voice.skill SKILL.md references/
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: personal-voice-skill
+          path: dist/personal-voice.skill
+          if-no-files-found: error
+
+      - name: Attach to release
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/personal-voice.skill
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
