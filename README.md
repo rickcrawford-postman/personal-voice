@@ -9,16 +9,29 @@ It does two things:
 
 ## What's in here
 
-- `SKILL.md` — the skill itself: what personal voice is, how to match a sample, the six highest-signal AI tells, the writing and editing workflow, and the final read-aloud audit.
-- `references/ai-tells.md` — the full catalog of AI writing patterns, each with a before-and-after example. The skill loads this when it's doing real drafting or auditing.
+- `SKILL.md`: the skill itself. Personal voice, voice matching, the six highest-signal AI tells, no em/en dash default, writing and editing workflow, and the final read-aloud audit.
+- `references/ai-tells.md`: the full catalog of AI writing patterns, each with a before-and-after example. The skill loads this when it's doing real drafting or auditing.
 
 ## Install from `.skill` package
 
-CI builds `personal-voice.skill` on every push to `main` (download from the workflow artifact) and attaches it to GitHub releases. The file is a zip of `SKILL.md` and `references/`.
+CI builds `personal-voice.skill` on every push to `main` and publishes it to the [latest release](https://github.com/rickcrawford-postman/personal-voice/releases/latest). The file is a zip of `SKILL.md` and `references/`.
 
-1. Download `personal-voice.skill`.
-2. Create a folder such as `~/.cursor/skills/personal-voice/` or `.cursor/skills/personal-voice/`.
-3. Unzip the `.skill` file into that folder so `SKILL.md` sits at the folder root.
+Download:
+
+```bash
+curl -LO https://github.com/rickcrawford-postman/personal-voice/releases/latest/download/personal-voice.skill
+```
+
+Install into Cursor:
+
+```bash
+mkdir -p ~/.cursor/skills/personal-voice
+curl -LO https://github.com/rickcrawford-postman/personal-voice/releases/latest/download/personal-voice.skill
+unzip -o personal-voice.skill -d ~/.cursor/skills/personal-voice
+rm personal-voice.skill
+```
+
+`SKILL.md` should end up at `~/.cursor/skills/personal-voice/SKILL.md`. Use `.cursor/skills/personal-voice/` instead for a project-local install.
 
 To build locally: `./scripts/package-skill.sh`
 
@@ -28,10 +41,10 @@ Point your assistant at the skill and ask it to write or clean something:
 
 - "Rewrite this so it sounds like a person, not a bot."
 - "This draft reads like AI. Fix it."
-- "Write a short post about X in my voice — here's a sample of how I write: ..."
+- "Write a short post about X in my voice. Here's a sample of how I write: ..."
 - "Audit this before I publish it."
 
-If you give it a writing sample, it will match your sentence rhythm, word choice, and habits rather than just removing tells. If you don't, it falls back to a natural, varied, opinionated default voice.
+If you give it a writing sample, it will match your sentence rhythm, word choice, and habits rather than just removing tells. If you don't, it falls back to a natural, varied, opinionated default voice. By default it also strips em dashes and en dashes from output.
 
 You can also layer house style on top: ban specific words, forbid em dashes, cap the length, or require plain prose with no headers. State the constraint and the skill applies it throughout.
 

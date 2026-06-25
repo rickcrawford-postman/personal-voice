@@ -26,6 +26,16 @@ jobs:
           path: dist/personal-voice.skill
           if-no-files-found: error
 
+      - name: Publish release
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: ncipollo/release-action@v1
+        with:
+          tag: latest
+          allowUpdates: true
+          replacesArtifacts: true
+          makeLatest: true
+          artifacts: dist/personal-voice.skill
+
       - name: Attach to release
         if: github.event_name == 'release'
         uses: softprops/action-gh-release@v2

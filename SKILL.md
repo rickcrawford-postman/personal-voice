@@ -6,8 +6,8 @@ description: |
   humans (a blog post, essay, newsletter, email, README, doc, social post, or
   report) and you want it to sound personal rather than generated. Also use it
   as a pre-publish pass to strip the patterns that make text read as AI, and to
-  match a particular person's voice when a writing sample is provided. Built on
-  the humanizer skill and Wikipedia's "Signs of AI writing." Triggers include
+  match a particular person's voice when a writing sample is provided. Strips em
+  dashes and en dashes from output by default. Built on the humanizer skill and Wikipedia's "Signs of AI writing." Triggers include
   "make this sound human," "this reads like AI," "rewrite in my voice," "clean
   this up before I post it," "write this as a person, not a bot," or any request
   for natural, personal-sounding writing.
@@ -34,6 +34,25 @@ Personal voice sounds like a particular human thinking. The rhythm is uneven on 
 
 The whole job is to move text from the first kind to the second.
 
+## Default punctuation: no em or en dashes
+
+This skill does not use em dashes (—) or en dashes (–) in the writing it produces or edits. That is a default feature, not an optional house style.
+
+**When drafting.** Do not reach for an em or en dash as a connector, aside, or punch. Use a comma, a period and a new sentence, or parentheses instead.
+
+**When auditing.** Find every em dash and en dash in the draft and rewrite each one. Common swaps:
+
+- Aside or interruption: parentheses, or split into two sentences.
+- Contrast or pivot: comma, semicolon, or a conjunction (*but*, *and*, *so*).
+- Appositive: commas.
+- Date or number ranges: *from 1990 to 2000*, *pages 12 to 15*, or a hyphen only when the style guide treats it as a compound modifier.
+
+Keep hyphens only inside genuinely hyphenated words (*well-known*, *long-term*).
+
+**Voice-sample exception.** If the user's sample clearly and consistently uses em dashes as a personal habit, match that habit sparingly. Still strip en dashes unless the sample uses them for ranges and the user wants them preserved. When in doubt, remove dashes.
+
+**User override.** If the user explicitly asks to keep dashes, follow their instruction for that task.
+
 ## Match the writer's voice when you can
 
 If the user gives a writing sample (their own earlier writing, or a piece whose voice they want), read it before drafting and match it. Note these things in the sample:
@@ -59,13 +78,13 @@ If you do nothing else, hunt these six. They are the loudest signals that a mode
 
 **The rhetorical wrap-up.** A short declarative that claims to settle the argument, paired with a clause that demotes everything else. "That's the whole game. The rest is execution." "That picture is the plan. Everything else is detail." It mimics a mic drop with no speaker behind it, and it usually substitutes for actually finishing the argument. Fix: cut the line (the paragraph above probably made the point), or replace it with a real transition, or make it specific by naming the actual thing it waves at.
 
-**Journey and travel metaphor stacks.** Journey, arc, path, voyage, embark, navigate, and landscape applied to things that do not move. "The product has a journey." "Across that arc." "The path forward." Once one travel word lands, related ones pile up. Fix: use the literal word — process, stages, sequence, pattern. If the sentence still works after the swap, the metaphor was not earning its keep. A single anchoring travel metaphor in a title or thesis can be fine; proliferation is the tell.
+**Journey and travel metaphor stacks.** Journey, arc, path, voyage, embark, navigate, and landscape applied to things that do not move. "The product has a journey." "Across that arc." "The path forward." Once one travel word lands, related ones pile up. Fix: use the literal word (process, stages, sequence, pattern). If the sentence still works after the swap, the metaphor was not earning its keep. A single anchoring travel metaphor in a title or thesis can be fine; proliferation is the tell.
 
 **Signposting and announcements.** "Let's dive in." "Here's what you need to know." "Let's break this down." "Without further ado." The model narrates its own outline instead of writing. Fix: do the thing. "Let's look at how caching works" becomes "Caching here happens at three layers."
 
 **Rule of three.** Forcing ideas into triplets: "faster, better, cheaper," "speed, scale, security," three parallel bullets that could be two or four. The model defaults to three because it sounds comprehensive. Fix: count what is actually there and use that number.
 
-**Scan next:** significance inflation (*stands as, testament, pivotal*), superficial `-ing` endings (*highlighting, underscoring, ensuring*), fragmented headers (heading followed by a one-line restatement), and AI vocabulary clusters (*delve, tapestry, robust, leverage* when three or more appear close together).
+**Scan next:** significance inflation (*stands as, testament, pivotal*), superficial `-ing` endings (*highlighting, underscoring, ensuring*), fragmented headers (heading followed by a one-line restatement), AI vocabulary clusters (*delve, tapestry, robust, leverage* when three or more appear close together), and em or en dashes.
 
 The full catalog of every other tell (promotional language, vague attributions, false ranges, copula avoidance, persuasive authority tropes, filler phrases, hedging, generic positive conclusions, conjunctive-adverb crutches, em dashes, inline-header lists, title case, emojis, curly quotes, temporal inflation openers, balanced both-sides pivots, and more) lives in `references/ai-tells.md`. Read that file when drafting or auditing anything substantial.
 
@@ -86,7 +105,7 @@ How to put a pulse in it:
 
 A user or repo may layer constraints on top of the natural voice. When the user states any of these, treat them as binding for the task and apply them throughout:
 
-- Em dash policy. Em dash overuse is itself an AI tell (see the catalog), so the default already reduces them. If the user wants none at all, replace every one with a comma, parentheses, or a new sentence, and use hyphens only inside genuinely hyphenated words.
+- Dash policy override. The default is no em or en dashes (see above). If the user wants dashes allowed or banned even more strictly, follow that for the task.
 - Banned words or phrases. Keep the user's list and strip every instance.
 - Formatting limits. For example, no bold, no headers, plain prose only, or a length cap.
 - Point of view, tense, or audience constraints.
@@ -97,7 +116,7 @@ If the user gives no house style, use the defaults in this skill and the catalog
 
 1. Get the angle straight first. What does the writer actually think about this, and why is it worth saying? Lead from that, not from a definition.
 2. Match the sample voice if one was given; otherwise use the natural voice above.
-3. Draft with plain verbs, varied rhythm, and real opinions. Don't decorate.
+3. Draft with plain verbs, varied rhythm, and real opinions. Do not use em or en dashes.
 4. Run the audit below before calling it done.
 
 ## Editing or auditing a draft
@@ -106,7 +125,8 @@ If the user gives no house style, use the defaults in this skill and the catalog
 2. Read it again hunting the top six: X-not-Y, contrast-flip couplets, rhetorical wrap-ups, journey/travel metaphor stacks, signposting, and rule of three.
 3. Scan headings for title case and for warm-up lines that just restate the heading.
 4. Scan paragraphs for significance inflation, superficial `-ing` endings, and clusters of inflated AI vocabulary (three or more watch-words close together).
-5. Rewrite each problem in place. Preserve meaning, and preserve the writer's voice if a sample was given.
+5. Remove every em dash and en dash. Rewrite each with commas, parentheses, conjunctions, or new sentences.
+6. Rewrite each problem in place. Preserve meaning, and preserve the writer's voice if a sample was given.
 
 ## The final pass: read it aloud
 
@@ -127,7 +147,7 @@ For a rewrite or audit, provide the draft rewrite, a short honest answer to "wha
 
 ## External sources
 
-These are worth consulting when updating the catalog or when a piece needs deeper pattern-matching than the skill alone provides. Treat them as descriptive field guides, not proof of AI authorship. No single word or pattern is definitive; clusters of weak signals matter more than any one hit. Automated detectors (GPTZero, Turnitin, etc.) are unreliable on their own — Wikipedia's guide explicitly warns against relying on them.
+These are worth consulting when updating the catalog or when a piece needs deeper pattern-matching than the skill alone provides. Treat them as descriptive field guides, not proof of AI authorship. No single word or pattern is definitive; clusters of weak signals matter more than any one hit. Automated detectors (GPTZero, Turnitin, etc.) are unreliable on their own; Wikipedia's guide explicitly warns against relying on them.
 
 | Source | What it contributes |
 |--------|---------------------|

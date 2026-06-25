@@ -6,14 +6,14 @@ The first six are the ones that show up most. Hunt them first.
 
 ## Hunt these first (top six)
 
-1. **The X-not-Y construction** — contrast through negation
-2. **The contrast-flip couplet** — two short sentences, second inverts the first
-3. **The rhetorical wrap-up** — fake mic-drop closer
-4. **Travel metaphors for non-travel concepts** — journey, arc, path stacks
-5. **Signposting and announcements** — "Let's dive in," "Here's what you need to know"
-6. **Rule of three** — forced triplets
+1. **The X-not-Y construction**: contrast through negation
+2. **The contrast-flip couplet**: two short sentences, second inverts the first
+3. **The rhetorical wrap-up**: fake mic-drop closer
+4. **Travel metaphors for non-travel concepts**: journey, arc, path stacks
+5. **Signposting and announcements**: "Let's dive in," "Here's what you need to know"
+6. **Rule of three**: forced triplets
 
-Scan next: significance inflation, superficial `-ing` endings, fragmented headers, AI vocabulary clusters.
+Scan next: significance inflation, superficial `-ing` endings, fragmented headers, AI vocabulary clusters, em and en dashes.
 
 ## Contents
 
@@ -39,7 +39,7 @@ Scan next: significance inflation, superficial `-ing` endings, fragmented header
 20. Excessive hedging
 21. Generic positive conclusions
 22. Conjunctive adverbs as transition crutches
-23. Em dashes
+23. Em and en dashes
 24. Overuse of boldface
 25. Inline-header vertical lists
 26. Title case in headings
@@ -251,13 +251,22 @@ Scan next: significance inflation, superficial `-ing` endings, fragmented header
 
 **Fix.** Drop the adverb and let the sentence stand. If the connection is real, show it through substance rather than announcing it.
 
-## 23. Em dashes
+## 23. Em and en dashes
 
-**Looks like.** Em dashes in place of commas, periods, or parentheses, used as a default punchy connector.
+*Default skill behavior: remove all em dashes (—) and en dashes (–) from output.*
 
-**Why it reads as AI.** Em dashes appear at much higher frequency in AI text than in human writing.
+**Looks like.** Em dashes in place of commas, periods, or parentheses, used as a default punchy connector. En dashes for ranges (*1990–2000*, *pages 12–15*) or as a weaker stand-in for an em dash.
 
-**Fix.** Most can be rewritten more cleanly with a comma, parentheses, or a new sentence. Reduce them heavily by default. If a house style bans them outright, replace every one and keep hyphens only inside genuinely hyphenated words.
+**Why it reads as AI.** Em dashes appear at much higher frequency in AI text than in human writing. Models also misuse hyphens and en dashes inconsistently. The dash stack reads like punchy sales copy.
+
+**Fix.** Replace every em and en dash:
+
+- Aside or interruption → parentheses, or a new sentence.
+- Contrast or pivot → comma, semicolon, or conjunction.
+- Range → *from X to Y*, or a hyphen only when it is a true compound modifier.
+- Never leave a dash because it "sounds emphatic."
+
+Keep hyphens only inside genuinely hyphenated words. The personal-voice skill applies this by default on every draft and audit unless the user overrides or a voice sample clearly depends on em dashes.
 
 ## 24. Overuse of boldface
 
@@ -419,7 +428,7 @@ This catalog builds on [Wikipedia: Signs of AI writing](https://en.wikipedia.org
 
 ### Other sources worth consulting
 
-These are descriptive field guides, not detectors. No single pattern proves AI authorship; clusters of weak signals matter more than any one hit. Automated tools (GPTZero, Turnitin, Originality.ai) are unreliable on their own — Wikipedia's guide explicitly warns against relying on them.
+These are descriptive field guides, not detectors. No single pattern proves AI authorship; clusters of weak signals matter more than any one hit. Automated tools (GPTZero, Turnitin, Originality.ai) are unreliable on their own; Wikipedia's guide explicitly warns against relying on them.
 
 | Source | URL | What it adds |
 |--------|-----|--------------|
@@ -427,7 +436,7 @@ These are descriptive field guides, not detectors. No single pattern proves AI a
 | WikiProject AI Cleanup / Guide | https://en.wikipedia.org/wiki/Wikipedia:WikiProject_AI_Cleanup/Guide | How editors find and fix AI content; sourcing and cleanup workflow |
 | GPTZero AI Vocabulary | https://gptzero.me/news/most-common-ai-vocabulary/ | Statistical word-frequency list from millions of comparisons; updated periodically |
 | Pangram Labs guide | https://www.pangram.com/blog/comprehensive-guide-to-spotting-ai-writing-patterns | Rhythm (low burstiness), em dashes, uniform paragraphs, "Overall"/"In conclusion" closers |
-| Google Cloud statistical tells | https://medium.com/google-cloud/detecting-ai-generated-text-by-uncovering-its-statistical-tells-042c8d0e3a24 | Signposting, authoritative qualifiers, sycophantic openers — measured with log-likelihood ratios |
+| Google Cloud statistical tells | https://medium.com/google-cloud/detecting-ai-generated-text-by-uncovering-its-statistical-tells-042c8d0e3a24 | Signposting, authoritative qualifiers, sycophantic openers; measured with log-likelihood ratios |
 | VU Amsterdam ALP Guide | https://vu.nl/en/about-vu/more-about/alp-guide-spotting-ai-writing | Academic framing: boosters vs. hedges, bland style, overly poetic language, low perplexity |
 | Sarvazyan et al. 2025 (ACL) | https://aclanthology.org/2025.genaidetect-1.6/ | LLMs leave persistent lexical/syntactic fingerprints; structural tells outlast individual words |
 | OpenAI community thread | https://community.openai.com/t/what-are-your-strategies-for-spotting-ai-writing/1150515 | Practitioner discussion; emphasizes structural joints over word lists |
