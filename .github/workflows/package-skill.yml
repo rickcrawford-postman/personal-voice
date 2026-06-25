@@ -10,8 +10,10 @@ on:
 jobs:
   package:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Create .skill package
         run: |
@@ -20,7 +22,7 @@ jobs:
           zip -r dist/personal-voice.skill SKILL.md references/
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: personal-voice-skill
           path: dist/personal-voice.skill
@@ -38,7 +40,7 @@ jobs:
 
       - name: Attach to release
         if: github.event_name == 'release'
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           files: dist/personal-voice.skill
         env:
