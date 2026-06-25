@@ -4,6 +4,8 @@ on:
   push:
     branches: [main]
   pull_request:
+    branches: [main]
+  workflow_dispatch:
   release:
     types: [published]
 
@@ -28,20 +30,22 @@ jobs:
           path: dist/personal-voice.skill
           if-no-files-found: error
 
-      - name: Publish release
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        uses: ncipollo/release-action@v1
-        with:
-          tag: latest
-          allowUpdates: true
-          replacesArtifacts: true
-          makeLatest: true
-          artifacts: dist/personal-voice.skill
-
-      - name: Attach to release
-        if: github.event_name == 'release'
-        uses: softprops/action-gh-release@v3
-        with:
-          files: dist/personal-voice.skill
+      - name: Publish rolling latest release
+        if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+        run: |
+          if gh release view latest >/dev/null 2>&1; then
+            gh release upload latest dist/personal-voice.skill --clobber
+          else
+            gh release create latest dist/personal-voice.skill \
+              --title "Latest build" \
+              --notes "Automated skill package from CI." \
+              --latest
+          fi
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Attach to tagged release
+        if: github.event_name == 'release'
+        run: gh release upload "${{ github.event.release.tag_name }}" dist/personal-voice.skill --clobber
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -14,7 +14,7 @@ It does two things:
 
 ## Install from `.skill` package
 
-CI builds `personal-voice.skill` on every push to `main` and publishes it to the [latest release](https://github.com/rickcrawford-postman/personal-voice/releases/latest). The file is a zip of `SKILL.md` and `references/`.
+CI builds `personal-voice.skill` on every push to `main` and publishes it to the [latest release](https://github.com/rickcrawford-postman/personal-voice/releases/latest). You can also run the **Package skill** workflow manually from the [Actions tab](https://github.com/rickcrawford-postman/personal-voice/actions/workflows/package-skill.yml). The file is a zip of `SKILL.md` and `references/`.
 
 Download:
 
