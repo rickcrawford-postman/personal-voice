@@ -1,0 +1,20 @@
+# personal-voice
+
+> An Agent Skill that writes and edits prose so it reads like a person wrote it rather than an AI agent. It strips the patterns that flag text as machine-generated, then checks whether the writing is concise, calibrated, and worth a reader's time. Every pass reports an ai-smell score (0 to 100, lower is better), a reader-value score (0 to 100, higher is better), and a human-touch list of the places where only the writer can add a number, a name, a moment, or an opinion.
+
+The skill is prose instructions with no executable code. `SKILL.md` carries the rules and the two rubrics; `references/ai-tells.md` carries the catalog of 64 tells, fourteen mechanical counts, and the research behind both scores. Keep the two files together, since the skill loads the reference by relative path.
+
+Install: clone into `~/.claude/skills/personal-voice/` for Claude Code. For every other surface, run `python3 scripts/build.py` and use the artifact for that provider from `dist/`: a wrapped zip for claude.ai and the Skills API, sized instruction files for ChatGPT and Gemini, a `.github` tree for Copilot, and a single-file markdown for anything that takes one instruction document.
+
+## Docs
+
+- [SKILL.md](https://raw.githubusercontent.com/rickcrawford-postman/personal-voice/main/SKILL.md): the skill itself. Voice matching, detect and edit modes, the six highest-signal tells, the no-dash default, the cut/claim/calibration tests, the ai-smell rubric, the reader-value rubric, the human-touch list, and the output format.
+- [references/ai-tells.md](https://raw.githubusercontent.com/rickcrawford-postman/personal-voice/main/references/ai-tells.md): the full catalog of 64 AI writing tells with before-and-after examples, the mechanical counts, and the research notes with sources.
+- [PROMPT.md](https://raw.githubusercontent.com/rickcrawford-postman/personal-voice/main/PROMPT.md): condensed 1,440-character and 4,600-character prompts for ChatGPT, Gemini, Copilot, and anything else that only takes an instructions string.
+- [AGENTS.md](https://raw.githubusercontent.com/rickcrawford-postman/personal-voice/main/AGENTS.md): install instructions written for agents, including the zip-layout difference between Claude Code and claude.ai, and the frontmatter caps to watch when editing.
+- [README.md](https://raw.githubusercontent.com/rickcrawford-postman/personal-voice/main/README.md): what the skill does, how to install it on each surface, and the research it is built on.
+
+## Optional
+
+- [Wikipedia: Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing): the primary upstream catalog, maintained by WikiProject AI Cleanup.
+- [scripts/build.py](https://raw.githubusercontent.com/rickcrawford-postman/personal-voice/main/scripts/build.py): generates a package per provider (Claude Code, claude.ai, Skills API, Cursor, ChatGPT, Gemini, Copilot, single-file) and validates frontmatter caps, instruction-field caps, and dash usage. Run `python3 scripts/build.py --list`.

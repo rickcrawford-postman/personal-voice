@@ -2,19 +2,18 @@
 name: personal-voice
 description: |
   Write and edit prose so it reads like a specific person wrote it, not an AI
-  agent. Use this whenever drafting or rewriting anything that will be read by
-  humans (a blog post, essay, newsletter, email, README, doc, social post, or
-  report) and you want it to sound personal rather than generated. Also use it
-  as a pre-publish pass to strip the patterns that make text read as AI, and to
-  match a particular person's voice when a writing sample is provided. Strips em
-  dashes and en dashes from output by default. Built on the humanizer skill,
-  Wikipedia's "Signs of AI writing," and the no-ai-slop and deslop projects.
-  Works in two modes: detect (flag the tells without rewriting) or edit (rewrite
-  in place). Every pass reports an ai-smell score from 0 to 100 that rates how
-  machine-generated the writing reads. Triggers include
-  "make this sound human," "this reads like AI," "rewrite in my voice," "clean
-  this up before I post it," "write this as a person, not a bot," or any request
-  for natural, personal-sounding writing.
+  agent. Use when drafting or rewriting anything humans will read (posts,
+  essays, emails, READMEs, docs, reports), and as a pre-publish pass to strip
+  the patterns that make text read as generated.
+  Matches a person's voice from a writing sample. Strips em and en dashes by
+  default. Runs in detect mode (flag the tells) or edit mode (rewrite in
+  place). Reports an ai-smell score from 0 to 100 for how machine-generated the
+  writing reads, a reader-value score from 0 to 100 for substance, concision,
+  calibration, and reader path, and a human-touch list of the places where only
+  the writer can add the number, name, moment, or opinion that gives a piece
+  flair. Built on Wikipedia's "Signs of AI writing" and published detection
+  research. Triggers: "make this sound human," "this reads like AI," "rewrite
+  in my voice," "is this AI slop," or any request for natural writing.
 license: MIT
 compatibility: claude-code claude-ai cowork opencode
 allowed-tools:
@@ -28,7 +27,7 @@ allowed-tools:
 
 # Personal Voice
 
-Write and edit so the result reads like a person, not an agent. This skill does two jobs: it drafts new writing in a natural personal voice, and it audits existing drafts to remove the patterns that flag text as AI-generated. It is built on the humanizer skill, which draws its pattern catalog from Wikipedia's "Signs of AI writing" (maintained by WikiProject AI Cleanup), with additional patterns observed in long-form drafting and borrowed from the no-ai-slop and deslop projects.
+Write and edit so the result reads like a person, not an agent. This skill does three jobs: it drafts new writing in a natural personal voice, it audits existing drafts to remove the patterns that flag text as AI-generated, and it checks whether the writing is concise, calibrated, and worth a reader's time, which is a separate question from whether it sounds human. It is built on the humanizer skill, which draws its pattern catalog from Wikipedia's "Signs of AI writing" (maintained by WikiProject AI Cleanup), with additional patterns observed in long-form drafting and borrowed from the no-ai-slop and deslop projects.
 
 ## Personal voice versus agent voice
 
@@ -92,13 +91,29 @@ If you do nothing else, hunt these six. They are the loudest signals that a mode
 
 **Scan next:** significance inflation (*stands as, testament, pivotal*), superficial `-ing` endings (*highlighting, underscoring, ensuring*), fragmented headers (heading followed by a one-line restatement), colon reveals (*the best part: it learns*), faux-insight openers (*here's the thing, what nobody tells you*), rhetorical question setups including question-shaped headings (*So what does this mean?*), imperative closers (*start there, pick one and run it this quarter*), the shift framing repeated section after section (*the bottleneck has moved from X to Y*), adverb tics (*just, really, actually, simply, genuinely, quietly, arguably*), consultant-deck vocabulary (*table stakes, moat, flywheel, north star, step change*), snowclones and named-law drops (*X is the new Y, a feature not a bug, Goodhart, Chesterton's fence*), and AI vocabulary clusters.
 
+**Then the substance tells,** which are newer in the catalog and which a tell-hunt on its own will miss: zombie nouns and noun-stacked abstraction (*the implementation of the optimization of*), the restatement loop (a point made, explained, then made again), certainty inflation and stripped attribution (*may cause* becoming *causes*, *researchers suggest* becoming *research shows*), hyperbole and absolutes (*completely transforms, the single biggest, nobody is talking about this*), vague expressions of connection (*associated with, in connection with, when it comes to*), and assertion chains with no connective logic. Entries 58 to 63.
+
 **Grep list.** Each of these is almost always decoration, so search for them literally on every pass: *opens the door*, *closes the door*, *unlocks*, *paves the way*, *gateway*, *on-ramp*, *floodgates*, *threshold*, *load-bearing*, *doing a lot of work*, *heavy lifting*, *foundation*, *foundational*, *cornerstone*, *bedrock*, *scaffolding*, *pillars*, *building blocks*, *spine*, *backbone*, *connective tissue*, *the thread between*, *the thread running through*, *the seams*, *the fabric of*, *the glue*, *the plumbing*, *the wiring*, *the space between*, *levers*, *dials*, *move the needle*, *on rails*, *under the hood*, *surface area*, *table stakes*, *flywheel*, *north star*, *single pane of glass*, *step change*, *quietly*, *no longer just*, *is the new*.
+
+**Hyperbole and absolutes grep.** These are claims that cannot be checked, so they carry no information: *completely*, *entirely*, *everything changes*, *nothing is*, *nobody*, *no one is talking about*, *always*, *never*, *the single biggest*, *the most important*, *revolutionary*, *game-changing*, *transformative*, *unprecedented*, *exponentially*, *orders of magnitude*, *fundamentally changes*, *redefines*, *must-have*. Keep one only where it is literally true and you have checked.
+
+**Calibration grep, run against the source and not the draft.** *research shows*, *studies show*, *it is clear that*, *obviously*, *undoubtedly*, *proves*, *confirms*, *causes*, *drives*, *guarantees*. Each one needs a named source, and each needs to still carry whatever hedge the source used. Also grep for the connection-hedges that name no relationship: *associated with*, *linked to*, *tied to*, *in connection with*, *in the context of*, *when it comes to*, *in terms of*.
 
 **Provenance grep, run before publishing anything a model touched.** `utm_source=`, `oaicite`, `contentReference`, `cite:`, `【`, `[insert`, `[Your`. These are residue from the generating tool, not style. One hit means the text was pasted out of a chat window without a read-through, and it outweighs any stylistic judgment. Report it separately and keep it out of the score. Catalog entry 57.
 
-**A note on em dashes.** The default here is still to strip them, but that is a style choice, not a detection claim. The Economist's 2026 study of 1.2 million words found em dashes no longer separate human from AI writing (only Claude overuses them), and that models actually use *fewer* commas, semicolons, and parentheses than people while writing longer sentences joined by "and." So do not raise a score on dash count, and do watch for the opposite problem: long unpunctuated sentences with no quoted voices in them (entry 54).
+**A note on em dashes.** The default here is still to strip them, but that is a style choice rather than a detection claim. The Economist's 2026 study of 1.2 million words found em dashes no longer separate human from AI writing, since only Claude overuses them. So do not raise a score on dash count.
 
-The full catalog of every other tell (promotional language, vague attributions, false ranges, copula avoidance, persuasive authority tropes, filler phrases, hedging, generic positive conclusions, conjunctive-adverb crutches, inline-header lists, title case, emojis, curly quotes, temporal inflation openers, balanced both-sides pivots, over-explained anecdotes, document-structure artifacts, and more) lives in `references/ai-tells.md`. Read that file when drafting or auditing anything substantial. Several entries carry controlled exceptions, which matter as much as the rules: consultant vocabulary that is a real term of art in your field, one named law whose mechanism you actually work through, a single anchoring metaphor, and the shift framing used once as a thesis. The tell is repetition and decoration, not the move itself.
+**What the punctuation research does support, since this is the part people get wrong.** Three findings are worth carrying, and none of them is about a single mark.
+
+*Variety beats counts.* AI text draws on a narrower set of marks, with commas and periods doing almost all the work, and uses fewer question marks, semicolons, parentheses, and colons than human writing. The Economist found the same thinning and traced part of it to models not quoting anyone, because quotation is what pulls attribution punctuation into a sentence.
+
+*Variance beats mean.* Sentence-length *spread* is consistently lower in model output, while studies disagree entirely on whether models write longer sentences or shorter ones. So never score a draft on sentence length itself. Measure the gap between the longest and shortest sentence in each paragraph. Words between punctuation marks is a second rhythm worth checking, and any unpunctuated run past about 25 words reads as machine-made even when the grammar is fine.
+
+*Uniform correctness is its own tell.* Punctuation that stays textbook-perfect at a constant temperature, with no contractions and no informal register anywhere, reads as machine-made even when every mark is right. Entry 64 covers it, and the first rule there is that you never fake an error to fix it. Contract where speech would contract, put a real aside in parentheses, let one sentence be a fragment.
+
+All of this is one signal inside a capped dimension and never a verdict about authorship. Punctuation heuristics have a bad track record, the em dash being the most recent casualty, and the cost of getting them wrong falls on writers who punctuate carefully.
+
+The full catalog of every other tell (promotional language, vague attributions, false ranges, copula avoidance, persuasive authority tropes, filler phrases, hedging, generic positive conclusions, conjunctive-adverb crutches, inline-header lists, title case, emojis, curly quotes, temporal inflation openers, balanced both-sides pivots, over-explained anecdotes, document-structure artifacts, zombie nouns, restatement loops, certainty inflation, hyperbole and absolutes, and more) lives in `references/ai-tells.md`, along with fourteen mechanical counts under "Counting instead of guessing". Read that file when drafting or auditing anything substantial. Several entries carry controlled exceptions, which matter as much as the rules: consultant vocabulary that is a real term of art in your field, one named law whose mechanism you actually work through, a single anchoring metaphor, and the shift framing used once as a thesis. The tell is repetition and decoration, not the move itself.
 
 ## Personality and soul
 
@@ -112,6 +127,64 @@ How to put a pulse in it:
 - Use "I" when it fits. First person is honest, not unprofessional.
 - Let some mess in. A tangent, an aside, a half-formed thought. Perfect structure feels algorithmic.
 - Be specific about feelings and details instead of reaching for an abstraction.
+
+Most of that list needs material only the writer has, which is why the human-touch list exists (see "Where a person should add flair"). When you cannot supply the pulse yourself, name the place it belongs and ask for it.
+
+## Concision, calibration, and substance
+
+Removing tells raises the surface quality of a draft, and surface quality was never the problem. "Why Slop Matters" (arXiv 2601.06060) characterizes slop by superficial competence: the veneer of quality hides the absence of substance. A tell-free, perfectly readable page that gives the reader nothing they can use is still slop. So every pass runs these three checks alongside the tell hunt.
+
+**The cut test, for concision.** Delete every sentence that repeats a point already made, then read the paragraph. Padding is the most reliably removable defect in model prose, and it is trained in rather than inherent: reward models and LLM judges both prefer longer answers, and YapBench found newer frontier models pad more than GPT-3.5-Turbo did. Look for the restatement loop (state it, explain it, state it again), zombie nouns that inflate a clause by a third (*the implementation of the optimization of*), throat-clearing before the point, and sections that all came out the same length regardless of how much there was to say. If more than about 15% of the draft goes without loss, it was padded, and say so.
+
+**The claim test, for substance.** Underline every number, date, proper noun, quoted person, and named mechanism. A paragraph with none of them is decoration, however well it reads. Journalism's version of this is show, don't tell; the failure mode described in the Reuters Institute's survey of AI prose is "a lot of words that don't say anything." Two checkable specifics per 100 words is a reasonable floor for anything that makes claims about the world. Under one and the passage is pure abstraction. The fix is almost always to replace a category with an instance: one customer instead of "teams," one incident instead of "reliability challenges," 40ms instead of "latency issues."
+
+**The calibration test, for hyperbole and false certainty.** Check each claim against the evidence behind it, in both directions.
+
+- **Overstated.** Absolutes and superlatives cannot be checked, so they carry no information. Bao et al. measured the drift toward this in 823,798 arXiv abstracts after ChatGPT: more positive sentiment and a rise in *exceptional*, *pivotal*, *notable*, *seamless*. Downgrade the claim until you can defend it, then attach the evidence that lets you. "Completely transforms how teams work" becomes "two of the four teams stopped holding standups."
+- **Falsely certain.** This is the one to watch during a rewrite, because rewriting is where it happens. Belem et al. (2026) found language models shift the certainty of text they rewrite in up to 75% of cases, biased 1.5 to 2 times toward more confidence, and it compounds over repeated passes. Hedges vanish, attributions vanish, sample sizes vanish, and the sentence gets tighter and more quotable while becoming less true. Tightening prose is exactly the operation that strips these, so check the edited version against the source rather than against your previous draft.
+- **Over-hedged.** The opposite failure is real too, and it is the older one. "It could potentially be argued that results may vary" commits to nothing. One hedge at most, and only where the uncertainty is real.
+
+Fourteen mechanical counts are in `references/ai-tells.md` under "Counting instead of guessing." Run at least these:
+
+| Count | Look harder when |
+|-------|------------------|
+| Checkable specifics per 100 words | Fewer than 2 |
+| Cut-test loss | More than 15% of the draft goes without loss |
+| Zombie nouns (`-tion`, `-ment`, `-ance`, `-ity`, `-ness`) per 100 words | More than 4, or 2 in one sentence |
+| Longest minus shortest sentence, per paragraph | Under 8 words of spread (spread, not average) |
+| Distinct punctuation types per 500 words, and the longest unpunctuated run | Three or fewer types, or any run past about 25 words |
+| Contractions per 100 words in conversational prose, and people quoted by name | Zero of either |
+| Boosters against hedges | Boosters win in a piece making empirical claims |
+| Claims about the world against named sources | More claims than sources |
+
+One trap: lexical density is not the target. Bao et al. found post-ChatGPT abstracts scored higher on content words per total words while getting *harder* to read, because the connective words went missing. Cramming in content words is how you get an unreadable paragraph. What you want is more checkable specifics, fewer wasted words, and the *because* and *so* that carry the argument left in place.
+
+## Where a person should add flair
+
+The checks above have a ceiling, and it is the ceiling of what the model knows. Past that point, the only way to make a piece more compelling is for the writer to put something of their own in it. So every pass ends with a **human-touch list**: two to five specific places where the writer, and nobody else, can raise the value of the piece.
+
+Include it in every pass, including the ones where the draft came back clean. It is usually the part that most changes the finished piece.
+
+What to look for:
+
+- **A number the writer has and the draft doesn't.** Latency, headcount, dollars, dates, how many times it happened.
+- **A named person or a real quote.** The Economist's 2026 analysis found absent quotation is one of the stronger current markers of machine prose, and it is often the fastest single fix available.
+- **A first-hand moment.** The meeting where it went wrong, the bug that ate a week, what the writer believed at the time and turned out to be wrong about.
+- **An opinion with a cost.** Wherever the draft lays out a tradeoff without saying which side the writer comes down on, and why.
+- **The objection with no good answer.** What the sharpest skeptic in the room would say, left standing on purpose.
+- **The thing still unresolved.** Model prose ties everything off. Real accounts leave something open.
+- **A concrete example in place of a category.** One customer, one file, one incident, instead of "organizations."
+- **A joke, an aside, a piece of slang, a strong opinion about something adjacent.** The stuff that could only have come from this person.
+
+How to write the list, which matters as much as what is on it:
+
+- **Point at a location.** Name the paragraph or quote the line, so the writer knows where to put it.
+- **Ask a question they can answer in one sentence.** "Which two teams dropped standups?" beats "consider adding specific examples." A question gets answered; an instruction gets skipped.
+- **Say what it would buy.** "This is the only paragraph with no evidence in it" or "this is where a reader decides whether to trust the piece."
+- **Rank by payoff and stop at five.** A list of fifteen suggestions gets none of them done.
+- **Never invent the material yourself.** Do not fill the gap with a plausible-sounding number, quote, or anecdote. Leave the hole and mark it. Inventing it is the exact failure the calibration test exists to catch.
+
+If the piece is functional writing where voice does not matter, keep the list to missing facts and skip the rest.
 
 ## Optional house style
 
@@ -128,9 +201,9 @@ If the user gives no house style, use the defaults in this skill and the catalog
 
 Decide which the user wants before touching the text.
 
-**Detect.** The user asks "is this AI slop?", "does this read like AI?", or "what tells are in here?" They want a diagnosis, not a rewrite. Name each tell using the catalog's vocabulary, quote the exact line it appears in, and give a one-line fix. Do not rewrite the piece. Order the findings by how loud they are (top six first). If the text is genuinely clean, say so and stop.
+**Detect.** The user asks "is this AI slop?", "does this read like AI?", or "what tells are in here?" They want a diagnosis, not a rewrite. Name each tell using the catalog's vocabulary, quote the exact line it appears in, and give a one-line fix. Do not rewrite the piece. Order the findings by how loud they are (top six first). If the text is clean of tells but thin on substance, say that too; it is the more useful finding and it is the one a tell hunt tends to miss.
 
-**Edit.** The user asks you to rewrite, clean up, or humanize. Follow the editing workflow below and return the revised text.
+**Edit.** The user asks you to rewrite, clean up, or humanize. Follow the editing workflow below and return the revised text. Both modes end with the human-touch list, because in detect mode it is often the only thing the user can act on and in edit mode it is the part you could not do for them.
 
 When it is ambiguous, ask, or lead with a short detect pass and offer to do the edit.
 
@@ -147,7 +220,8 @@ Match the size of your changes to whose voice the text carries and how much voic
 1. Get the angle straight first. What does the writer actually think about this, and why is it worth saying? Lead from that, not from a definition.
 2. Match the sample voice if one was given; otherwise use the natural voice above.
 3. Draft with plain verbs, varied rhythm, and real opinions. Do not use em or en dashes.
-4. Run the audit below before calling it done.
+4. Run the audit below before calling it done, including the cut, claim, and calibration tests.
+5. List the places where you had to write around something you do not know. Those are the human-touch items, and they belong in the output.
 
 ## Editing or auditing a draft
 
@@ -157,11 +231,15 @@ Match the size of your changes to whose voice the text carries and how much voic
 4. Scan paragraphs for significance inflation, superficial `-ing` endings, colon reveals ("the best part: ..."), faux-insight openers ("here's the thing," "what nobody tells you"), adverb tics (just, really, actually, simply, genuinely, quietly), dead metaphors (doors, load-bearing, threads, levers), consultant vocabulary (table stakes, moat, flywheel, step change), snowclones and named-law drops, and clusters of inflated AI vocabulary (three or more watch-words close together).
 5. Check the ending. Cut imperative closers ("start there," "pick one and run it this quarter"); the paragraph above almost always ends the piece better.
 6. Check the shift framing. Once as a thesis is fine and is worth keeping; the same "moved from X to Y" construction in every section with fresh noun pairs is the tell.
-7. Check punctuation in both directions. Remove every em dash and en dash, rewriting with commas, parentheses, conjunctions, or new sentences. Then look for the opposite problem, which the research now says matters more: long sentences chained with "and," almost no semicolons, colons, or parentheses, and nobody quoted by name.
+7. Check punctuation in three directions. Remove every em dash and en dash, rewriting with commas, parentheses, conjunctions, or new sentences. Then look for sparseness and narrow variety, which the research says matters more: long "and" chains, unpunctuated runs past about 25 words, almost no semicolons, colons, question marks, or parentheses, and nobody quoted by name. Then check register: contractions where speech would contract, an aside in real parentheses, a fragment where the emphasis earns it. Measure sentence-length spread per paragraph and ignore the average.
 8. If the draft carries an anecdote or case study, check that it does not state its own moral and that the genuinely hard part of the decision survived.
 9. Run the provenance grep (`utm_source=`, `oaicite`, `contentReference`, `cite:`, `【`, `[insert`) and confirm every link, quotation, and citation resolves. Fix template residue: skipped heading levels, decorative `---` rules, tables holding what should be a sentence, markdown pasted where it will not render.
-10. Rewrite each problem in place, making the smallest change that fixes the tell (see How hard to edit). Preserve meaning, and preserve the writer's voice if a sample was given or the draft is already theirs.
-11. Re-audit after any rewrite. Tidy triplets (rule of three), circular bookends, and imperative closers are the tells most likely to creep back in when a sentence gets edited.
+10. Run the cut test. Delete every sentence that repeats a point already made, cut throat-clearing, and unpack zombie nouns into verbs. Note how much of the draft went; more than about 15% means it was padded.
+11. Run the claim test. Underline the numbers, dates, names, quotes, and mechanisms. Flag any paragraph that has none, and replace categories with instances where you can.
+12. Run the calibration test. Check absolutes and superlatives against what has actually been verified, and check hedges and attributions against the source rather than against the previous draft. Rewriting is where certainty gets inflated, so this check comes after the rewrite, not before it.
+13. Rewrite each problem in place, making the smallest change that fixes the tell (see How hard to edit). Preserve meaning, and preserve the writer's voice if a sample was given or the draft is already theirs.
+14. Re-audit after any rewrite. Tidy triplets (rule of three), circular bookends, imperative closers, and dropped hedges are the things most likely to creep back in when a sentence gets edited.
+15. Write the human-touch list. Two to five places where only the writer can add the number, name, moment, or opinion the piece needs, each phrased as a question they can answer in a sentence.
 
 ## The ai-smell score
 
@@ -171,17 +249,19 @@ Score five dimensions, each capped as shown, then sum them. The caps weight the 
 
 | Dimension | Cap | What it measures | Maps to |
 |-----------|-----|------------------|---------|
-| Structural tics | 30 | X-not-Y, contrast-flip couplets, rhetorical wrap-ups, dead metaphor stacks (travel, structural, doors), signposting, rule of three, colon reveals, faux-insight openers, false-depth reveals, one-move-solves-all, circular bookends, rhetorical question setups, imperative closers, the repeated shift framing, over-explained anecdotes | Top six plus entries 41 to 46, 48 to 50, 53, 55 |
-| Rhythm and punctuation | 20 | Sentence-length variation and paragraph shape. Uniform, metronomic cadence scores high. Also punctuation density in both directions: a dash stack, or the newer tell of long "and"-chained sentences with almost no commas, semicolons, or parentheses and nobody quoted | Entries 35, 54 |
+| Structural tics | 30 | X-not-Y, contrast-flip couplets, rhetorical wrap-ups, dead metaphor stacks (travel, structural, doors), signposting, rule of three, colon reveals, faux-insight openers, false-depth reveals, one-move-solves-all, circular bookends, restatement loops, rhetorical question setups, imperative closers, the repeated shift framing, over-explained anecdotes | Top six plus entries 41 to 46, 48 to 50, 53, 55, 59 |
+| Rhythm and punctuation | 20 | Sentence-length *spread* and paragraph shape. Uniform, metronomic cadence scores high; average sentence length is not scored, because studies disagree on whether models write long or short and agree that they vary less. Also the punctuation profile: narrow mark variety (a page of only periods and commas), long unpunctuated runs, nobody quoted, no contractions in a conversational register, and punctuation so uniformly textbook that no register shows. Assertion chains with no connective logic belong here too | Entries 35, 54, 63, 64 |
 | Voice and stance | 20 | Opinions, first person where it fits, landing a position, acknowledged complexity. Neutral press-release tone scores high | Entries 35, 37, 21 |
-| Lexical tells | 20 | AI-vocabulary clusters (both the delve-era set and the 2026 set: quietly, shift, matters, land, real, earn, compound, signal), significance inflation, promotional language, adverb tics, consultant-deck vocabulary, snowclones and named-law drops, copula avoidance, superficial `-ing`, filler, vague attributions | Entries 4, 6 to 11, 18, 19, 47, 51, 52 |
+| Lexical tells | 20 | AI-vocabulary clusters (both the delve-era set and the 2026 set: quietly, shift, matters, land, real, earn, compound, signal), significance inflation, promotional language, hyperbole and absolutes, adverb tics, consultant-deck vocabulary, snowclones and named-law drops, copula avoidance, zombie nouns, superficial `-ing`, filler, vague attributions, vague expressions of connection | Entries 4, 6 to 11, 18, 19, 47, 51, 52, 58, 61, 62 |
 | Formatting artifacts | 10 | Boldface overuse, inline-header lists, title case, emojis, curly quotes, takeaway boxes, skipped heading levels, decorative rules, tables doing a sentence's job, unrendered markdown, leftover placeholder text | Entries 24 to 28, 40, 56 |
 
 Rough anchors within a dimension: 0 means none of its tells appear; roughly a third of the cap means one or two isolated instances; roughly two-thirds means a recurring habit; the cap means the writing is built on that category.
 
+Certainty inflation and stripped attribution (entry 60) deliberately sit outside this rubric. They are defects in how the claim relates to its evidence rather than in how the prose reads, so they are scored in the reader-value rubric below, under calibration.
+
 **Provenance flag, reported outside the score.** Entry 57 artifacts (`utm_source=chatgpt.com`, `oaicite`, `contentReference`, `[cite: 1]`, `【 】`, placeholder text, citations that do not resolve) are evidence about how the text was made, not how it reads. Do not fold them into any dimension. Report them as a separate line above the score, because one of them tells the reader more than the whole rubric does.
 
-**What moved and why, for anyone comparing to older scores.** Dimension two used to be rhythm alone and is now rhythm and punctuation, because the em dash stopped being diagnostic in 2026 while punctuation sparseness became a stronger signal. Em/en dashes moved out of Formatting artifacts and into that dimension, where they are weighed as one signal among several rather than a fingerprint. The caps and the five-dimension shape are unchanged, so before-and-after deltas still mean the same thing.
+**What moved and why, for anyone comparing to older scores.** Dimension two used to be rhythm alone and is now rhythm and punctuation, because the em dash stopped being diagnostic in 2026 while punctuation sparseness became a stronger signal. Em/en dashes moved out of Formatting artifacts and into that dimension, where they are weighed as one signal among several rather than a fingerprint. The caps and the five-dimension shape are unchanged, so before-and-after deltas still mean the same thing. Everything added in the substance revision (concision, calibration, and specificity) went into the separate reader-value score below rather than into these five dimensions, for the same reason: an ai-smell number that keeps changing shape is a number nobody can compare.
 
 Scoring rules, so the number stays honest:
 
@@ -198,30 +278,82 @@ Bands:
 - **36 to 60, noticeable.** Reads as AI in places. Needs real revision.
 - **61 to 100, strong.** Obviously machine-generated. Rework.
 
+## The reader-value score
+
+The ai-smell score answers one question: does this read like a machine wrote it? It cannot answer the question a reader actually cares about, which is whether the piece was worth opening. Those come apart in both directions. A tell-free page can be empty, and a page with three em dashes and a rule of three in it can be the most useful thing someone reads that week. So every pass reports a second number.
+
+**Reader-value score, 0 to 100, higher is better.** Score four dimensions, each capped as shown, then sum them. Every point you move has to point at an instance, the same rule the ai-smell score uses.
+
+Substance and reader path earn up from zero, because a draft has neither until someone puts them in. Concision and calibration start at the cap and lose points, because they measure the absence of a defect rather than the presence of a virtue. A short, accurate, well-attributed draft with nothing in it scores 50 and deserves to.
+
+| Dimension | Cap | What earns points |
+|-----------|-----|-------------------|
+| Substance | 35 | Checkable specifics: numbers, dates, named people and products, quoted sources, named mechanisms, concrete examples in place of categories. Full marks means every claim-making paragraph has something a reader could verify or reuse. Zero means the piece is entirely abstraction, however fluent |
+| Concision | 30 | The share of words carrying weight. Deduct for restatement loops, padding, zombie nouns, throat-clearing, and sections padded to uniform length. Measure it with the cut test rather than by feel: what percentage of the draft could go without loss? |
+| Calibration | 20 | Claims sized to their evidence. Full marks means the hedges that belong are present, the attributions survived, the numbers carry their sample size, and no absolute appears that has not been checked. Deduct for certainty inflation, stripped attribution, hyperbole, unfalsifiable claims, and for over-hedging in the other direction |
+| Reader path | 15 | Order that serves a reader: leads with the point instead of a definition, one idea per paragraph, headings that state answers, connectives that carry the argument, no scaffolding that exists only because the format expected it |
+
+Rough anchors within a dimension: zero means the dimension is absent; a third of the cap means one or two spots do this well; two-thirds means it holds through most of the piece; the cap means the whole piece is built that way.
+
+Bands:
+
+- **76 to 100, rich.** A reader gets something they can use. Publish.
+- **56 to 75, solid.** Real content, some thin patches. Worth one targeted pass on the weakest dimension.
+- **31 to 55, serviceable.** True but generic. Someone who already knew the topic learns nothing.
+- **0 to 30, thin.** No substance yet. Removing more tells will not fix this; only the writer can.
+
+Scoring rules:
+
+- **Do not reward polish.** LLM judges reward length and surface fluency, and this rubric is the one where that bias does the most damage. A smooth paragraph with no verifiable content scores zero on substance.
+- **Cite the specifics you counted.** "Substance 24/35, five numbers and two named customers in the middle sections, nothing checkable in the opening or the close" is a usable score. A bare number is not.
+- **Never raise the score by inventing.** If a claim needs a number you do not have, that is a human-touch item, and the score stays where it is. Filling the gap with a plausible figure is the failure the calibration test exists to catch.
+- **Report the ceiling.** When the score is capped by information only the writer holds, say so: "substance is capped near 20 until someone supplies the actual latency numbers." That sentence is what makes the human-touch list feel worth answering.
+- **Both numbers, always.** A draft can land at ai-smell 8 and reader-value 22, which is a clean, well-behaved page that says nothing. Reporting only the first number would call that a success.
+
+The two scores also change what to do next. High ai-smell with high reader-value means the content is there and needs an editing pass. Low ai-smell with low reader-value means editing is finished and the piece needs the writer.
+
 ## The final pass: read it aloud and score
 
 If you can't read a paragraph aloud without hearing the cadence of a model, it still reads as AI. After the draft, run this pass explicitly:
 
 1. Ask: "What would make this so obviously AI-generated?" Answer honestly with the specific remaining tells, naming them with the vocabulary from the catalog.
-2. Score the draft on the ai-smell rubric above, citing evidence per dimension.
-3. Revise to fix the tells, heaviest dimensions first.
-4. Re-score the revised version.
-5. Present the final version and report the score.
+2. Ask the second question: "if a reader knew this topic already, what would they get from this?" Answer with what is actually checkable in the draft, not with what it covers.
+3. Score the draft on both rubrics above, citing evidence per dimension.
+4. Revise to fix the tells, heaviest dimensions first, then to cut, then to calibrate.
+5. Re-score the revised version on both rubrics.
+6. Write the human-touch list: the two to five places where only the writer can raise the value, each as a question they can answer in a sentence.
+7. Present the final version, both scores, and the human-touch list.
 
 ## Output format
 
-Every mode reports the ai-smell score. Report it as the headline number plus the per-dimension breakdown with cited evidence, so the score is explainable rather than a black box:
+Every mode reports both scores and the human-touch list. Report each score as a headline number plus the per-dimension breakdown with cited evidence, so neither one is a black box:
 
 ```
-AI-smell: 12/100 (faint)
+AI-smell: 12/100 (faint)          lower is better
   Structural tics   4/30  one X-not-Y in paragraph 2
   Rhythm and punct  4/20  middle section runs even
   Voice and stance  2/20  lands a clear position
   Lexical tells     2/20  "leverage" once
   Formatting        0/10  clean
+
+Reader-value: 58/100 (solid)      higher is better
+  Substance   18/35  3 numbers and 2 named customers, all in section 2;
+                     nothing checkable in the intro or the close
+  Concision   22/30  cut test dropped 11%, mostly restatement in section 3
+  Calibration 12/20  "completely transforms" unsupported; the 40-user
+                     sample lost its size in the rewrite
+  Reader path  6/15  opens on a definition, two headings are questions
+
+Human touch (5 min of your time, biggest payoff first):
+  1. Section 2: which two teams stopped holding standups?
+  2. Intro: the whole opening is abstract. What happened the day you
+     decided this mattered?
+  3. Section 4: you describe the tradeoff but never say which side you
+     take. Which one, and what does it cost?
+  4. Close: what is still broken about this?
 ```
 
-When provenance artifacts turn up, they go above the score on their own line, not inside it:
+When provenance artifacts turn up, they go above the scores on their own line, not inside them:
 
 ```
 Provenance: 2 artifacts. "utm_source=chatgpt.com" on the Stripe link;
@@ -230,15 +362,17 @@ AI-smell: 12/100 (faint)
   ...
 ```
 
-In **detect** mode, lead with the score, then provide the findings: each tell named with catalog vocabulary, the quoted line, and a one-line fix, loudest first. No rewrite.
+In **detect** mode, lead with both scores, then provide the findings: each tell named with catalog vocabulary, the quoted line, and a one-line fix, loudest first. Then the human-touch list. No rewrite.
 
-In **edit** mode, provide the draft rewrite, a short honest answer to "what still reads as AI here," and the final version after fixing those. Report the score as a before to after delta ("AI-smell: 58/100 noticeable, to 12/100 faint"). A brief bullet summary of changes is optional when it helps; when you edited the user's own draft, that summary doubles as a "what changed" list so they can see every touch.
+In **edit** mode, provide the draft rewrite, a short honest answer to "what still reads as AI here, and what is still thin," and the final version after fixing those. Report both scores as a before to after delta ("AI-smell 58 to 12, reader-value 31 to 58"). Say plainly when the reader-value number is capped by things you cannot supply. A brief bullet summary of changes is optional when it helps; when you edited the user's own draft, that summary doubles as a "what changed" list so they can see every touch.
+
+Keep the human-touch list short and ranked. Five items is the ceiling, and the first one should be the one that would improve the piece most.
 
 For fresh writing, provide the finished piece and its final score, having already run the read-aloud and scoring pass internally.
 
 ## Reference files
 
-- `references/ai-tells.md`: the full catalog of AI writing patterns with before-and-after examples for each. Read it for any substantial draft or audit.
+- `references/ai-tells.md`: the full catalog of AI writing patterns with before-and-after examples for each, the mechanical counts, the human-touch list, and the research notes behind both scores. Read it for any substantial draft or audit.
 
 ## External sources
 
@@ -261,3 +395,16 @@ These are worth consulting when updating the catalog or when a piece needs deepe
 | [The Economist on spotting AI writing (2026)](https://www.fastcompany.com/91584243/how-to-identify-ai-generated-writing-viral-report-has-surprising-new-clues-economist) | 55,940 sentences and 1.2M words against four frontier models. Em dashes are no longer diagnostic; punctuation sparseness, longer sentences, "and" overuse, and absent quotation are. Basis for the rhythm-and-punctuation dimension. |
 | [Forbes: 15 new giveaway signs (May 2026)](https://www.forbes.com/sites/jodiecook/2026/05/21/15-new-giveaway-signs-of-ai-writing-may-2026-update/) | The post-delve vocabulary: *quietly, shift, matters, shape, land, real, earn, the work, hold, pull, compound, signal, built different*. Plain words used abstractly, which is why they are harder to spot. |
 | [StoryScope (Russell et al. 2026)](https://arxiv.org/abs/2604.03136) | 61,608 stories scored on narrative rather than stylistic features; 93.2% human/AI separation. AI over-explains its themes and favors tidy single-track plots. Basis for the over-explained-anecdote tell. |
+| [Linguistic Characteristics of AI-Generated Text (Terčon & Dobrovoljc 2025)](https://arxiv.org/abs/2510.05136) | Survey of the measurement literature. AI prose is more nominal and impersonal: more nouns, determiners, and prepositions, fewer adjectives and adverbs, lower lexical diversity. Basis for the zombie-noun tell. |
+| [Linguistic shifts after ChatGPT (Bao et al. 2025)](https://arxiv.org/abs/2505.12218) | 823,798 arXiv abstracts. More positive sentiment, more hyperbolic adjectives, simpler syntax, fewer connectives, lower readability despite higher lexical density. Basis for the hyperbole and assertion-chain tells. |
+| [From "May" to "Is" (Belem et al. 2026)](https://arxiv.org/abs/2606.07951) | Rewriting distorts certainty in up to 75% of outputs, biased 1.5 to 2 times toward more confidence, compounding across passes. The reason calibration is checked against the source, not the previous draft. |
+| [Not Wrong, But Untrue (Hagar et al. 2025)](https://arxiv.org/abs/2509.25498) | Attribution stripping, overinterpretation, certainty inflation. The editing vocabulary for calibration. |
+| [Why Slop Matters (2026)](https://arxiv.org/abs/2601.06060) | Slop as superficial competence, asymmetric effort, mass producibility. The argument for scoring substance separately and for the human-touch list. |
+| [Antislop (2025)](https://arxiv.org/abs/2510.15061) and [Slop Score](https://eqbench.com/slop-score.html) | Overused patterns computed against human baselines, some appearing 1,000 times more often. Slop Score independently puts 25% of its weight on not-X-but-Y. Keeps the word lists honest. |
+| [YapBench (2026)](https://arxiv.org/abs/2601.00624) | Scores responses against the shortest sufficient answer; newer frontier models pad more than GPT-3.5-Turbo. Verbosity is trained in, so it can be cut out. |
+| [The Writer's Diet (Helen Sword)](https://writersdiet.com) | Be-verbs, zombie nouns, prepositions, ad-words, and waste words. Source of the mechanical counts. |
+| [Reuters Institute on AI prose](https://reutersinstitute.politics.ox.ac.uk/news/how-ai-generated-prose-diverges-human-writing-and-why-it-matters) | Journalism's read on the same problem: broad sweeping statements, "a lot of words that don't say anything," show don't tell. |
+| [Stylometric detection of AI text (Kumarage et al. 2023)](https://arxiv.org/abs/2303.03697) | Punctuation is one of three stylometric feature families in a working detector, and adding it improves state-of-the-art classifiers. |
+| [Universal versus system-specific punctuation patterns (Stanisz, Kwapień & Drożdż)](https://arxiv.org/abs/2212.11182) | Gaps between punctuation marks, counted in words, follow a discrete Weibull distribution whose parameters separate languages and authors. The words-between-marks rhythm. |
+| [Comparing LLM and human news text (2025)](https://arxiv.org/abs/2506.01407) | Humans use contractions, colloquialisms, and rarer constructions more often; model output reads as an averaged grammatical profile. |
+| [Stop policing punctuation (AARE 2026)](https://blog.aare.edu.au/stop-policing-punctuation-now-why-ai-detection-needs-a-rethink/) | The case against punctuation heuristics, and why the cost of a false positive lands on careful writers. Why punctuation is never a verdict here. |
