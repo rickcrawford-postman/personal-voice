@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -15,28 +16,57 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Create .skill package
-        run: |
-          mkdir -p dist
-          rm -f dist/personal-voice.skill
-          zip -r dist/personal-voice.skill SKILL.md references/
+      - name: Validate sources
+        run: python3 scripts/build.py --check
 
-      - name: Upload artifact
+      - name: Build every provider target
+        run: python3 scripts/build.py
+
+      - name: Show what was built
+        run: |
+          python3 - <<'PY'
+          import json
+          m = json.load(open('dist/manifest.json'))
+          for target, v in m.items():
+              print(f"{target}: {v['description']}")
+              for f in v['files']:
+                  print(f"  {f['bytes']:>9,}  {f['path']}")
+          PY
+
+      - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: personal-voice-skill
-          path: dist/personal-voice.skill
+          name: personal-voice-dist
+          path: dist/
           if-no-files-found: error
 
       - name: Publish rolling latest release
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         run: |
+          assets=(
+            dist/release/personal-voice.skill
+            dist/release/personal-voice.zip
+            dist/release/personal-voice-single-file.md
+            dist/release/personal-voice-prompts.zip
+          )
+          notes=$(cat <<'EOF'
+          Automated build from CI. One artifact per provider layout:
+
+          - `personal-voice.skill` flat zip for Claude Code, Cursor, and opencode. Unzip into `~/.claude/skills/personal-voice/`.
+          - `personal-voice.zip` wrapped zip (folder at the archive root) for claude.ai, the desktop app, and the Skills API.
+          - `personal-voice-single-file.md` the skill and the full catalog in one document, for tools that take a single instruction file.
+          - `personal-voice-prompts.zip` instruction-field artifacts for ChatGPT, Gemini, and Copilot, plus the two knowledge files.
+
+          Run `python3 scripts/build.py --list` in the repo to see every target.
+          EOF
+          )
           if gh release view latest >/dev/null 2>&1; then
-            gh release upload latest dist/personal-voice.skill --clobber
+            gh release upload latest "${assets[@]}" --clobber
+            gh release edit latest --notes "$notes"
           else
-            gh release create latest dist/personal-voice.skill \
+            gh release create latest "${assets[@]}" \
               --title "Latest build" \
-              --notes "Automated skill package from CI." \
+              --notes "$notes" \
               --latest
           fi
         env:

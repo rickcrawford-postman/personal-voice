@@ -15,6 +15,8 @@ The first six are the ones that show up most. Hunt them first.
 
 Scan next: significance inflation, superficial `-ing` endings, fragmented headers, structural and door metaphors (load-bearing, threads, opens the door), imperative closers, AI vocabulary clusters.
 
+Then run the substance checks, which catch what a tell list cannot. Entries 58 to 63 cover them: padding and zombie nouns (concision), hyperbole and certainty inflation (calibration), and abstraction with nothing checkable in it (substance). A draft can be free of every tic above and still waste the reader's time.
+
 Then grep for provenance artifacts (entry 57). Those are evidence about how the text was made rather than how it reads, and one hit outweighs every stylistic judgment on this list.
 
 ## Contents
@@ -72,10 +74,17 @@ Then grep for provenance artifacts (entry 57). Those are evidence about how the 
 51. Consultant-deck vocabulary
 52. Snowclones and named-law drops
 53. The shift framing
-54. Punctuation sparseness and long unbroken sentences
+54. The punctuation profile: sparseness, narrow variety, low variance
 55. Over-explained theme and tidy resolution
 56. Document-structure artifacts
 57. Provenance artifacts and citation pathologies
+58. Zombie nouns and noun-stacked abstraction
+59. The restatement loop
+60. Certainty inflation and stripped attribution
+61. Hyperbole, absolutes, and unfalsifiable claims
+62. Vague expressions of connection
+63. Assertion chains with no connective logic
+64. Textbook-perfect punctuation and missing contractions
 
 ---
 
@@ -290,6 +299,8 @@ Then grep for provenance artifacts (entry 57). Those are evidence about how the 
 
 Keep hyphens only inside genuinely hyphenated words. The personal-voice skill applies this by default on every draft and audit unless the user overrides or a voice sample clearly depends on em dashes.
 
+**Two entries to read alongside this one.** Entry 54 covers what the research does support about punctuation, which is thinner variety and lower variance rather than the count of any single mark. Entry 64 covers the opposite failure from this one: punctuation so uniformly correct that no register shows through, with no contractions anywhere. Strip dashes without doing either of those and the prose still reads as machine-made, only with commas.
+
 ## 24. Overuse of boldface
 
 **Looks like.** "It blends **OKRs**, **KPIs**, and the **Business Model Canvas**."
@@ -476,6 +487,8 @@ Keep hyphens only inside genuinely hyphenated words. The personal-voice skill ap
 
 **Fix.** Write the sentence straight. "The best part: it learns as you go" becomes "It learns as you go, which is the part I like." Keep a colon only where it does real grammatical work, introducing a genuine list or a quotation.
 
+**Not a frequency claim.** Measured across corpora, models use *fewer* colons than human writers do (entry 54), so do not flag a draft on colon count. The tell is this one construction, and the giveaway is a colon staging a reveal rather than introducing a list.
+
 ---
 
 ## 46. Faux-insight and throat-clearing openers
@@ -585,13 +598,21 @@ Swap the literal statement in. If the sentence reads fine, the metaphor was deco
 
 ---
 
-## 54. Punctuation sparseness and long unbroken sentences
+## 54. The punctuation profile: sparseness, narrow variety, low variance
 
-**Looks like.** Long sentences joined with "and" that could have been two sentences, few commas inside them, almost no semicolons, colons, or parentheses, and no quoted material from anyone. Paragraphs of even, uninterrupted clauses.
+**Looks like.** Long sentences joined with "and" that could have been two, few commas inside them, almost no semicolons, colons, or parentheses, no question marks, nobody quoted, and paragraph after paragraph built from periods and commas alone. Every sentence about as long as the last one.
 
-**Why it reads as AI.** This one is counterintuitive and it is new. The Economist compared 55,940 sentences of its own writing against ChatGPT, Claude, Gemini, and Grok output (1.2 million words) and found models use *fewer* commas, semicolons, and parentheses than human writers, write longer sentences, and overuse "and" more than any other word. Part of the cause is that models do not quote experts, so their prose lacks the punctuation that quotation and attribution bring. The same study found em dashes are no longer a reliable marker: only Claude used them more than humans did (see entry 23).
+**Why it reads as AI.** Punctuation is one of the three feature families stylometric detectors actually use, alongside phraseology and lexical diversity, and Kumarage et al. (2023) show that adding it improves state-of-the-art detectors. Three findings from that literature matter for editing, and they are not the ones folklore talks about.
 
-**Fix.** Break long "and" chains into separate sentences. Use the punctuation you would actually use: a semicolon where two clauses are balanced, parentheses for a real aside, a colon before a genuine list. Quote a person by name where you have one. Note that this tell pulls in the opposite direction from the dash rule in entry 23, and that is fine: the fix for both is punctuation that reflects real sentence structure rather than a default connector.
+*Variety, not counts.* Terčon and Dobrovoljc's survey collects the measurements: AI text uses a narrower set of marks, with commas and periods accounting for most cases (Simon et al. 2023), and specifically fewer commas, question marks, dashes, parentheses, semicolons, and colons than human text, with more periods and more single quotes (Desaire et al. 2023; Simon et al. 2023). The Economist's 2026 comparison of 1.2 million words found the same thinning of commas, semicolons, and parentheses, and traced part of it to models not quoting people, because quotation is what pulls attribution punctuation into a sentence.
+
+*Variance, not mean.* This is the correction worth internalizing. Across the studies the survey reviews, sentence-length *variation* is consistently lower in AI text (Zindela 2023; Desaire et al. 2023), while average sentence length has no consensus at all: some studies find models write longer sentences, some shorter, some find no difference. So do not score a draft for having long sentences or short ones. Score the spread. A page where every sentence lands within a few words of the last one is the tell, whatever the average is.
+
+*Distance between marks is its own rhythm.* Stanisz, Kwapień, and Drożdż measured the gaps between consecutive punctuation marks, counted in words, across seven Western languages and found they follow a discrete Weibull distribution whose two parameters are stable enough to distinguish languages, individual authors, and even the target language of a translation. The hazard function always increases, meaning the longer a stretch runs without a mark, the more likely the next word brings one. That work is about language universals rather than detection, so treat it as a lens and not a test. The usable idea is that words-between-marks is a rhythm separate from sentence length, and an unpunctuated 30-word run reads as machine-made even when the grammar is fine.
+
+**Fix.** Break long "and" chains into separate sentences. Use the punctuation you would actually use: a semicolon where two clauses balance, parentheses for a real aside, a colon before a genuine list, a question mark where you are actually asking something. Quote a person by name where you have one. Then check the spread: find the longest and shortest sentence in each paragraph, and if they are close, rewrite one of them to be much shorter.
+
+This entry pulls against entry 23, which strips em dashes, and that is fine. The fix for both is punctuation that reflects real sentence structure instead of one default connector doing every job. It also pulls against the colon-reveal tell (entry 45): models use *fewer* colons than human writers, so colon frequency is not the problem. The noun-colon-payoff construction is.
 
 ---
 
@@ -638,11 +659,157 @@ Swap the literal statement in. If the sentence reads fine, the metaphor was deco
 
 ---
 
+## 58. Zombie nouns and noun-stacked abstraction
+
+**Looks like.** Verbs and adjectives turned into nouns, then strung together with prepositions. "The implementation of the optimization of the deployment process." "There is a need for the prioritization of accessibility." "Improvement in the utilization of available capacity." The giveaway is a sentence whose subject is an abstraction and whose only verb is *is*, *has*, or *provides*.
+
+**Why it reads as AI.** This is the clearest structural signature in the measurement literature. Terčon and Dobrovoljc's 2025 survey of studies on AI-generated text reports the same profile again and again: model output carries more nouns, determiners, and prepositions than human writing, and fewer adjectives and adverbs. Nominalization is what produces exactly that profile. It also removes the actor from the sentence, so nobody is responsible for anything, and it inflates word count by roughly a third while adding no information. Helen Sword's Writer's Diet calls them zombie nouns, because they eat the life out of the verb they came from.
+
+**The test.** Scan for `-tion`, `-ment`, `-ance`, `-ency`, `-ity`, and `-ness`. Two or more in one sentence, or a chain of two prepositions (*of the ... of the ...*), and the sentence needs rewriting.
+
+**Fix.** Find the buried verb and give it a subject who does it.
+
+- "The implementation of the optimization of the deployment process" becomes "We optimized how deploys run."
+- "There is a need for the prioritization of accessibility" becomes "Accessibility should go first, and here is what slips if it doesn't."
+- "The alignment between the teams' expectations created friction" becomes "Support promised same-day fixes and engineering never agreed to that."
+
+---
+
+## 59. The restatement loop
+
+**Looks like.** One point made three times inside a single section. A sentence states it, the next explains it, then a closing sentence states it again in fresh words. At document scale the same shape repeats: an introduction that previews what the piece will argue, sections that argue it, then a summary restating the introduction. Every section comes out the same length regardless of how much there is to say.
+
+**Why it reads as AI.** Preference training rewards it. Judge models pick the longer answer at a much higher rate than humans do on open-ended tasks, so length itself became a target, and the answer-elaborate-recap shape is the cheapest way to add length without risking a new claim. YapBench measures the residue directly: it scores each response against the shortest sufficient answer and finds newer frontier models pad more than GPT-3.5-Turbo did, which means verbosity is a trained behavior rather than a limit of the model. The circular bookend (entry 44) is the two-sentence version of this tell. This is the section-scale one, and it is the single largest source of wasted words in model prose.
+
+**Fix.** Run the cut test. Delete every sentence that repeats a point already made, then read the paragraph again. Keep the sharpest of the three, not the first. If a section survives at half its length, that was its real length. Let sections be as long as their content deserves and no longer.
+
+---
+
+## 60. Certainty inflation and stripped attribution
+
+**Looks like.** *May cause* becomes *causes*. *Researchers suggest* becomes *research shows*. "In this sample of 40 users, 8 preferred the new flow" becomes "users prefer the new flow." The hedge disappears, the source disappears, the sample size disappears, and the sentence gets shorter and more quotable while becoming less true.
+
+**Why it reads as AI.** Belem et al. (2026) measured this in rewriting tasks and found up to 75% of model outputs shift the certainty expressed in the source, with models raising confidence 1.5 to 2 times more often than lowering it. It compounds across passes: in the medical set, one model inflated 20% of examples after a single rewrite and 40% by the fifth. Greedy decoding made it worse by 9 to 20%, and instructing the model to preserve certainty helped only partly. Hagar et al. (2025) name the same behavior in document summarization as three failure modes: attribution stripping, where a fact from the source arrives as general knowledge; overinterpretation, where limited evidence gets extended into a broad claim; and certainty inflation, where a definitive verb replaces a tentative one. Their framing is the useful one for editing, because the output is usually not wrong. It is unsupported.
+
+**Note the tension with entry 20.** Chat-flavored prose over-hedges ("it is important to note that results may vary"). Rewritten and summarized prose under-hedges. Both are the same defect, which is a claim that has lost contact with its evidence, and the fix in both directions is to size the claim to what you actually have.
+
+**Fix.** Edit against the source, not against the draft. Restore the hedge, the attribution, and the number. "Users prefer the new flow" becomes "8 of the 40 users in the pilot preferred the new flow, which is not enough to call it." If you cannot find the source, cut the claim instead of softening it.
+
+---
+
+## 61. Hyperbole, absolutes, and unfalsifiable claims
+
+**Looks like.** Superlatives and absolutes doing the work of evidence. "Completely transforms how teams work." "The single biggest problem in software." "Nobody is talking about this." "Everything changes once you see it." "Exponentially better." Plus the inflation adjectives: revolutionary, game-changing, unprecedented, seamless, exceptional, pivotal, remarkable, must-have.
+
+**Why it reads as AI.** Bao et al. analyzed 823,798 arXiv abstracts before and after ChatGPT's release and found sentiment turned measurably more positive, alongside a rise in exactly this class of adjective (*intricate*, *valuable*, *exceptional*, *pivotal*, *notable*, and *seamless*, *distinctive*, *lucid*, up roughly 40% within months). The deeper problem is epistemic. An absolute claim cannot be checked, so it cannot be wrong, so it carries no information. The Reuters Institute's summary of research on AI prose puts it well: models make broad, sweeping, emotional statements ("AI in journalism isn't just a tool, it's a revolution") where a reporter would show one specific thing happening to one named person.
+
+**Fix.** Downgrade the claim until you can defend it, then attach the evidence that lets you.
+
+- "Completely transforms how teams work" becomes "Two of the four teams stopped holding standups after the dashboards shipped."
+- "The single biggest problem in software" becomes "The problem I hit most often."
+- "Nobody is talking about this" becomes "I found two posts about it, both from 2019."
+
+Keep an absolute only when it is literally true and you have checked it. "No customer has ever asked for it" is fine if you went through every request.
+
+---
+
+## 62. Vague expressions of connection
+
+**Looks like.** "In connection with," "associated with," "linked to," "tied to," "in the context of," "as it relates to," "when it comes to," "in terms of." A relationship is asserted and never named.
+
+**Why it reads as AI.** Wikipedia's editors added this to "Signs of AI writing" in 2026 after seeing it constantly in flagged articles ("cited his work, in connection with the Grammaire Blois"). The construction is generated exactly when the model knows two things belong in the same sentence and does not know how. It is also the phrase family that survives a slop-word scrub, because none of the individual words look suspicious.
+
+**Fix.** Name the relationship with a verb. Causes, funds, replaced, reports to, sits inside, was charged with, depends on, contradicts. "Latency issues associated with the new cache" becomes "the new cache adds 40ms to every uncached read."
+
+---
+
+## 63. Assertion chains with no connective logic
+
+**Looks like.** Three or four sentences in a row, each true, none joined to the one before it. No *because*, *so*, *which means*, *unless*, *even though*. The paragraph reads like a list of facts wearing the costume of an argument.
+
+**Why it reads as AI.** Bao et al. found a significant drop in connective words in post-ChatGPT abstracts and a measurable decline in readability, even as vocabulary got richer and sentence structure got simpler. Richer words, simpler syntax, weaker cohesion. The model produces fluent assertions and leaves the reasoning that links them implicit, because the link is the part that requires a position. This is the paragraph-level counterpart of entry 54 (punctuation sparseness), and it is the mirror image of entry 22: the connectives that do show up are the decorative ones at the front of a paragraph ("Moreover," "Therefore"), while the ones that would carry the argument inside it are missing.
+
+**Fix.** For each sentence, ask what it does for the sentence before it, then write that relation down. "The cache is new. Latency went up. The team rolled it back." becomes "Latency went up right after the cache shipped, so the team rolled it back, which means we still do not know whether the cache caused it."
+
+---
+
+## 64. Textbook-perfect punctuation and missing contractions
+
+**Looks like.** Punctuation that is flawless and uniform in a register where a person would have loosened up. No contractions anywhere ("it is," "do not," "cannot" in a blog post). Every serial comma in place, every compound modifier hyphenated, no sentence fragments, no parenthetical asides, no sentence starting with *And* or *But*, no ellipsis, no one-word answer standing on its own. Formal punctuation applied evenly across formal and informal passages alike.
+
+**Why it reads as AI.** Two separate observations meet here. Models under-use apostrophes and avoid contractions and colloquialisms: Rudnicka's comparison found models strip informal constructions, and a formal syntactic comparison of LLM and human news writing found human authors reaching for contractions ("haven't"), colloquialisms ("a couple dozen"), and blunter phrasing more often, with the model output reading as an averaged grammatical profile of many human styles. Separately, the uniformity itself is the signal. Human punctuation drifts with register, mood, and how tired the writer was; model punctuation stays textbook-correct at a constant temperature from the first line to the last. A page can be perfectly punctuated and still sound like nobody.
+
+**What not to do.** Never introduce errors to sound human. Faking a comma splice or a typo is transparent and it makes the writing worse. Everything below is correct English. It is just the correct English that people actually use.
+
+**Fix.** Match the register the piece is written in.
+
+- Contract where speech would. "It is not clear" becomes "it isn't clear" in anything conversational.
+- Let one sentence be a fragment where the emphasis earns it. "Not once."
+- Start a sentence with *And* or *But* where the rhythm wants it.
+- Put a real aside in parentheses instead of smoothing it into the main clause.
+- Ask an actual question, with a question mark, when you have one.
+- Leave a compound unhyphenated where common usage does (entry 34 covers this from the other side).
+
+The test is to read a paragraph aloud in the voice the piece is meant to have. Wherever your mouth wants a contraction and the page has two full words, the page is wrong.
+
+---
+
+## Counting instead of guessing
+
+Most of this catalog asks for judgment. These fourteen counts are mechanical, and running them first stops the audit from turning into vibes. They are rules of thumb calibrated by use, not thresholds from a study, so treat a failed count as a place to look rather than a verdict.
+
+| Count | How | Look harder when |
+|-------|-----|------------------|
+| Checkable specifics | Numbers, dates, proper nouns, quoted people, named mechanisms, per 100 words | Fewer than 2. Under 1 and the passage is pure abstraction. |
+| Rhythm spread | Longest minus shortest sentence in each paragraph, in words | Under 8 words of spread across a whole paragraph. Spread matters; average sentence length does not (entry 54). |
+| Mark variety | How many distinct punctuation types appear per 500 words | Three or fewer, or a page built only from periods and commas. |
+| Words between marks | Median gap between consecutive punctuation marks, and the longest gap | Any run over about 25 words, or a median that never shifts across paragraphs. |
+| Contraction rate | Contractions per 100 words, in anything conversational | Zero, or "it is" and "do not" where speech would contract (entry 64). |
+| Quoted voices | People quoted by name | Zero in a piece about what people did or said. |
+| Zombie nouns | Words ending `-tion`, `-ment`, `-ance`, `-ity`, `-ness`, per 100 words | More than 4, or 2 in one sentence. |
+| Be-verbs | *is, are, was, were, be, been, being*, per 100 words | More than 3, especially with an abstract subject. |
+| Ad-words | Adjectives and adverbs, per 100 words | More than 6, or any `-ly` intensifier that can be deleted without changing meaning. |
+| Cut-test loss | Delete every sentence that repeats a point already made, then measure | More than 15% of the draft went, which means it was padded. |
+| Connective density | Count *because, so, but, unless, which means, even though* per paragraph of argument | Zero in a paragraph that is supposed to reason. |
+| Hedge and booster balance | Count hedges (*may, might, appears*) against boosters (*clearly, obviously, undoubtedly, always, never*) | Boosters outnumber hedges in a piece making empirical claims. |
+| Attribution | Count claims about the world against named sources | More claims than sources, or a paraphrase whose source has been dropped. |
+
+The first five counts, in a similar shape, are the basis of Helen Sword's Writer's Diet test, which grades a passage on be-verbs, zombie nouns, prepositions, ad-words, and the waste words *it*, *this*, *that*, and *there*. Her thresholds are calibrated for academic prose and are worth checking against directly.
+
+One trap worth naming: **lexical density is not the target.** Bao et al. found post-ChatGPT abstracts scored *higher* on lexical density (more content words per total words) while becoming *harder* to read, because the connective words went missing. Packing more content words in is how you get an unreadable paragraph. What you want is more checkable specifics and fewer wasted words, with the connective tissue of the argument left intact.
+
+## The human-touch list
+
+The counts above have a ceiling, and it is the ceiling of what a model can know. A pass that removes every tell and adds no substance produces prose that is clean, correct, and still not worth reading. So every audit should end with a short list of places where only the writer can raise the value of the piece, marked in the text or listed by location.
+
+What to flag:
+
+- **A number the writer has and the draft doesn't.** Latency, headcount, dollars, dates, how many times it happened.
+- **A named person or a real quote.** The Economist's 2026 analysis found absent quotation is one of the stronger current markers of machine prose, and it is usually the fastest single fix.
+- **A first-hand moment.** The meeting where it went wrong, the bug that took a week, what the writer thought at the time and was wrong about.
+- **An opinion with a cost.** The place where the draft describes a tradeoff without saying which side the writer takes.
+- **The objection with no good answer.** What the smartest skeptic would say, left unresolved on purpose.
+- **The thing that is still broken.** Model prose resolves; real accounts leave something open.
+- **A concrete example replacing a category.** One customer, one file, one incident, instead of "teams" or "organizations."
+- **A joke, an aside, or a piece of local slang** that only this writer would use.
+
+Frame each one as a question the writer can answer in a sentence ("which two teams stopped holding standups?"), not as an instruction. This list is the part of an audit that most changes the finished piece, and it is the part a tool cannot do for anyone. See "Why Slop Matters" (arXiv 2601.06060) on why: what separates slop from writing is not surface competence but whether any of it required the effort of knowing something, and only the writer holds that.
+
+---
+
 ## The final audit question
 
 After any draft, ask honestly: "What would make this so obviously AI-generated?" Name the remaining tells using the vocabulary above. Then revise. If you cannot read a paragraph aloud without hearing the cadence of a model, it still reads as AI.
 
-This is also where the ai-smell score gets assigned (see the rubric in `SKILL.md`): the tells named here are the evidence behind the score. Structural tells (the top six plus entries 42 to 46, 48 to 50, 53, and 55) carry the most weight, rhythm and voice next, lexical and formatting tells least. Cite the specific instances, then score and revise.
+Then ask the three questions the tell list cannot answer, because a draft can pass every check above and still be empty:
+
+- **What can I cut?** Which sentences repeat a point already made, and which words are load I could drop without losing meaning (entries 19, 58, 59).
+- **What here could only have been written by someone who did the work?** Underline every number, name, date, quote, and mechanism. If a paragraph has none, it is decoration (entry 61, and the counts above).
+- **Is every claim the size of its evidence?** Check hedges and attributions against the source, and check absolutes against what you have actually verified (entries 60, 61).
+
+Finish with the human-touch list: the two to five places where only the writer can raise the value of the piece.
+
+This is also where both scores get assigned (see the rubrics in `SKILL.md`): the tells named here are the evidence behind them. For ai-smell, structural tells (the top six plus entries 42 to 46, 48 to 50, 53, 55, and 59) carry the most weight, rhythm and voice next, lexical and formatting tells least. For the reader-value score, entries 58 to 63 and the counts above supply the evidence: 58, 59, and 19 for concision, 60 and 61 for calibration, and the specifics count for substance. Cite the specific instances, then score and revise.
 
 Provenance artifacts (entry 57) sit outside the score entirely. Report them separately.
 
@@ -660,11 +827,23 @@ The rubric is a lightweight, prose-specific version of the LLM-as-a-judge method
 
 **Rhythm is real but never decisive.** Burstiness (variation in sentence-level surprise) underlies the classic detectors DetectGPT, Fast-DetectGPT, and Binoculars (Hans et al. 2024). But Pangram Labs and others show low burstiness alone misfires badly: it flags plain human prose, famous documents, and non-native English writers. So uniform rhythm is one dimension of five, never a verdict on its own. This is why the score stays inside the pass and is never presented as proof of authorship.
 
+**What the punctuation research actually supports.** Punctuation is a real stylometric feature family, not folklore: Kumarage et al. (2023) build a detector on phraseology, punctuation, and linguistic diversity, where the punctuation features are total mark count and the mean count of specific marks (`!`, `'`, `,`, `:`, `;`, `?`, `"`, `-`, `@`, `#`), and report that adding them improves state-of-the-art classifiers. But the useful findings are about distributions rather than individual marks. Terčon and Dobrovoljc's survey reports that AI text draws on a narrower set of marks, with commas and periods dominating, and uses fewer commas, question marks, dashes, parentheses, semicolons, and colons than human text. It also reports that sentence-length *variation* is consistently lower in AI text while average sentence length shows no consensus across studies, which means variance is the signal and the mean is noise. Stanisz, Kwapień, and Drożdż add a third layer by measuring the gaps between consecutive marks in words, finding a discrete Weibull distribution with an always-increasing hazard function whose parameters separate languages, authors, and translations; that work is aimed at language universals rather than detection, so it belongs in an audit as a lens rather than a test.
+
+The counterweight matters as much as the findings. The em dash was the most confident punctuation claim of 2025 and it did not survive contact with data (entry 23). Educators have started arguing that punctuation heuristics should be dropped entirely, because the cost falls on writers who punctuate carefully and on students whose polished work now draws suspicion, and because the heuristics survive on being easy to apply rather than on being accurate. That is why punctuation lives inside one capped dimension of the ai-smell score, is scored on variety and spread rather than on counts, and never functions as a verdict about authorship.
+
 **Surface markers rotate; structure does not.** Two 2026 findings make this concrete. The Economist's comparison of 1.2 million words of its own prose against four frontier models found the em dash has stopped working as a marker (only Claude overuses it) and that punctuation *sparseness* now separates the sets better, because models write longer sentences, lean on "and," and do not quote people. Forbes's May 2026 roundup shows the vocabulary layer moving the same way: the delve-and-tapestry set has been scrubbed out of a lot of writing and replaced by plain words used abstractly (quietly, shift, matters, land, real, earn, compound, signal). Anything word-level or punctuation-level in this catalog should be treated as dated on arrival and rechecked. Sarvazyan et al. (2025) is the counterweight: structural and syntactic fingerprints persist across domains and survive paraphrase, which is why the rubric weights structural tics highest.
 
 **Narrative shape is its own signal.** StoryScope (Russell et al. 2026) analyzed 61,608 stories on discourse-level features rather than style and hit 93.2% separation between human and AI narratives, with about 30 features carrying most of it. AI stories over-explain their themes and run tidy single-track plots; human ones keep ambiguity and temporal mess. That result is why entry 55 exists and why the fix for a flat anecdote is structural, not lexical.
 
 **The deeper mechanism is homogenization.** Work on shrinking linguistic diversity (arxiv 2502.11266) and on instruction-tuning reducing lexical variety shows LLMs converge toward a low-diversity mean. AI-smell is the surface of that convergence, which is why the fix is always the same: reintroduce specificity, variation, and a point of view.
+
+**Padding is a trained behavior, so it can be trained out.** Reward models used in RLHF learn that longer answers score better, and LLM judges pick the longer response far more often than human raters do on open-ended tasks. YapBench turns that into a measurement by scoring each response against the shortest sufficient answer, and its result is the useful one for editing: GPT-3.5-Turbo is more concise than several newer frontier models, so verbosity tracks post-training choices rather than capability. Practically, this means padding is the most reliably removable defect in a draft. It is also the one an LLM judge is least likely to penalize on its own, which is why the cut test is mechanical here instead of left to judgment.
+
+**Certainty is the newest measurable failure, and it runs opposite to the old one.** Belem et al. (2026) found that rewriting distorts expressed certainty in up to 75% of outputs, with a 1.5 to 2 times bias toward raising it, compounding across passes and worsening under greedy decoding. Hagar et al. (2025) name the three shapes it takes in summarization: attribution stripping, overinterpretation, and certainty inflation. This matters for a humanizing pass specifically, because every rewrite is another chance to inflate. An edit that removes hedges to tighten a sentence can make the sentence false while making it read better, so calibration has to be checked against the source rather than against the previous draft.
+
+**Refresh the word lists by computation, not memory.** The Antislop framework (2025) builds its lists by profiling model output against human baselines and finds patterns appearing over 1,000 times more often in LLM text than in human writing, then suppresses more than 8,000 of them at inference; token banning alone breaks down past about 2,000. The related Slop Score weights its verdict 60% overused words, 25% not-X-but-Y constructions, and 15% overused trigrams, with the lists computed from ten models against human corpora. Two things follow. Any word list in this catalog is a snapshot, and the method that produced it is the durable part. And the independent weighting is a useful check on this one: a tool built from measurement, with no knowledge of this catalog, puts a quarter of its score on the same construction that sits at entry 1.
+
+**What separates slop from writing is not surface quality.** "Why Slop Matters" (arXiv 2601.06060, ACM AI Letters) characterizes slop through three prototypical properties: superficial competence, where the veneer of quality hides an absence of substance; asymmetric effort, where the output took far less work than it appears to have taken; and mass producibility. The first property is the one that should shape an audit. Removing tells raises surface competence, which is exactly the axis that was never the problem. This is the argument for scoring substance separately from ai-smell, and for ending every pass with a list of the things only the writer can add.
 
 ---
 
@@ -699,3 +878,21 @@ These are descriptive field guides, not detectors. No single pattern proves AI a
 | The Economist on spotting AI writing (2026) | https://www.fastcompany.com/91584243/how-to-identify-ai-generated-writing-viral-report-has-surprising-new-clues-economist | 55,940 sentences, 1.2M words vs. four frontier models. Em dashes no longer diagnostic (only Claude overuses); models use fewer commas, semicolons, parentheses, write longer sentences, overuse "and," don't quote people. Basis for entry 54 and the caveat in entry 23 |
 | Forbes: 15 new giveaway signs of AI writing (May 2026) | https://www.forbes.com/sites/jodiecook/2026/05/21/15-new-giveaway-signs-of-ai-writing-may-2026-update/ | The post-delve vocabulary: quietly, shift, matters, shape, land, actually, real, earn, the work, hold, pull, compound, signal, built different. Feeds entries 10 and 47 |
 | StoryScope: idiosyncrasies in AI fiction (Russell et al. 2026) | https://arxiv.org/abs/2604.03136 | 61,608 stories scored on discourse-level narrative features; 93.2% human/AI separation from narrative shape alone. AI over-explains themes and favors tidy single-track plots. Basis for entry 55 |
+| Linguistic Characteristics of AI-Generated Text: A Survey (Terčon & Dobrovoljc 2025) | https://arxiv.org/abs/2510.05136 | Synthesis of the measurement literature. AI text is more nominal and impersonal: more nouns, determiners, and prepositions, fewer adjectives and adverbs, lower lexical diversity. Basis for entry 58 |
+| Linguistic shifts in academic writing after ChatGPT (Bao et al. 2025) | https://arxiv.org/abs/2505.12218 | 823,798 arXiv abstracts. More LLM-preferred words and higher lexical density, but simpler syntax, fewer connectives, more positive sentiment, and lower readability. Basis for entries 61 and 63, and for the warning that lexical density is not the target |
+| From "May" to "Is": certainty distortion in LM rewriting (Belem et al. 2026) | https://arxiv.org/abs/2606.07951 | Rewriting shifts expressed certainty in up to 75% of outputs, biased 1.5 to 2 times toward more confidence, compounding across passes. Basis for entry 60 and the calibration dimension |
+| Not Wrong, But Untrue (Hagar et al. 2025) | https://arxiv.org/abs/2509.25498 | Three named failure modes in document-grounded generation: attribution stripping, overinterpretation, certainty inflation. The editing vocabulary for entry 60 |
+| Why Slop Matters (2026) | https://arxiv.org/abs/2601.06060 | Defines slop by superficial competence, asymmetric effort, and mass producibility. The argument for scoring substance separately from surface tells |
+| Antislop framework (2025) | https://arxiv.org/abs/2510.15061 | Computes overused patterns against human baselines (some appear 1,000 times more often), suppresses 8,000+ at inference. The method for keeping word lists current |
+| Slop Score and slop-forensics (Sam Paech) | https://eqbench.com/slop-score.html | Weights its score 60% overused words, 25% not-X-but-Y, 15% overused trigrams, all computed from ten models against human corpora. Independent confirmation of entry 1's weight |
+| YapBench (2026) | https://arxiv.org/abs/2601.00624 | Scores responses against the shortest sufficient answer. Newer frontier models pad more than GPT-3.5-Turbo, so verbosity is a post-training behavior. Basis for entry 59 |
+| ai-pattern-detection (halans) | https://github.com/halans/ai-pattern-detection | 46 regex patterns in six weighted severity tiers, summed and normalized to 0-100. A working example of the weighted-rubric approach, and a useful cross-check on tier weights |
+| Stylometric detection of AI text (Kumarage et al. 2023) | https://arxiv.org/abs/2303.03697 | Punctuation as one of three stylometric feature families (with phraseology and lexical diversity); mark counts measurably improve SOTA detectors. Basis for entry 54 |
+| Universal versus system-specific punctuation patterns (Stanisz, Kwapień & Drożdż) | https://arxiv.org/abs/2212.11182 | Gaps between punctuation marks, in words, follow a discrete Weibull distribution with increasing hazard; two parameters separate languages and authors. The words-between-marks rhythm in entry 54 |
+| Punctuation patterns in Finnegans Wake are largely translation-invariant (2025) | https://arxiv.org/abs/2501.12954 | Same method applied to experimental literature and translations. Useful for how far a real human writer can sit from the norm without being an outlier |
+| How well do LLMs imitate human writing style? (Jemama & Kumar 2025) | https://arxiv.org/abs/2509.24930 | Punctuation ranked among the most diagnostic style features; models under-use commas, apostrophes, hyphens, and exclamation marks. Feeds entries 54 and 64 |
+| Comparing LLM and human news text with formal syntactic theory (2025) | https://arxiv.org/abs/2506.01407 | Humans use contractions, colloquialisms, and rarer constructions more; model output reads as an averaged grammatical profile. Basis for entry 64 |
+| Stop policing punctuation (AARE 2026) | https://blog.aare.edu.au/stop-policing-punctuation-now-why-ai-detection-needs-a-rethink/ | The case against punctuation heuristics: they persist because they are easy, and the cost lands on careful writers. Why punctuation is scored but never decisive |
+| The Writer's Diet (Helen Sword) | https://writersdiet.com | Grades prose on be-verbs, zombie nouns, prepositions, ad-words, and the waste words it/this/that/there. Source of the mechanical counts and the "zombie noun" name |
+| Reuters Institute: how AI prose diverges from human writing | https://reutersinstitute.politics.ox.ac.uk/news/how-ai-generated-prose-diverges-human-writing-and-why-it-matters | Juzek & Ward on focal words, Rudnicka on formality, Mahadevan on "a lot of words that don't say anything" and show-don't-tell. Journalism framing for the substance dimension |
+| AI's hyperbole is making abstracts harder to read (THE, on Bao et al.) | https://www.timeshighereducation.com/news/ais-hyperbole-making-journal-abstracts-harder-read | Plain-language account of the hyperbole and readability findings, with the specific adjectives that rose about 40% |
