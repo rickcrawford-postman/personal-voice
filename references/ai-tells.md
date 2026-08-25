@@ -754,6 +754,28 @@ The test is to read a paragraph aloud in the voice the piece is meant to have. W
 
 ---
 
+## 65. The through-line
+
+**Looks like.** A heading or sentence announcing that everything just described is secretly one thing. "The through-line, if you want one." "The thread running through all of this." "What connects all five." "At bottom, these are the same question." The reveal that follows is almost always an abstraction rather than a mechanism.
+
+**Why it reads as AI.** Models are rewarded for coherence, so they manufacture it. A genuine unifying cause is rare and worth stating; the construction shows up whether or not one exists, because a synthesis paragraph is what the shape of a document seems to call for at that point. It also does the reader's work for them, which flatters the writer twice: once for spotting the pattern and once for being generous enough to explain it. Closely related to entry 44 (the rhetorical wrap-up) and entry 50 (one-move-solves-all): all three assert structure the argument has not earned.
+
+**Fix.** If the items really do share a cause, name the cause and skip the announcement. Put it in the heading and let the reader notice the pattern themselves. If they do not share a cause, let them be several things; a list of six real problems is more useful than five real problems and a forced sixth. "The through-line, if the room wants one: context that used to live in a person's head now has to be authored" becomes "All six fail for the same reason. Nobody wrote the context down."
+
+---
+
+## 66. Clothing and costume analogies
+
+**Looks like.** "The same problem wearing different clothes." "Wearing the costume of an argument." "Dressed up as." "X in Y's clothing." "Cloaked in." "A thin veneer of." "Under the hood" belongs to the mechanical family in entry 48, but it rhymes with this one.
+
+**Why it reads as AI.** It is the stock metaphor for *superficially different, fundamentally the same*, and it arrives pre-assembled, so it costs nothing to write and carries nothing. Like the structural metaphors in entry 48, it asserts a relationship instead of naming one: the reader is told two things are secretly identical and never told what they share. It also pairs almost automatically with entry 65, because a writer who has just announced a through-line needs an image for it, and this is the nearest one to hand.
+
+**Fix.** Name what is actually shared, in the same number of words. "All six problems are the same problem wearing different clothes" becomes "All six fail because nobody wrote the context down." "A list of facts wearing the costume of an argument" becomes "a list of facts with no *because* between them." If you cannot state the shared thing plainly, that is useful information: the sameness you were about to assert may not be there.
+
+*This catalog used the costume version itself in entry 63 before this entry existed, which is a reasonable illustration of how easily it slips in.*
+
+---
+
 ## Counting instead of guessing
 
 Most of this catalog asks for judgment. These fourteen counts are mechanical, and running them first stops the audit from turning into vibes. They are rules of thumb calibrated by use, not thresholds from a study, so treat a failed count as a place to look rather than a verdict.
