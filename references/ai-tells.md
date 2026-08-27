@@ -2,7 +2,7 @@
 
 This is the working catalog of patterns that flag prose as AI-generated. It merges the humanizer skill (drawn from Wikipedia's "Signs of AI writing," maintained by WikiProject AI Cleanup) with additional patterns observed in long-form drafting. Each entry has the pattern, why it reads as AI, and how to fix it. The list is a living artifact. If you find a new tell, add it.
 
-The first six are the ones that show up most. Hunt them first.
+The first six are the ones that show up most. Hunt them first. Entry 67 is the newest and the only one compiled from a frequency count rather than from observation; read it alongside entries 47, 48, and 11, which it measures.
 
 ## Hunt these first (top six)
 
@@ -13,7 +13,7 @@ The first six are the ones that show up most. Hunt them first.
 5. **Signposting and announcements**: "Let's dive in," "Here's what you need to know"
 6. **Rule of three**: forced triplets
 
-Scan next: significance inflation, superficial `-ing` endings, fragmented headers, structural and door metaphors (load-bearing, threads, opens the door), imperative closers, AI vocabulary clusters.
+Scan next: significance inflation, superficial `-ing` endings, fragmented headers, structural and door metaphors (load-bearing, threads, opens the door), imperative closers, AI vocabulary clusters, and the 2026 agent register (entry 67): physical nouns for abstractions, objects given intentions, certifying adverbs, absolute negation.
 
 Then run the substance checks, which catch what a tell list cannot. Entries 58 to 63 cover them: padding and zombie nouns (concision), hyperbole and certainty inflation (calibration), and abstraction with nothing checkable in it (substance). A draft can be free of every tic above and still waste the reader's time.
 
@@ -85,6 +85,9 @@ Then grep for provenance artifacts (entry 57). Those are evidence about how the 
 62. Vague expressions of connection
 63. Assertion chains with no connective logic
 64. Textbook-perfect punctuation and missing contractions
+65. The through-line
+66. Clothing and costume analogies
+67. The agent register
 
 ---
 
@@ -177,6 +180,8 @@ Then grep for provenance artifacts (entry 57). Those are evidence about how the 
 **The 2026 set.** The list above is the ChatGPT-era vocabulary that detectors and word-frequency studies caught first, so a lot of writing has already been scrubbed of it. A newer cluster has replaced it, drawn from Forbes's May 2026 roundup of AI giveaways: shift, matters ("this matters because"), shape (verb, "shapes how we think"), land ("the point lands"), real ("real value," "real impact"), earn ("earn the right to," "earn trust"), the work ("do the work"), hold ("hold space," "hold the line"), pull ("the pull of"), compound ("decisions compound"), signal (abstract noun), built different, quietly (entry 47). These are harder to see because they are plain English words, and that is the point: the tell is the density and the abstraction, not the rarity.
 
 **Why it reads as AI.** Frequency. Each word in isolation is fine. A cluster of them in one piece is the giveaway. They co-occur. The vocabulary also rotates as models change and as writers learn to avoid the flagged words, so treat any watch-list as dated and check the current one.
+
+**The contamination problem, which is the reason this entry can never be a verdict.** The words are leaking into people. Yakura et al. tracked ChatGPT-preferred vocabulary (*delve, showcase, boast, intricacies, meticulous*) through 737,083 hours of conversation across 824,634 podcast episodes and found an abrupt rise in *spontaneous human speech* after ChatGPT shipped, with a synthetic-control analysis tying the shift to the release. Anderson, Galpin, and Juzek ran a smaller unscripted-speech corpus (22.1 million words) and found the effect real but uneven, with *delve* itself not rising significantly. So the direction is established and the size is contested. Either way, a writer who reaches for one of these words in 2026 may simply be a person who has been listening to other people. Score the cluster, never the word, and never let this dimension decide anything on its own.
 
 **Fix.** Use the plain word. Delve becomes look at. Navigate becomes work through. Intricate becomes detailed. Underscore becomes show. Robust becomes reliable or thorough. Leverage becomes use.
 
@@ -288,7 +293,7 @@ Then grep for provenance artifacts (entry 57). Those are evidence about how the 
 
 **Why it reads as AI.** The dash stack reads like punchy sales copy, and models misuse hyphens and en dashes inconsistently.
 
-**Caveat, and it is a real one.** The em dash is no longer good evidence of AI authorship. The Economist's 2026 comparison of its own prose against ChatGPT, Claude, Gemini, and Grok (55,940 sentences, 1.2 million words) found that only Claude used em dashes more often than human writers did; the others used them less. Meanwhile the same study found models use *fewer* commas, semicolons, and parentheses overall (entry 54). So treat a pile of em dashes as a style problem rather than a fingerprint, and do not raise a score on dash count alone. This skill still strips them by default, but that is a house-style choice about how the writing should read, not a detection claim.
+**Caveat, and it is a real one.** The em dash is no longer good evidence of AI authorship. The Economist's 2026 comparison of its own prose against ChatGPT, Claude, Gemini, and Grok (55,940 sentences, 1.2 million words) found that only Claude used em dashes more often than human writers did; the others used them less. Meanwhile the same study found models use *fewer* commas, semicolons, and parentheses overall (entry 54). So treat a pile of em dashes as a style problem rather than a fingerprint, and do not raise a score on dash count alone. The counterpoint is real too: in the GitHub pull request corpus behind entry 67, the em dash went from 0.2 appearances per 10,000 words in the first four weeks of 2025 to 132.4 in the four weeks ending August 2026. Where the writing is coming out of coding agents, the mark is rising steeply. That still does not make it evidence about any one document. This skill still strips them by default, but that is a house-style choice about how the writing should read, not a detection claim.
 
 **Fix.** Replace every em and en dash:
 
@@ -505,7 +510,7 @@ Keep hyphens only inside genuinely hyphenated words. The personal-voice skill ap
 
 **Looks like.** Adverbs and intensifiers sprinkled in to add heat without adding meaning: just, really, very, actually, literally, simply, honestly, truly, basically, fundamentally, importantly, crucially, notably, remarkably, genuinely, arguably, meaningfully, quietly. "This is just really important." "It's actually quite simple." "Honestly, this basically changes everything." "A genuinely useful shift." "Quietly building the best product in the category."
 
-**Why it reads as AI.** The words perform emphasis or candor while carrying no information. "Honestly" and "actually" imply a contrast with some unstated dishonest or expected version that never appears. "Simply" and "just" wave away difficulty the reader may not share. "Genuinely" and "meaningfully" try to certify that this instance is the real one, which only raises the question of the others. "Arguably" hedges and boosts at the same time, so the sentence commits to nothing. "Quietly" is the current standout: it manufactures drama by implying the writer noticed something others missed ("quietly became the default," "quietly shipping"), and it topped Forbes's May 2026 list of new AI giveaways. Delete any of them and the sentence usually means exactly the same thing, which is the test.
+**Why it reads as AI.** The words perform emphasis or candor while carrying no information. "Honestly" and "actually" imply a contrast with some unstated dishonest or expected version that never appears. "Simply" and "just" wave away difficulty the reader may not share. "Genuinely" and "meaningfully" try to certify that this instance is the real one, which only raises the question of the others. "Arguably" hedges and boosts at the same time, so the sentence commits to nothing. "Quietly" is the current standout: it manufactures drama by implying the writer noticed something others missed ("quietly became the default," "quietly shipping"), it topped Forbes's May 2026 list of new AI giveaways, and it is second of a thousand words in the pull request measurement behind entry 67, at 63 times the rate it appears outside the cluster. *Deliberately* is eighteenth there, *genuinely* seventh. Delete any of them and the sentence usually means exactly the same thing, which is the test.
 
 **Fix.** Cut the word and check the sentence still stands. It almost always does. Keep an intensifier only when it marks a real contrast the sentence needs ("the build is slow, but the tests are *very* slow" earns it). One survivor per paragraph at most.
 
@@ -522,6 +527,8 @@ Keep hyphens only inside genuinely hyphenated words. The personal-voice skill ap
 *Mechanical cousins.* "The levers you can pull." "The dials worth turning." "That moves the needle." "The plumbing underneath." "Putting it on rails." "Under the hood." "The surface area of the problem." Same move, different workshop.
 
 **Why it reads as AI.** The metaphor claims something matters structurally without naming what depends on it. "Load-bearing" asserts that removing the thing breaks something, and then never says what breaks. "Doing a lot of work" asserts hidden importance and skips the demonstration. The connective-tissue words are the worst of the set, because they name a relationship the sentence never specifies, which is the same move as the false-depth reveal (entry 42, "the space between them"). They also cluster: once a paragraph has a foundation it tends to grow a spine, then some scaffolding. Travel metaphors (entry 16) behave the same way and often show up in the same paragraph.
+
+**And it is now measured.** In a corpus of 47,464 GitHub pull request descriptions from human-attributed accounts, sampled daily from January 2025 to August 2026, *load-bearing* is the single most characteristic word of the way of writing that grew from about 1% of the corpus to 44.6% of it: 123 times more frequent inside that cluster than outside, 93 per million words against 0.76. *Seam* is sixth, *ladder* eighth, *carries* ninth, *halves* twelfth. Entry 67 has the rest of the list and the caveats.
 
 **Fix.** Say what depends on what, and what breaks if it goes.
 
@@ -776,12 +783,154 @@ The test is to read a paragraph aloud in the voice the piece is meant to have. W
 
 ---
 
+## 67. The agent register
+
+**Looks like.** Plain, concrete, physical English applied to things that are not physical, at high density, in short sentences built on negation. "That assumption is load-bearing." "The old path survived untouched." "The check fires, and nothing else moves." "The two halves are byte-identical." "It quietly stopped being true." One paragraph of it reads as careful and specific. Forty of them read as one writer, because they are.
+
+**Why this entry exists.** The rest of the catalog is compiled from detector research, style guides, and observation. This entry is compiled from a count. Louis Abraham's *load-bearing* project has sampled a hundred newly opened GitHub pull request descriptions a day since January 2025, dropped bot and agent accounts by the shape of their login, and clustered what is left into eight ways of writing by KL-divergence k-means over word counts. As of the 2026-08-17 week, 595 days and 47,464 descriptions in, one of those eight went from about 1% of the corpus at the start of 2025 to 44.6% of the last four weeks, still rising at about 0.8 points a week. The model has no time parameter, so the curve is not a fit; it is a count of descriptions placed by their words alone.
+
+Its most characteristic word, at 123 times the rate it appears anywhere outside the cluster, is *load-bearing*. Entry 48 was already in this catalog when that measurement landed.
+
+**The clusters inside it.** Multipliers are how much more often the word appears inside the cluster than outside it.
+
+1. *Physical nouns for abstractions.* load-bearing (123x), seam (37x), ladder (37x), halves (33x), ceiling, floor, wall, spine, rail, plate, band, leg, hole, envelope, substrate, machinery, carrier, subtree. This is entry 48, and the measurement says it is now the top of the list rather than one item on it.
+2. *Objects given intentions.* carries (36x), sits, holds, fires, refuses, lives, sees, says, asks, declares, drives, owns, walks, rides, decides, proves, treats, reaches, leaves, belongs. The config sits, the check fires, the flag carries, the test refuses, the job decides. It is the mirror of copula avoidance (entry 11): rather than an elaborate verb standing in for *is*, a verb of intention standing in for a thing that has none.
+3. *Survival and fate.* survived (62x), survives, survive, untouched (25x), inert, collapses, folds, degrades, recovers, landed, lands, arrives, stayed, gone, killed, retired, swallowed, discarded.
+4. *Adverbs that certify.* quietly (63x, and second on the whole list), deliberately (26x), loudly, silently, precisely, exactly, identically, structurally, unconditionally, merely, honestly, verbatim. Entry 47 covers the family; this is the measurement behind it.
+5. *Candor words.* genuine (39x), genuinely (37x), honest, honesty. Words that assert the writer is being straight with you, which is the one thing straight writing never has to assert.
+6. *Verification vocabulary.* byte-identical (35x), asserted, asserts, claimed, proven, reproduces, reproduced, measured, unit-tested, byte-for-byte, criterion, invariant, verdict.
+7. *Absolute negation.* nothing (21x), never, nobody, neither, alone, ever, forever, unaffected, unmodified, unconditional, no-ops. Short sentences whose subject is an absence.
+8. *Diagnostic nouns.* refusal (29x), symptom, defect, defects, divergence, precedent, caveat, headroom, staleness, trap, fan-out, throwaway.
+
+**Why it reads as AI.** Every word above is a good word, which is what makes the register hard to see. None of it is *delve* or *tapestry*; a reader scanning for the ChatGPT-era vocabulary finds nothing and concludes the piece is clean. The tell is the combination. Concrete nouns are borrowed to make abstract claims feel checked, inanimate subjects are given verbs of intention so the prose reads as reportage instead of assertion, and absolutes and certifying adverbs supply confidence the evidence has not. Entries 48, 47, 11, and 61 each caught part of this before the measurement existed, which is why the fixes there apply here unchanged.
+
+The register is also self-ratifying. *Quietly* implies the writer noticed something others missed. *Genuinely* implies the other instances were not. *Load-bearing* implies that removing the thing breaks something, and then never says what. Each move claims a verification the sentence does not perform.
+
+**Fix.** Same fix as entry 48, applied to a wider list. Swap the literal statement in and see whether the sentence survives.
+
+- "The old path survived untouched" becomes "The old path still runs, and no test changed."
+- "The check fires" becomes "The check runs" or "The check rejects the request," whichever is true.
+- "It quietly stopped being true" becomes "It stopped being true in March, and nobody updated the doc."
+- "The two halves are byte-identical" is fine, if you diffed them. If you did not, it is the register talking.
+
+The one to watch hardest is the agentive verb, because it is invisible and it is everywhere. When a thing that cannot want anything *refuses*, *decides*, or *asks*, either name the actor who made it do that or use the plain verb.
+
+**The caveats, and they are load-bearing.** Three of them.
+
+The study measures pull request descriptions attributed to human accounts, with every bot- and agent-named login removed. Nobody observed an assistant writing any of it. What the data supports is that a way of writing became common; the attribution to coding agents is inference, and the project says so.
+
+Two of its constants were chosen by looking at the answer: the number of clusters, and the frequency floor, both picked so that *load-bearing* would rank first. Across 32 unconditioned fits of the same corpus the arrival itself is solid, and any two runs draw the same weekly shape (mean r = 0.991), but the cluster ends anywhere from 36% to 64% and *load-bearing* is first in only 15 of them, top five in 29. So treat the shape as measured and the exact rank ordering as one fit's answer.
+
+And the corpus is technical. A blog post is not going to say *byte-identical*. The vocabulary lists above are for code review, commit messages, PR bodies, and design docs. What transfers to prose is the four moves rather than the words: physical nouns doing abstract work, objects with intentions, adverbs that certify, and negation used as a load-bearing claim.
+
+---
+
+## Writing in a language other than English
+
+Every entry above is English. The tells do not translate, and running an English catalog against a Spanish or Korean draft will flag the wrong things and miss the real ones, because each language has its own pre-existing bad register that model output falls into.
+
+What is known so far, and it is thin:
+
+- **Korean, 번역투.** Translationese. English calques and stiff written-register forms in place of native discourse particles.
+- **Russian, канцелярит.** Bureaucratic register: the copula `является`, split predicates like `осуществить` where a plain verb exists. Chukovsky named the disease; Ilyakhov's *Пиши, сокращай* is the standard guide against it.
+- **Chinese, 公文腔.** Officialese: `进行` plus noun as padding, `予以`, stock openers such as `众所周知`.
+- **Vietnamese.** Sino-Vietnamese vocabulary and calque openers (`thực hiện`, `trong trường hợp`) where plain Vietnamese is shorter.
+- **Filipino.** Over-formal literary Tagalog and calque openers (`upang`, `sa pamamagitan ng`) where the editorial register is conversational.
+
+The pattern across all five is the same and it is worth naming, because it is the fastest way to build a list for a language not here: **model output lands in whichever register that language already reserves for institutions.** Bureaucratic Russian, official Chinese, translated Korean, formal Tagalog. Ask a native speaker what their language sounds like when a ministry writes it, and that is most of the catalog.
+
+The structural entries transfer better than the lexical ones, which is what the fingerprint research would predict. X-not-Y, the rule of three, the rhetorical wrap-up, signposting, the restatement loop, and the substance failures in entries 58 to 63 are all recognizable in translation. The vocabulary, the punctuation profile, and the formatting tics are not.
+
+Rule packs for the five languages above exist in `slop-gate` (see the sources table). It is a one-author project rather than a research result, so treat the lists as a place to start and check them against a native speaker.
+
+---
+
+## Term-frequency analysis: how to find tells by counting
+
+Every word list in this catalog is downstream of somebody counting. Kobak counted 14 million abstracts, Liang counted 1.1 million papers, Yakura counted 824,634 podcast episodes, and the *load-bearing* project counts a hundred pull requests a day. None of them started from a list of suspicious words. They measured a frequency against a baseline and read off whatever came out on top, which is how *delve* was found and how *load-bearing* was found.
+
+A list compiled last year is already describing last year's models, while the counting procedure that produced it still works on whatever came out this month. So when a draft matters, run the count rather than only grepping the list.
+
+### The formula
+
+The one the *load-bearing* project publishes is the clearest, and it is the same shape Kobak's excess-vocabulary ratio and the Antislop framework use.
+
+```
+                 count_in(w) / N_in
+    ratio(w) = ------------------------
+               max(count_out(w), 1) / N_out
+```
+
+`count_in(w)` is how many times the word appears in the text under test and `N_in` is every word appearance in it. `count_out` and `N_out` are the same two numbers for the baseline. Report it as "N times more frequent than baseline."
+
+Four rules travel with the formula, and each of them is a mistake somebody has already made.
+
+**Rates, not counts.** Divide each side by its own size. The *load-bearing* project shipped the count version first: because the cluster held a fifth of the corpus, dividing its count of a word by the four fifths outside scaled every one of its words down by the same factor of 3.77, and a smaller cluster's by 40. The ranking inside one text survives that error, so it looks fine; the numbers are comparable to nothing.
+
+**The baseline must exclude the text you are testing.** If the draft is inside the baseline, you are comparing it partly against itself, and the effect shrinks by however much of the pool it is.
+
+**Floor the count, and know the floor is a choice.** A word appearing twice can post a huge ratio and mean nothing. The *load-bearing* project requires 45 appearances, 25 documents, and 20 distinct accounts, and says outright that the 45 was picked so its title word would clear it. Pick a floor, say what it is, and check what a different one would have dropped.
+
+**No probability floor, though.** Do not discard rare words to clean up the list. Rare-but-concentrated is exactly what the count exists to find; *load-bearing* appeared 101 times in five million.
+
+### The distinct-source floor is the good idea
+
+The best rule in that project is the one about *who* used a word rather than how often it appeared:
+
+| word | documents | distinct accounts |
+|---|---|---|
+| `pullrequest` | 201 | 17 |
+| `load-bearing` | 93 | 92 |
+
+Ninety-two people independently reaching for the same phrase is a fact about the language, whereas 201 documents from 17 accounts is one template pasted 201 times. Counting documents cannot separate those two; counting distinct sources does it at a glance.
+
+For a single draft the analogue is dispersion. A word that appears eight times across six sections about six different things is part of the register. A word that appears eight times in one paragraph is one passage. Check where the hits fall before you count them.
+
+### Where the baseline comes from, best first
+
+1. **The writer's own earlier writing.** If a voice sample exists, that is the baseline, and it is better than any public corpus because it answers the question that actually matters: what is this draft doing that this person does not do? It finds the draft's borrowed vocabulary and it finds nothing for the writer's real tics, which is correct, since those are voice.
+2. **Any human-written corpus in the same genre.** Their last ten posts, the team's existing docs, the repository's older commit messages.
+3. **Published anchors, when there is nothing else.** Weaker, because the genre will not match. Two usable ones: in the *load-bearing* corpus, *load-bearing* runs 0.76 per million words in ordinary pull requests against 93 per million in the agent register, and the em dash runs 0.2 per 10,000 words in early 2025 against 132.4 in mid 2026.
+
+### Running it on one draft
+
+```bash
+# rate per 1,000 words, draft against baseline, one word at a time
+python3 - draft.md baseline.md <<'EOF'
+import re, sys, collections
+def tf(path):
+    w = re.findall(r"[A-Za-z][A-Za-z0-9_/-]*", open(path).read().lower())
+    return collections.Counter(w), len(w)
+a, na = tf(sys.argv[1]); b, nb = tf(sys.argv[2])
+rows = []
+for w, c in a.items():
+    if c < 3: continue                      # the floor. say what you used.
+    r = (c / na) / (max(b[w], 1) / nb)
+    rows.append((r, w, c, b[w]))
+for r, w, c, o in sorted(rows, reverse=True)[:40]:
+    print(f"{r:8.1f}x  {w:<24} {c:>3} in draft, {o:>4} in baseline")
+EOF
+```
+
+Then read the top of the list and ask, for each word, whether the draft needed it. Do the same for two-word and three-word runs; the Slop Score weights overused trigrams at 15% of its verdict for a reason, and stock phrases show up in bigrams that hide inside ordinary unigrams.
+
+### What it is good for, and what it is not
+
+It finds tells that are on no list, which is the entire argument for running it. It finds the writer's own new tics, which no published list can contain. It is also cheap to run and it leaves an artifact somebody can disagree with, which a judgment call does not.
+
+It does not detect authorship, and the contamination finding above is why: the vocabulary is entering ordinary speech, so a high ratio on a word means the draft leans on the word, not that a model wrote it. It is also blind to structure. A draft can be perfectly ordinary in its word frequencies and be built entirely out of X-not-Y and rule of three, which is the case the structural entries exist for and the reason those carry the most weight in the ai-smell score.
+
+Treat the output as a list of places to look, in the same spirit as the counts below.
+
+---
+
 ## Counting instead of guessing
 
-Most of this catalog asks for judgment. These fourteen counts are mechanical, and running them first stops the audit from turning into vibes. They are rules of thumb calibrated by use, not thresholds from a study, so treat a failed count as a place to look rather than a verdict.
+Most of this catalog asks for judgment. These fifteen counts are mechanical, and running them first stops the audit from turning into vibes. They are rules of thumb calibrated by use, not thresholds from a study, so treat a failed count as a place to look rather than a verdict.
 
 | Count | How | Look harder when |
 |-------|-----|------------------|
+| Term-frequency ratio | The formula in the section above, draft against the writer's own earlier writing or any same-genre human text | Any content word running more than about 5x baseline with at least three hits spread across the draft. Read the top forty and the bigrams, not just the flagged ones |
 | Checkable specifics | Numbers, dates, proper nouns, quoted people, named mechanisms, per 100 words | Fewer than 2. Under 1 and the passage is pure abstraction. |
 | Rhythm spread | Longest minus shortest sentence in each paragraph, in words | Under 8 words of spread across a whole paragraph. Spread matters; average sentence length does not (entry 54). |
 | Mark variety | How many distinct punctuation types appear per 500 words | Three or fewer, or a page built only from periods and commas. |
@@ -855,7 +1004,15 @@ The counterweight matters as much as the findings. The em dash was the most conf
 
 **Surface markers rotate; structure does not.** Two 2026 findings make this concrete. The Economist's comparison of 1.2 million words of its own prose against four frontier models found the em dash has stopped working as a marker (only Claude overuses it) and that punctuation *sparseness* now separates the sets better, because models write longer sentences, lean on "and," and do not quote people. Forbes's May 2026 roundup shows the vocabulary layer moving the same way: the delve-and-tapestry set has been scrubbed out of a lot of writing and replaced by plain words used abstractly (quietly, shift, matters, land, real, earn, compound, signal). Anything word-level or punctuation-level in this catalog should be treated as dated on arrival and rechecked. Sarvazyan et al. (2025) is the counterweight: structural and syntactic fingerprints persist across domains and survive paraphrase, which is why the rubric weights structural tics highest.
 
+**The vocabulary can be watched in the open, in something other than abstracts.** The Kobak measurement above ran on PubMed; the *load-bearing* project runs the same idea on GitHub, and continuously. It samples a hundred newly opened pull request descriptions a day, drops bot and agent logins, and fits eight KL-divergence k-means clusters over word counts with no time parameter in the model at all, so the weekly curves are counts of documents rather than fitted trends. One cluster went from about 1% of the corpus in January 2025 to 44.6% of the four weeks ending 2026-08-17 and is still rising. Three things make it worth carrying here. It is a measurement of a *register* rather than of a word list, which is the level the catalog has been arguing matters. Its top word, at 123x, was already entry 48. And it publishes its own arbitrary choices, including the two constants that were tuned until that word ranked first, which is the honesty the other word-frequency sources mostly skip. Entry 67 carries the findings and the caveats.
+
 **Narrative shape is its own signal.** StoryScope (Russell et al. 2026) analyzed 61,608 stories on discourse-level features rather than style and hit 93.2% separation between human and AI narratives, with about 30 features carrying most of it. AI stories over-explain their themes and run tidy single-track plots; human ones keep ambiguity and temporal mess. That result is why entry 55 exists and why the fix for a flat anecdote is structural, not lexical.
+
+**The vocabulary is leaking into speech, which caps what any word list can prove.** Yakura et al. (arXiv 2409.01754) measured ChatGPT-preferred words in 737,083 hours of unscripted conversation across 824,634 podcast episodes and found an abrupt post-release rise in spontaneous speech, causally linked by synthetic control. Anderson, Galpin, and Juzek (arXiv 2508.00238) replicate the direction on 22.1 million words of unscripted speech but find the effect smaller and patchier, with *delve* not significantly up. Read together they say the same thing to an auditor: the words are entering the language, so a human writer using them is now an ordinary event rather than evidence. This is the strongest argument in the research for keeping the lexical dimension capped and structure weighted highest, and for never reporting a word-frequency hit as an authorship finding.
+
+**Slop is a measurable construct, and it lands on the substance axis.** Shaib et al. (arXiv 2509.19163) built a taxonomy of slop from interviews with NLP researchers, writers, and philosophers, turned it into interpretable dimensions, and had annotators mark it at the span level rather than judging whole documents. Two results matter here. Binary slop judgments are somewhat subjective, so a single number should never be presented as fact, which is why both rubrics require cited instances. And those judgments correlate with latent dimensions like coherence and relevance rather than with surface polish, which is independent support for scoring reader-value separately from ai-smell. The span-level method is also the right one: mark the passage, then score, never the reverse.
+
+**Voice loss is measured, not just asserted.** Abdulhai et al. (arXiv 2603.18161, March 2026) combined a user study, model-revised 2021 essays written before LLMs existed, and AI-generated conference peer reviews. Heavy LLM users produced essays about 70% more likely to stay neutral on the question they were answering; users reported losing creativity and voice; and models altered semantic meaning even when asked for grammar-only edits. That last finding is the operational one for this skill, because a humanizing pass is exactly a "surface only" edit, and it is evidence that no such edit stays on the surface. It is also the empirical backbone for the voice-and-stance dimension: refusing to land a position is not a matter of taste, it is the measured signature of heavy model involvement.
 
 **The deeper mechanism is homogenization.** Work on shrinking linguistic diversity (arxiv 2502.11266) and on instruction-tuning reducing lexical variety shows LLMs converge toward a low-diversity mean. AI-smell is the surface of that convergence, which is why the fix is always the same: reintroduce specificity, variation, and a point of view.
 
@@ -899,6 +1056,7 @@ These are descriptive field guides, not detectors. No single pattern proves AI a
 | Shrinking Landscape of Linguistic Diversity (2025) | https://arxiv.org/abs/2502.11266 | LLM adoption reduces stylistic diversity; the homogenization the whole skill works against |
 | The Economist on spotting AI writing (2026) | https://www.fastcompany.com/91584243/how-to-identify-ai-generated-writing-viral-report-has-surprising-new-clues-economist | 55,940 sentences, 1.2M words vs. four frontier models. Em dashes no longer diagnostic (only Claude overuses); models use fewer commas, semicolons, parentheses, write longer sentences, overuse "and," don't quote people. Basis for entry 54 and the caveat in entry 23 |
 | Forbes: 15 new giveaway signs of AI writing (May 2026) | https://www.forbes.com/sites/jodiecook/2026/05/21/15-new-giveaway-signs-of-ai-writing-may-2026-update/ | The post-delve vocabulary: quietly, shift, matters, shape, land, actually, real, earn, the work, hold, pull, compound, signal, built different. Feeds entries 10 and 47 |
+| The load-bearing vocabulary of Claude (Louis Abraham, 2026) | https://louisabraham.github.io/load-bearing/ | 47,464 GitHub PR descriptions sampled daily since Jan 2025, clustered by KL-divergence k-means with no time parameter. One way of writing grew from ~1% to 44.6% of the corpus; *load-bearing* is its top word at 123x. Code, data, and the arbitrary choices at https://github.com/louisabraham/load-bearing. Basis for entry 67, and the measurement behind entries 47 and 48 |
 | StoryScope: idiosyncrasies in AI fiction (Russell et al. 2026) | https://arxiv.org/abs/2604.03136 | 61,608 stories scored on discourse-level narrative features; 93.2% human/AI separation from narrative shape alone. AI over-explains themes and favors tidy single-track plots. Basis for entry 55 |
 | Linguistic Characteristics of AI-Generated Text: A Survey (Terčon & Dobrovoljc 2025) | https://arxiv.org/abs/2510.05136 | Synthesis of the measurement literature. AI text is more nominal and impersonal: more nouns, determiners, and prepositions, fewer adjectives and adverbs, lower lexical diversity. Basis for entry 58 |
 | Linguistic shifts in academic writing after ChatGPT (Bao et al. 2025) | https://arxiv.org/abs/2505.12218 | 823,798 arXiv abstracts. More LLM-preferred words and higher lexical density, but simpler syntax, fewer connectives, more positive sentiment, and lower readability. Basis for entries 61 and 63, and for the warning that lexical density is not the target |
@@ -918,3 +1076,10 @@ These are descriptive field guides, not detectors. No single pattern proves AI a
 | The Writer's Diet (Helen Sword) | https://writersdiet.com | Grades prose on be-verbs, zombie nouns, prepositions, ad-words, and the waste words it/this/that/there. Source of the mechanical counts and the "zombie noun" name |
 | Reuters Institute: how AI prose diverges from human writing | https://reutersinstitute.politics.ox.ac.uk/news/how-ai-generated-prose-diverges-human-writing-and-why-it-matters | Juzek & Ward on focal words, Rudnicka on formality, Mahadevan on "a lot of words that don't say anything" and show-don't-tell. Journalism framing for the substance dimension |
 | AI's hyperbole is making abstracts harder to read (THE, on Bao et al.) | https://www.timeshighereducation.com/news/ais-hyperbole-making-journal-abstracts-harder-read | Plain-language account of the hyperbole and readability findings, with the specific adjectives that rose about 40% |
+| Quantifying LLM usage in scientific papers (Liang et al. 2025) | https://www.nature.com/articles/s41562-025-02273-8 | *Nature Human Behaviour*. 1,121,912 papers and preprints, 2020 to 2024, estimating LLM-modified text from population-level word-frequency shifts: up to 22% in computer science, about 9% in mathematics and the Nature portfolio, and higher for short papers in crowded areas. The method companion to Kobak, and the reason entry 10 is framed as frequency rather than as a blacklist |
+| LLM influence on human spoken communication (Yakura et al. 2024) | https://arxiv.org/abs/2409.01754 | 737,083 hours of conversation across 824,634 podcast episodes. ChatGPT-preferred words rose abruptly in *spontaneous speech* after release, tied to it by synthetic control. The contamination caveat on every word list in this catalog |
+| Traces of AI-associated language in unscripted spoken English (Anderson, Galpin & Juzek 2025) | https://arxiv.org/abs/2508.00238 | 22.1M words of unscripted speech. Replicates the direction of the Yakura result but finds it smaller and uneven, with *delve* not significantly up. The counterweight that keeps the lexical dimension capped |
+| Measuring AI "Slop" in Text (Shaib et al. 2025) | https://arxiv.org/abs/2509.19163 | Taxonomy of slop from expert interviews, turned into interpretable dimensions and annotated at the span level. Slop judgments are partly subjective but correlate with coherence and relevance rather than polish. Independent support for the reader-value score and for cite-the-span scoring |
+| How LLMs Distort Our Written Language (Abdulhai et al. 2026) | https://arxiv.org/abs/2603.18161 | User study plus model-revised pre-LLM essays plus AI-written peer reviews. Heavy LLM users' essays were ~70% more likely to stay neutral; models changed meaning even under grammar-only instructions. Empirical basis for the voice-and-stance dimension, and a warning that no rewrite is surface-only |
+| awesome-slop (index) | https://github.com/hwajongpark/awesome-slop | Small but current index of slop research, linters, classifiers, humanizers, and word lists, organized by language. Useful as a survey of what exists; not itself a source |
+| slop-gate | https://github.com/hwajongpark/slop-gate | Zero-dependency CLI that flags the em dash and about 40 English tells in CI, with opt-in translationese rule packs for Korean, Russian, Chinese, Vietnamese, and Filipino. The only pointer here for non-English tells; a one-author project, so treat the packs as a starting list |
