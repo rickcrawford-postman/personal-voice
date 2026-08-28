@@ -214,11 +214,11 @@ You can also run the **Package skill** workflow manually from the
 [Actions tab](https://github.com/rickcrawford-postman/personal-voice/actions/workflows/package-skill.yml).
 
 **Workflow not running?** Check **Settings > Actions > General** and confirm
-Actions are enabled for this repository. In the Postman org, an admin may also
-need to approve new or updated workflows under **Actions > General > Fork pull
-request workflows** or the workflow approval policies. Pushes made by GitHub Apps
-using `GITHUB_TOKEN` do not trigger workflows; push from your machine with
-`git push` instead.
+Actions are enabled for this repository. If the repo lives in an organization, an
+admin may also need to approve new or updated workflows under **Actions > General
+> Fork pull request workflows** or the workflow approval policies. Pushes made by
+GitHub Apps using `GITHUB_TOKEN` do not trigger workflows; push from your machine
+with `git push` instead.
 
 ## How the build works
 
