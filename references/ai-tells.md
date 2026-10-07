@@ -2,7 +2,7 @@
 
 This is the working catalog of patterns that flag prose as AI-generated. It merges the humanizer skill (drawn from Wikipedia's "Signs of AI writing," maintained by WikiProject AI Cleanup) with additional patterns observed in long-form drafting. Each entry has the pattern, why it reads as AI, and how to fix it. The list is a living artifact. If you find a new tell, add it.
 
-The first six are the ones that show up most. Hunt them first. Entry 67 is the newest and the only one compiled from a frequency count rather than from observation; read it alongside entries 47, 48, and 11, which it measures.
+The first six are the ones that show up most. Hunt them first. Entry 67 is the only one compiled from a frequency count rather than from observation; read it alongside entries 47, 48, and 11, which it measures. Entries 68 to 73 are the newest, each grounded in a measured study, and the section "When the tells mislead" after them is the guardrail every score needs.
 
 ## Hunt these first (top six)
 
@@ -88,6 +88,12 @@ Then grep for provenance artifacts (entry 57). Those are evidence about how the 
 65. The through-line
 66. Clothing and costume analogies
 67. The agent register
+68. Reflexive validation and accepting the premise
+69. Stock names and default characters
+70. Quotes in the narrator's voice
+71. Purple prose and stock imagery
+72. The grammatical fingerprint
+73. Model-family openers and formatting
 
 ---
 
@@ -184,6 +190,8 @@ Then grep for provenance artifacts (entry 57). Those are evidence about how the 
 **The contamination problem, which is the reason this entry can never be a verdict.** The words are leaking into people. Yakura et al. tracked ChatGPT-preferred vocabulary (*delve, showcase, boast, intricacies, meticulous*) through 737,083 hours of conversation across 824,634 podcast episodes and found an abrupt rise in *spontaneous human speech* after ChatGPT shipped, with a synthetic-control analysis tying the shift to the release. Anderson, Galpin, and Juzek ran a smaller unscripted-speech corpus (22.1 million words) and found the effect real but uneven, with *delve* itself not rising significantly. So the direction is established and the size is contested. Either way, a writer who reaches for one of these words in 2026 may simply be a person who has been listening to other people. Score the cluster, never the word, and never let this dimension decide anything on its own.
 
 **Fix.** Use the plain word. Delve becomes look at. Navigate becomes work through. Intricate becomes detailed. Underscore becomes show. Robust becomes reliable or thorough. Leverage becomes use.
+
+**Peer-review register.** Liang, Zou and colleagues (ICML 2024) estimated 6.5% to 16.9% of AI-conference peer reviews were substantially LLM-modified, with spikes in *commendable*, *meticulous*, and *intricate*. Watch those three in reviews, feedback, and evaluations.
 
 ## 11. Copula avoidance
 
@@ -825,6 +833,69 @@ And the corpus is technical. A blog post is not going to say *byte-identical*. T
 
 ---
 
+## 68. Reflexive validation and accepting the premise
+
+**Looks like.** "That's a really thoughtful question, and it's completely understandable to feel that way." "You're right to be concerned about this." A piece that answers the question exactly as framed, including a premise that is wrong. Both sides of a disagreement affirmed so nobody is told they are mistaken.
+
+**Why it reads as AI.** It is measured. ELEPHANT (Cheng et al. 2025) ran 10,395 advice and assumption-laden prompts through 11 models and compared them with human answers. Models offered emotional validation in about 76% of cases against 22% for people, used indirect, hedged language in about 87% against 20%, accepted the asker's framing in about 90% against 60%, and affirmed both sides of a moral conflict about 48% of the time. Entry 31 covers the chatbot opener; this is the deeper habit underneath it, and it survives into polished prose as a refusal to tell the reader anything they did not already believe.
+
+**Fix.** Cut validation that does no work. Check the premise before answering it: if the question assumes something false, say so first. Where the draft affirms both sides, decide which one is right and say why, or name the specific condition under which each is right. Pair with entry 37 (balanced both-sides) and entry 20 (hedging).
+
+## 69. Stock names and default characters
+
+**Looks like.** The example customer is Sarah. The protagonist is Emily, or Elara, or Kael. The town is Willow Creek; the company is Acme or TechCorp; the researcher is Dr. Chen.
+
+**Why it reads as AI.** Models reach for the same few names because they are the most probable fill for "a person." Russell, Karpinska and Iyyer (2025) found "Emily" or "Sarah" in about 63% of GPT-4o articles and 70% of Claude articles in their sample, and the expert annotators in that study used it as a tell.
+
+**Fix.** Use a real name when there is one (with permission), or pick a deliberate one that fits the setting. In technical writing, a role ("the on-call engineer") is often better than an invented person anyway.
+
+## 70. Quotes in the narrator's voice
+
+**Looks like.** "'This changes everything about how we work,' said the program director." A quote that is too formal for speech, sounds exactly like the paragraph around it, and lands at the end of the paragraph to wrap it up.
+
+**Why it reads as AI.** Real quotes are where another voice enters the piece: shorter, rougher, sometimes ungrammatical, often placed where they argue rather than where they summarize. In Russell et al. (2025), quotes were cited in about 22% of expert explanations for spotting AI articles, specifically for sharing the article's tone and closing paragraphs. A quote that could be deleted and replaced with the writer's own sentence with no change in voice was probably invented or flattened.
+
+**Fix.** Use what the person actually said, including the plain or awkward parts. Move it to where it does work, usually as evidence before the claim, not as applause after it. If there is no real quote, do not manufacture one; paraphrase with attribution.
+
+## 71. Purple prose and stock imagery
+
+**Looks like.** "A tapestry of modernity." "The heart of progress." "Faces etched with stories." "The city hummed with possibility." Sensory decoration attached to things that did not need it, often three images to a sentence.
+
+**Why it reads as AI.** Chakrabarty, Laban and Wu (CHI 2025) had professional writers edit 1,057 model-written paragraphs (the LAMP corpus) using a seven-category taxonomy. Cliché accounted for about 17% of edits and purple prose about 10%, alongside awkward word choice (about 28%), poor sentence structure (about 20%), redundant exposition (about 18%), lack of specificity (about 8%), and tense inconsistency (about 3%). No model family wrote markedly better than the others. The taxonomy doubles as an edit checklist for creative and feature writing.
+
+**Fix.** Keep one image only when it carries information the literal statement cannot. Replace the rest with the observed detail: what the faces actually showed, what the city actually sounded like.
+
+## 72. The grammatical fingerprint
+
+**Looks like.** Sentences hung on present participles ("Building on this foundation, the team shipped..."), nominalizations ("the implementation of"), clauses with "that" as the subject ("That this matters is clear"), and long coordinated phrases ("faster and cheaper and more reliable deployments"), with almost no agentless passives.
+
+**Why it reads as AI.** Reinhart, Brown and colleagues (PNAS 2025) compared parallel human and model texts written from the same prompts on 66 of Biber's grammatical features. Instruction-tuned models used present participial clauses at 2 to 5 times the human rate (GPT-4o about 5.3 times), nominalizations at about 1.5 to 2.1 times, "that"-subject clauses at about 2.6 times, and phrasal coordination at about 1.9 times, while GPT-4o used agentless passives at roughly half the human rate. The gap was larger in instruction-tuned models than in base models and did not shrink with scale. This gives entries 6 (superficial -ing endings) and 58 (zombie nouns) a grammatical measurement rather than a vocabulary list.
+
+**Fix.** Turn participial openers into a main clause with a subject. Turn nominalizations back into verbs. Break long coordinated phrases into the one or two items that matter. And do not strip every passive: "the bug was introduced in March" is often the honest sentence when nobody knows who did it. Note that entry 17 warns against subjectless fragments, which is a different problem.
+
+## 73. Model-family openers and formatting
+
+**Looks like.** "Certainly!" "Below is a..." "Here's a breakdown of..." "Based on the information provided..." Bold on every key phrase. A header over every three paragraphs. The same markdown shape regardless of what the content needed.
+
+**Why it reads as AI.** Sun, Yin, Xu, Kolter and Liu (ICML 2025) trained classifiers that told five model families apart with about 97% accuracy. Reported habits: ChatGPT opens with "Certainly" or "Below is" and leans on "such as" and "overall"; Claude leans on "here," "according to," and "based on"; ChatGPT bolds and uses headers where Claude uses plain bullets. Markdown structure alone identified the model about 73% of the time, and the signal survived shuffling the words. Formatting is a fingerprint in its own right, which is why it has its own dimension.
+
+**Fix.** Delete opener phrases outright. Format for the reader's task: headers when someone will navigate, bold for the one thing they must not miss, prose when the ideas connect. If the formatting would be the same whatever the content, it is the model's habit, not the content's need.
+
+---
+
+## When the tells mislead
+
+Every entry above is a signal, not a verdict, and some of the research cuts the other way. Read this before scoring anyone's writing.
+
+- **Plain is not AI.** Liang, Yuksekgonul, Mao, Wu and Zou (Patterns, 2023) ran 91 TOEFL essays through seven detectors: the average false-positive rate was about 61%, and about 98% were flagged by at least one. Simple, constrained phrasing from non-native writers reads as low-perplexity, which is what the detectors flag. Never score short sentences, limited vocabulary, or textbook grammar from a second-language writer as tells. The rhythm and lexical dimensions are the most exposed to this error.
+- **Edited is not generated.** Shan, Lee and Hao (2026, preprint) found model-written text has a consistent stylometric footprint across eight models and five domains, but human text a model *edited* does not: it shifts only slightly, mostly in lexical density. A human draft polished by a model will not show the full catalog, and a low ai-smell score does not mean nobody used a model. The score measures how the prose reads, which is the only claim it should make.
+- **Vocabulary lists expire.** Juzek and Ward (COLING 2025, and a 2025 follow-up) found neither architecture nor training data explains words like *delve*; human raters in feedback training prefer them, which is how they get in. Lists track a generation of models and its feedback data, so they age. Prefer the term-frequency method in this file over any fixed list, including this one.
+- **Experts are the best detector, and they use the whole picture.** Russell, Karpinska and Iyyer (2025) found a majority vote of five frequent LLM users misclassified 1 of 300 articles, beating most commercial detectors, including on paraphrased text. Their stated reasons, by share of explanations: vocabulary (about 53%), predictable structure (about 36%), grammar too clean (about 25%), lack of originality (about 24%), and quotes (about 22%). No single tell carried the decision; clusters did.
+- **Voice matching can erase culture.** Agarwal, Naaman and Vashistha (CHI 2025) found AI writing suggestions pulled Indian participants toward Western styles. When matching a writer's voice, keep their regional idiom, references, and register; do not "correct" them toward a neutral default.
+- **In flagged copy, check the facts.** Russell, Iyyer and colleagues (ACL 2026) estimated about 9% of 186,000 US newspaper articles from summer 2025 were partly or fully AI-generated, rarely disclosed, and concentrated in small outlets and in weather and tech coverage. The study used Pangram's detector and two authors are from Pangram, so read its numbers with that in mind. The editorial point stands either way: where prose reads as generated, verify claims, not just style.
+
+---
+
 ## Writing in a language other than English
 
 Every entry above is English. The tells do not translate, and running an English catalog against a Spanish or Korean draft will flag the wrong things and miss the real ones, because each language has its own pre-existing bad register that model output falls into.
@@ -836,6 +907,7 @@ What is known so far, and it is thin:
 - **Chinese, 公文腔.** Officialese: `进行` plus noun as padding, `予以`, stock openers such as `众所周知`.
 - **Vietnamese.** Sino-Vietnamese vocabulary and calque openers (`thực hiện`, `trong trường hợp`) where plain Vietnamese is shorter.
 - **Filipino.** Over-formal literary Tagalog and calque openers (`upang`, `sa pamamagitan ng`) where the editorial register is conversational.
+- **Korean, measured.** Lee (2026, single-author preprint) ran a morphology-aware excess-vocabulary count over 398,000 Korean journal abstracts: 시사하다 ("suggest") appeared in about 21% of 2026 abstracts against about 5% expected, while the plain 알아보다 ("look into") fell to about a quarter of trend. The shift began in late 2024, a year after the English abstracts in the same papers, and translation does not explain it. The first frequency evidence for a non-English register shift; count morphemes, not words, in agglutinative languages.
 
 The pattern across all five is the same and it is worth naming, because it is the fastest way to build a list for a language not here: **model output lands in whichever register that language already reserves for institutions.** Bureaucratic Russian, official Chinese, translated Korean, formal Tagalog. Ask a native speaker what their language sounds like when a ministry writes it, and that is most of the catalog.
 
@@ -1081,5 +1153,17 @@ These are descriptive field guides, not detectors. No single pattern proves AI a
 | Traces of AI-associated language in unscripted spoken English (Anderson, Galpin & Juzek 2025) | https://arxiv.org/abs/2508.00238 | 22.1M words of unscripted speech. Replicates the direction of the Yakura result but finds it smaller and uneven, with *delve* not significantly up. The counterweight that keeps the lexical dimension capped |
 | Measuring AI "Slop" in Text (Shaib et al. 2025) | https://arxiv.org/abs/2509.19163 | Taxonomy of slop from expert interviews, turned into interpretable dimensions and annotated at the span level. Slop judgments are partly subjective but correlate with coherence and relevance rather than polish. Independent support for the reader-value score and for cite-the-span scoring |
 | How LLMs Distort Our Written Language (Abdulhai et al. 2026) | https://arxiv.org/abs/2603.18161 | User study plus model-revised pre-LLM essays plus AI-written peer reviews. Heavy LLM users' essays were ~70% more likely to stay neutral; models changed meaning even under grammar-only instructions. Empirical basis for the voice-and-stance dimension, and a warning that no rewrite is surface-only |
+| People who frequently use ChatGPT are accurate detectors (Russell et al. 2025) | https://arxiv.org/abs/2501.15654 | Expert detectors ranked by the tells they cite; stock names; quote placement. Entries 69 and 70 |
+| LAMP corpus: Can AI writing be salvaged? (Chakrabarty et al., CHI 2025) | https://arxiv.org/abs/2409.14509 | Professional-writer edit taxonomy with shares per category. Entry 71 |
+| Do LLMs write like humans? (Reinhart et al., PNAS 2025) | https://arxiv.org/abs/2410.16107 | Grammatical feature rates, participles and nominalizations. Entry 72 |
+| ELEPHANT (Cheng et al. 2025) | https://arxiv.org/abs/2505.13995 | Measured sycophancy: validation, indirectness, premise acceptance. Entry 68 |
+| Idiosyncrasies in LLMs (Sun et al., ICML 2025) | https://arxiv.org/abs/2502.12150 | Per-family openers and markdown fingerprints. Entry 73 |
+| AI-modified peer reviews (Liang et al., ICML 2024) | https://arxiv.org/abs/2403.07183 | Peer-review vocabulary: commendable, meticulous, intricate. Entry 10 |
+| GPT detectors biased against non-native writers (Liang et al. 2023) | https://arxiv.org/abs/2304.02819 | False-positive guardrail. When the tells mislead |
+| AI editors have no consistent footprint (Shan et al. 2026) | https://arxiv.org/abs/2608.27855 | Edited text differs from generated text. When the tells mislead |
+| Why does ChatGPT "delve" so much? (Juzek & Ward 2025) | https://arxiv.org/abs/2412.11385 | Feedback training explains overused words; lists age. When the tells mislead |
+| AI use in American newspapers (Russell et al., ACL 2026) | https://arxiv.org/abs/2510.18774 | Journalism prevalence; check facts in flagged copy. Vendor co-authors. When the tells mislead |
+| AI suggestions homogenize writing (Agarwal et al., CHI 2025) | https://arxiv.org/abs/2409.11360 | Cultural flattening; keep idiom when matching voice. When the tells mislead |
+| Korean register shift (Lee 2026) | https://arxiv.org/abs/2609.07447 | Morphology-aware excess vocabulary for Korean. Non-English section |
 | awesome-slop (index) | https://github.com/hwajongpark/awesome-slop | Small but current index of slop research, linters, classifiers, humanizers, and word lists, organized by language. Useful as a survey of what exists; not itself a source |
 | slop-gate | https://github.com/hwajongpark/slop-gate | Zero-dependency CLI that flags the em dash and about 40 English tells in CI, with opt-in translationese rule packs for Korean, Russian, Chinese, Vietnamese, and Filipino. The only pointer here for non-English tells; a one-author project, so treat the packs as a starting list |
