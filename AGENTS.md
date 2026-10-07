@@ -176,7 +176,7 @@ for small rules files such as `.clinerules` or `.windsurfrules`.
 - The frontmatter `description` has a hard cap of 1,024 characters and the `name`
   a cap of 64. Uploads to claude.ai and the Skills API reject anything longer and
   the failure message is not obvious. The build checks both; it currently reports
-  942 of 1,024.
+  1,020 of 1,024.
 - `name` must be lowercase letters, numbers, and hyphens only, and cannot contain
   "claude" or "anthropic".
 - Write everything in this repo the way the skill says to write. No em dashes or

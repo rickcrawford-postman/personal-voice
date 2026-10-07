@@ -9,9 +9,10 @@ description: |
   default. Runs in detect mode (flag the tells) or edit mode (rewrite in
   place). Reports an ai-smell score from 0 to 100 for how machine-generated the
   writing reads, a reader-value score from 0 to 100 for substance, concision,
-  calibration, and reader path, and a human-touch list of the places where only
-  the writer can add the number, name, moment, or opinion that gives a piece
-  flair. Built on Wikipedia's "Signs of AI writing" and published detection
+  calibration, and reader path, an adversarial review that argues against the
+  piece as its toughest readers would, and a human-touch list of the places
+  where only the writer can add the number, name, moment, or opinion that gives
+  it flair. Built on Wikipedia's "Signs of AI writing" and published detection
   research. Triggers: "make this sound human," "this reads like AI," "rewrite
   in my voice," "is this AI slop," or any request for natural writing.
 license: MIT
@@ -27,7 +28,7 @@ allowed-tools:
 
 # Personal Voice
 
-Write and edit so the result reads like a person, not an agent. This skill does three jobs: it drafts new writing in a natural personal voice, it audits existing drafts to remove the patterns that flag text as AI-generated, and it checks whether the writing is concise, calibrated, and worth a reader's time, which is a separate question from whether it sounds human. It is built on the humanizer skill, which draws its pattern catalog from Wikipedia's "Signs of AI writing" (maintained by WikiProject AI Cleanup), with additional patterns observed in long-form drafting and borrowed from the no-ai-slop and deslop projects.
+Write and edit so the result reads like a person, not an agent. This skill does three jobs: it drafts new writing in a natural personal voice, it audits existing drafts to remove the patterns that flag text as AI-generated, and it checks whether the writing is concise, calibrated, and worth a reader's time, which is a separate question from whether it sounds human. Before anything ships, it also argues against the piece the way its toughest readers would. It is built on the humanizer skill, which draws its pattern catalog from Wikipedia's "Signs of AI writing" (maintained by WikiProject AI Cleanup), with additional patterns observed in long-form drafting and borrowed from the no-ai-slop and deslop projects.
 
 ## Personal voice versus agent voice
 
@@ -243,7 +244,8 @@ Match the size of your changes to whose voice the text carries and how much voic
 12. Run the calibration test. Check absolutes and superlatives against what has actually been verified, and check hedges and attributions against the source rather than against the previous draft. Rewriting is where certainty gets inflated, so this check comes after the rewrite, not before it.
 13. Rewrite each problem in place, making the smallest change that fixes the tell (see How hard to edit). Preserve meaning, and preserve the writer's voice if a sample was given or the draft is already theirs.
 14. Re-audit after any rewrite. Tidy triplets (rule of three), circular bookends, imperative closers, and dropped hedges are the things most likely to creep back in when a sentence gets edited.
-15. Write the human-touch list. Two to five places where only the writer can add the number, name, moment, or opinion the piece needs, each phrased as a question they can answer in a sentence.
+15. Run the adversarial review (see "The adversarial review"). Apply the fixes and concessions, then re-audit the changed sentences.
+16. Write the human-touch list. Two to five places where only the writer can add the number, name, moment, or opinion the piece needs, each phrased as a question they can answer in a sentence. Objections the review marked "needs the writer" come first.
 
 ## The ai-smell score
 
@@ -319,21 +321,62 @@ Scoring rules:
 
 The two scores also change what to do next. High ai-smell with high reader-value means the content is there and needs an editing pass. Low ai-smell with low reader-value means editing is finished and the piece needs the writer.
 
+## The adversarial review
+
+The tell hunt asks whether the writing sounds like a person. The two scores ask how it reads and whether there is anything in it. Neither one asks the question the toughest reader will ask: is this true, and why should I believe you? So every substantial pass also argues against the piece, the way its hardest readers would, before it ships. Gary Klein's premortem works the same way: assume the piece has already failed with its audience, and work out why.
+
+**1. Name the hostile readers.** Pick two or three people who would actually read this piece and have a reason to push back, specific to its audience. Generic personas ("a critic") find generic objections. Useful defaults:
+
+- **The expert in the room.** Knows the subject better than the writer and will check every number, command, and causal claim.
+- **The skeptic of motive.** Assumes the piece is selling something (a product, a promotion, the writer's own judgment) and reads every claim of value as a pitch.
+- **The reader in a hurry.** Gives the piece thirty seconds and needs to know what to do with it. If it cannot answer that, it failed them regardless of quality.
+
+Swap in the real ones when you know them: the security reviewer for a design doc, the customer's engineer for a sales README, the referee for a paper.
+
+**2. Steelman each objection.** For each reader, write the strongest objection they would raise, quoting the exact line it attacks. Make it as strong as you honestly can. An objection you can knock down in one sentence was a strawman, and finding strawmen is how this pass turns into flattery. Look for:
+
+- **Unsupported claims.** A statement of value or fact with nothing behind it.
+- **Overclaims.** A claim bigger than its evidence, including results generalized past their sample.
+- **Missing costs.** A recommendation with no downside named, when the reader knows there is one.
+- **Motive.** A passage that reads as promotion, especially where the writer benefits from the conclusion.
+- **Omissions.** The alternative, failure mode, or prior work an informed reader expects and does not see.
+- **Internal contradictions.** Two parts of the piece that cannot both be true, including numbers that do not add up.
+- **No "so what."** A section the reader finishes without knowing what to do differently.
+
+**3. Triage every objection into one of four outcomes.**
+
+| Outcome | When | What to do |
+|---|---|---|
+| **Fix** | The text is wrong, overstated, or unclear, and you can fix it with what is already known | Reword, qualify, cut, or reorder. Smallest change that answers it |
+| **Concede** | The objection is right and the piece should say so | Add the limitation, cost, or caveat in plain words, once, where it applies |
+| **Needs the writer** | Answering it takes evidence only the writer has | Move it to the human-touch list as a question. Do not invent the answer |
+| **Stand** | The objection is wrong | Say why in one line, so the writer can disagree with you |
+
+**Rules, so the review stays honest:**
+
+- **Five objections at most, strongest first.** A long list of weak objections hides the two that matter.
+- **Never answer an objection with invented evidence.** That is the same failure the calibration test exists to catch, wearing a different reason.
+- **Do not hedge your way out.** Answering every objection with "may" and "in some cases" trades an overclaim for a piece that commits to nothing. Concede specifically, or fix the claim.
+- **Check the fixes.** Concessions and qualifiers are where new tells creep in: tidy triplets, "while X, Y" pivots, and balanced both-sides paragraphs. Re-run the tell hunt on every sentence you changed.
+- **Score after the review.** Unaddressed objections are calibration and substance findings, so they show up in the reader-value score, not just in the list.
+- **Functional writing gets a short review.** A status update or a form needs the expert and the hurried reader, not the skeptic of motive.
+
 ## The final pass: read it aloud and score
 
 If you can't read a paragraph aloud without hearing the cadence of a model, it still reads as AI. After the draft, run this pass explicitly:
 
 1. Ask: "What would make this so obviously AI-generated?" Answer honestly with the specific remaining tells, naming them with the vocabulary from the catalog.
 2. Ask the second question: "if a reader knew this topic already, what would they get from this?" Answer with what is actually checkable in the draft, not with what it covers.
-3. Score the draft on both rubrics above, citing evidence per dimension.
-4. Revise to fix the tells, heaviest dimensions first, then to cut, then to calibrate.
-5. Re-score the revised version on both rubrics.
-6. Write the human-touch list: the two to five places where only the writer can raise the value, each as a question they can answer in a sentence.
-7. Present the final version, both scores, and the human-touch list.
+3. Run the adversarial review: name the hostile readers, steelman up to five objections, and triage each into fix, concede, needs the writer, or stand.
+4. Score the draft on both rubrics above, citing evidence per dimension.
+5. Revise to fix the tells, heaviest dimensions first, then to cut, then to calibrate, then to apply every fix and concession from the review.
+6. Re-score the revised version on both rubrics, and re-check the sentences the review changed for new tells.
+7. Write the human-touch list: the two to five places where only the writer can raise the value, each as a question they can answer in a sentence. Objections marked "needs the writer" go here first.
+8. Present the final version, both scores, the adversarial review, and the human-touch list.
 
 ## Output format
 
-Every mode reports both scores and the human-touch list. Report each score as a headline number plus the per-dimension breakdown with cited evidence, so neither one is a black box:
+Every mode reports both scores, the adversarial review, and the human-touch list. Report each score as a headline number plus the per-dimension breakdown with cited evidence, so neither one is a black box:
 
 ```
 AI-smell: 12/100 (faint)          lower is better
@@ -350,6 +393,16 @@ Reader-value: 58/100 (solid)      higher is better
   Calibration 12/20  "completely transforms" unsupported; the 40-user
                      sample lost its size in the rewrite
   Reader path  6/15  opens on a definition, two headings are questions
+
+Adversarial review (strongest first):
+  1. Expert: "40% faster" (section 2) has no baseline or sample.
+     -> Needs the writer: what was it measured against, and on how many runs?
+  2. Skeptic of motive: the close is a pitch for the tool with no cost named.
+     -> Conceded: added the migration cost and who should not switch.
+  3. Reader in a hurry: nothing says what to do first.
+     -> Fixed: moved the setup command to the top.
+  4. Expert: "no one else does this" is false; two projects already do.
+     -> Fixed: cut the claim.
 
 Human touch (5 min of your time, biggest payoff first):
   1. Section 2: which two teams stopped holding standups?
@@ -369,9 +422,9 @@ AI-smell: 12/100 (faint)
   ...
 ```
 
-In **detect** mode, lead with both scores, then provide the findings: each tell named with catalog vocabulary, the quoted line, and a one-line fix, loudest first. Then the human-touch list. No rewrite.
+In **detect** mode, lead with both scores, then provide the findings: each tell named with catalog vocabulary, the quoted line, and a one-line fix, loudest first. Then the adversarial review, with each objection's proposed outcome but nothing applied. Then the human-touch list. No rewrite.
 
-In **edit** mode, provide the draft rewrite, a short honest answer to "what still reads as AI here, and what is still thin," and the final version after fixing those. Report both scores as a before to after delta ("AI-smell 58 to 12, reader-value 31 to 58"). Say plainly when the reader-value number is capped by things you cannot supply. A brief bullet summary of changes is optional when it helps; when you edited the user's own draft, that summary doubles as a "what changed" list so they can see every touch.
+In **edit** mode, provide the draft rewrite, a short honest answer to "what still reads as AI here, and what is still thin," the adversarial review with what you did about each objection, and the final version after fixing those. Report both scores as a before to after delta ("AI-smell 58 to 12, reader-value 31 to 58"). Say plainly when the reader-value number is capped by things you cannot supply. A brief bullet summary of changes is optional when it helps; when you edited the user's own draft, that summary doubles as a "what changed" list so they can see every touch.
 
 Keep the human-touch list short and ranked. Five items is the ceiling, and the first one should be the one that would improve the piece most.
 

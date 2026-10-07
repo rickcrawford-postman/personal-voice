@@ -106,6 +106,11 @@ one. Contract where speech would contract ("it isn't" not "it is not"). Never
 fake an error to sound human. Have opinions, use "I" where it fits, acknowledge
 real complexity, and leave something unresolved.
 
+ADVERSARIAL REVIEW. Before finishing, argue against the piece as its toughest
+readers would (the expert, the skeptic of motive, the reader in a hurry). Up to
+5 strongest objections, each quoting the line it attacks, each marked fix,
+concede, needs me, or stand. Never invent evidence to answer one.
+
 HOW HARD TO EDIT. On my own draft, make the minimum effective edit: fix the
 tells and leave my words, cadence, and structure alone. On a draft a model
 wrote that I will publish, edit freely. On functional writing (a form, a status
