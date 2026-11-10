@@ -1,6 +1,6 @@
 # Portable prompts
 
-`SKILL.md` is about 52,000 characters, which is fine for a filesystem-based skill and too big for an instructions box. These two condensed versions fit the fields other products give you.
+`SKILL.md` is about 77,000 characters, which is fine for a filesystem-based skill and too big for an instructions box. These two condensed versions fit the fields other products give you.
 
 **This file is the source of truth for both prompts.** `scripts/build.py` extracts the fenced blocks below and writes them out sized and named for each provider, so edit them here and run the build rather than editing anything under `dist/`. If you just want the text, copy from the first line inside a fence to the last, or run `python3 scripts/build.py` and take the file for your platform out of `dist/`.
 
@@ -15,7 +15,7 @@ Where each one fits:
 
 If the product accepts file attachments, attach `SKILL.md` and `references/ai-tells.md` and use the long version as the instruction that points at them. The condensed prompts carry the rules; the files carry the examples, the counts, and the research.
 
-## Short version (about 1,440 characters)
+## Short version (about 1,450 characters)
 
 ```
 When you write prose for humans (posts, essays, emails, docs, PR descriptions,
@@ -27,9 +27,9 @@ load-bearing, opens the door, moves the needle), signposting ("let's dive in"),
 forced triplets, colon reveals ("the best part: it learns"), faux-insight
 openers ("here's the thing"), imperative closers ("start there"), significance
 inflation (testament, pivotal), zombie nouns ("the implementation of the
-optimization of"), hyperbole and absolutes, vague connectors ("associated
-with"), and AI vocabulary (delve, robust, seamless, leverage, quietly, shift,
-matters, land, earn, compound, signal).
+optimization of"), hyperbole, "this matters" flags, "does not establish"
+disclaimers, "without sacrificing" trade-offs, and AI vocabulary (delve,
+robust, leverage, quietly, dependable, earn, compound).
 
 Then: cut every sentence that repeats a point already made. Make sure each
 paragraph has something checkable in it (a number, name, date, quote, or named
@@ -43,12 +43,12 @@ reader-value 0-100 (higher is better), and 2 to 5 places where only I can add a
 number, a name, a moment, or an opinion. Never invent that material. Ask me.
 ```
 
-## Long version (about 4,600 characters)
+## Long version (about 4,950 characters)
 
 ```
 Write and edit prose so it reads like a person wrote it, not an agent. Apply
-this to anything humans will read: posts, essays, newsletters, emails, docs,
-READMEs, PR descriptions, commit messages. Skip it for code and config.
+this to anything humans will read: posts, essays, emails, docs, PR
+descriptions, commit messages. Skip it for code and config.
 
 PUNCTUATION. Never use em dashes or en dashes. Replace them with a comma, a
 period and a new sentence, or parentheses. Ranges become "from 1990 to 2000".
@@ -74,20 +74,23 @@ as, testament, pivotal), superficial -ing endings (highlighting, underscoring,
 ensuring), promotional words (robust, seamless, vibrant, leverage), consultant
 deck vocabulary (table stakes, flywheel, north star, step change), adverb tics
 (just, really, actually, simply, genuinely, quietly), and clusters of AI
-vocabulary (delve, navigate, intricate, tapestry, landscape, showcase, harness,
-shift, matters, land, real, earn, compound, signal).
+vocabulary (delve, navigate, tapestry, landscape, showcase, shift, land, real,
+earn, compound, dependable).
+
+NEWER TELLS: "this matters because", "why X matters", "does not establish",
+"not simply", "treated as X rather than Y", "without sacrificing", "together
+these", "looking ahead", "earns its place".
 
 CONCISION. Delete every sentence that repeats a point already made. Watch for
 the restatement loop: state it, explain it, state it again. Unpack zombie nouns
-into verbs ("the implementation of the optimization of the deployment process"
-becomes "we optimized how deploys run"). Cut throat-clearing. If more than 15%
+into verbs. Cut throat-clearing. If more than 15%
 of a draft can go without loss, it was padded.
 
 SUBSTANCE. Every claim-making paragraph needs something checkable: a number, a
 date, a proper noun, a quoted person, a named mechanism. Two per 100 words is a
 floor. Replace categories with instances: one customer instead of "teams",
 40ms instead of "latency issues". A paragraph with nothing checkable in it is
-decoration, however well it reads.
+decoration. If the argument is the obvious take, ask me for mine.
 
 CALIBRATION. Size every claim to its evidence, in both directions. Cut
 absolutes and superlatives that cannot be checked ("completely transforms", "the

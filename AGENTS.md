@@ -11,8 +11,8 @@ files are the source of truth and everything else is generated from them.
 
 | File | Role |
 |------|------|
-| `SKILL.md` | The skill. YAML frontmatter plus the full instructions. About 52,000 characters. |
-| `references/ai-tells.md` | Progressive-disclosure reference. The catalog of 67 AI writing tells, the mechanical counts, the term-frequency method, and the research notes. Loaded only when the skill is doing real work. |
+| `SKILL.md` | The skill. YAML frontmatter plus the full instructions. About 77,000 characters. |
+| `references/ai-tells.md` | Progressive-disclosure reference. The catalog of 82 AI writing tells, the mechanical counts, the term-frequency method, and the research notes. Loaded only when the skill is doing real work. |
 | `PROMPT.md` | The two condensed prompts, in its fenced blocks. The build extracts them for every provider that only has an instructions field. Not part of the skill package itself. |
 
 `dist/` is build output and is gitignored. Do not commit it.

@@ -2,7 +2,7 @@
 
 This is the working catalog of patterns that flag prose as AI-generated. It merges the humanizer skill (drawn from Wikipedia's "Signs of AI writing," maintained by WikiProject AI Cleanup) with additional patterns observed in long-form drafting. Each entry has the pattern, why it reads as AI, and how to fix it. The list is a living artifact. If you find a new tell, add it.
 
-The first six are the ones that show up most. Hunt them first. Entry 67 is the only one compiled from a frequency count rather than from observation; read it alongside entries 47, 48, and 11, which it measures. Entries 68 to 73 are the newest, each grounded in a measured study, and the section "When the tells mislead" after them is the guardrail every score needs.
+The first six are the ones that show up most. Hunt them first. Entry 67 is the only one compiled from a frequency count rather than from observation; read it alongside entries 47, 48, and 11, which it measures. Entries 68 to 73 are grounded in measured studies, and entries 74 to 82 are the late-2026 set, measured on GPT-6, Claude Opus 5 and 5.5, and Gemini 3.1 after the em dash and the delve vocabulary faded. The section "When the tells mislead" after them is the guardrail every score needs.
 
 ## Hunt these first (top six)
 
@@ -13,7 +13,9 @@ The first six are the ones that show up most. Hunt them first. Entry 67 is the o
 5. **Signposting and announcements**: "Let's dive in," "Here's what you need to know"
 6. **Rule of three**: forced triplets
 
-Scan next: significance inflation, superficial `-ing` endings, fragmented headers, structural and door metaphors (load-bearing, threads, opens the door), imperative closers, AI vocabulary clusters, and the 2026 agent register (entry 67): physical nouns for abstractions, objects given intentions, certifying adverbs, absolute negation.
+Scan next: significance inflation, superficial `-ing` endings, fragmented headers, structural and door metaphors (load-bearing, threads, opens the door), imperative closers, AI vocabulary clusters, and the 2026 agent register (entry 67): physical nouns for abstractions, objects given intentions, certifying adverbs, absolute negation, and since September 2026, narrated verdicts (*the check refused*, *the doc says*).
+
+Then the late-2026 set, which is what current models do instead of the famous tells: corrective disclaimers (*does not establish*, *should be treated as X rather than Y*, entry 74), salience flags (*this matters*, *why X matters*, 75), costless trade-offs (*without sacrificing*, 76), synthesis openers (*together these*, *adds another layer*, *looking ahead*, 77), mannered prose and *earns its place* (78), revisions written as diffs (79), the default argument with interchangeable detail (80), one-line staccato paragraphs where the dash used to be (81), and performed pushback (*I'd gently push back*, 82). Entry 73 has a per-family table, because two thirds of current tells belong to one model family.
 
 Then run the substance checks, which catch what a tell list cannot. Entries 58 to 63 cover them: padding and zombie nouns (concision), hyperbole and certainty inflation (calibration), and abstraction with nothing checkable in it (substance). A draft can be free of every tic above and still waste the reader's time.
 
@@ -94,6 +96,15 @@ Then grep for provenance artifacts (entry 57). Those are evidence about how the 
 71. Purple prose and stock imagery
 72. The grammatical fingerprint
 73. Model-family openers and formatting
+74. Corrective framing and the "does not establish" disclaimer
+75. Salience flags: "this matters"
+76. Trade-offs without a cost
+77. Synthesis and layering transitions
+78. Mannered prose and the "earns its place" idiom
+79. Changelog voice: writing the revision instead of the document
+80. The default argument and interchangeable detail
+81. Staccato line breaks: the dash's replacement
+82. Performed pushback
 
 ---
 
@@ -107,7 +118,11 @@ Then grep for provenance artifacts (entry 57). Those are evidence about how the 
 
 **Variants.** "It's not just X, it's Y." "Not X. Y." "It's not about X. It's about Y." "Rather than X, Y" when X and Y aren't actually being weighed. Tailing negations: "The form fills itself in, no guessing." See also the "it was never X, it is Y" false-depth reveal (entry 42).
 
-**Fix.** Say what the thing is. Trust the reader to register the contrast. If the contrast is essential, give the opposing case its own sentence and develop it.
+**The late-2026 shapes, measured.** The construction did not go away when the em dash did; it changed clothes by model family. In Graphite's 2026 study of 10,000 matched articles per model against a pre-ChatGPT human baseline, the frame "is not just a _ it is" ran at 153 times the human rate in Gemini 3.1 Pro, "less like a _ and more like" at 105 times in Claude Opus 5, "is more than a _ it" at 98 times in Opus 5.5, and "the _ is not simply" at 576 times in GPT-6 Astra. The "rather than" form is now the most common of all: it was the single most over-used bigram in both Opus 5.5 and Astra. Entry 74 covers its newest use, which corrects a claim where the older form dramatized one.
+
+**Why it survives training.** Peng and colleagues (arXiv 2610.22249, 2026) annotated 307 uses of the Mandarin equivalent, 不是X而是Y, from five commercial models that use it 2.5 to 9.2 times as densely as human writers. Only 1.3% were wrong. 52.8% were correct but unnecessary, and the reward models they tested preferred the construction even over quality-matched alternatives. That is the useful test, and it works in English too: the question is never whether the sentence is grammatical, it is whether anything in the context needed the rejected alternative named. Boggia (arXiv 2607.21498, 2026, small samples) adds that the over-use is genre-bound: about twice the human rate in oratory and abstracts, and *below* the human rate in casual Q&A and narrative. Hunt it hardest in persuasive and summary prose.
+
+**Fix.** Say what the thing is. Trust the reader to register the contrast. If the contrast is essential, give the opposing case its own sentence and develop it. Ask of each instance whether a reader was actually likely to believe the rejected alternative; if not, delete it.
 
 ## 2. The contrast-flip couplet
 
@@ -145,7 +160,9 @@ Then grep for provenance artifacts (entry 57). Those are evidence about how the 
 
 **Why it reads as AI.** The model hits the reader over the head with notability claims, often listing outlets without context.
 
-**Fix.** Replace the list with one specific, sourced instance. "In a 2024 New York Times interview, she argued that AI regulation should focus on outcomes rather than methods."
+**The 2026 form: identification by source.** Wikipedia's editors added a sibling in 2026: stilted sentences about what an official site, database, or registry *says* about the subject, in place of the fact itself. "The ministry's website identifies him as a retired officer." "She is listed in the national registry." "His professional profile lists him as founder." The focus moves from the subject to the characteristics of the sources, which is the same move as the outlet list in a quieter voice.
+
+**Fix.** Replace the list with one specific, sourced instance. For the identification form, state the fact and cite the source: "He retired from the civil service in 2019." "In a 2024 New York Times interview, she argued that AI regulation should focus on outcomes rather than methods."
 
 ## 6. Superficial -ing endings
 
@@ -185,9 +202,21 @@ Then grep for provenance artifacts (entry 57). Those are evidence about how the 
 
 **The 2026 set.** The list above is the ChatGPT-era vocabulary that detectors and word-frequency studies caught first, so a lot of writing has already been scrubbed of it. A newer cluster has replaced it, drawn from Forbes's May 2026 roundup of AI giveaways: shift, matters ("this matters because"), shape (verb, "shapes how we think"), land ("the point lands"), real ("real value," "real impact"), earn ("earn the right to," "earn trust"), the work ("do the work"), hold ("hold space," "hold the line"), pull ("the pull of"), compound ("decisions compound"), signal (abstract noun), built different, quietly (entry 47). These are harder to see because they are plain English words, and that is the point: the tell is the density and the abstraction, not the rarity.
 
+**The late-2026 sets, by family.** Graphite's 2026 study and its Opus 5.5 update measured the words each current model over-uses against a pre-ChatGPT human baseline. The family split is sharp, so check the set for whatever model is likely in play:
+
+| Family | Over-used words and phrases, times the human rate |
+|---|---|
+| Claude Opus 5.5 | dependable (23x), clearer (14x), reinforces (14x), matters (13x), practical (11x), steady (11x), quietly (11x), thoughtful (9x), genuine (9x), meaningful (8x), modest, manageable, smoother, deliberate, disciplined, approachable; *together these* (56x), *often called* (58x), *a practical* (24x), *built around* (22x), *looking ahead* (24x) |
+| GPT-6 Astra | broader (31x), manageable (34x), practical (26x), relying (22x), straightforward (18x), matters (18x), useful (17x), priorities (17x), everyday (12x); *that distinction* (594x), *matters because* (356x), *not automatically* (233x), *than relying* (170x), *not simply* (157x), *together these* (95x), *starting point* (30x) |
+| Gemini 3.1 Pro | furthermore (26x), navigating (26x), profound (25x), immense (22x), massive (19x), incredibly (18x), deeply (18x), heavily (18x), highly (16x), ensures (15x), seamlessly (13x); *is incredibly* (35x), *a highly* (33x), *lies in* (27x), *furthermore the* (43x) |
+
+Three things stand out. Claude and GPT have converged on a vocabulary of reassurance and practicality (*dependable, practical, steady, manageable, meaningful*), which is the plain-word set above taken one step further: words that rate something as sensible without saying what it does. Gemini has gone the other way, back toward intensifiers and formal connectives that the delve era made famous. And Wikipedia's 2026 era list for GPT-6 (*challenge, clearer, dependable, echoed, foster, leverage, matters, multifaceted, practical, prioritize, quietly, steady, universally*) overlaps this table heavily, though its own citation is a product review with no measurement behind it, so it corroborates the table without adding evidence of its own.
+
+Graphite generated every article from one fixed prompt on web-article topics, so these rates describe articles, not chat replies or code review. They are also a snapshot: in the same study 55% to 72% of tells were unique to one version within a family. Treat the table as the current cut, and the term-frequency method below as the thing that will still work next quarter.
+
 **Why it reads as AI.** Frequency. Each word in isolation is fine. A cluster of them in one piece is the giveaway. They co-occur. The vocabulary also rotates as models change and as writers learn to avoid the flagged words, so treat any watch-list as dated and check the current one.
 
-**The contamination problem, which is the reason this entry can never be a verdict.** The words are leaking into people. Yakura et al. tracked ChatGPT-preferred vocabulary (*delve, showcase, boast, intricacies, meticulous*) through 737,083 hours of conversation across 824,634 podcast episodes and found an abrupt rise in *spontaneous human speech* after ChatGPT shipped, with a synthetic-control analysis tying the shift to the release. Anderson, Galpin, and Juzek ran a smaller unscripted-speech corpus (22.1 million words) and found the effect real but uneven, with *delve* itself not rising significantly. So the direction is established and the size is contested. Either way, a writer who reaches for one of these words in 2026 may simply be a person who has been listening to other people. Score the cluster, never the word, and never let this dimension decide anything on its own.
+**The contamination problem, which is the reason this entry can never be a verdict.** The words are leaking into people. Yakura et al. tracked ChatGPT-preferred vocabulary (*delve, showcase, boast, intricacies, meticulous*) through 737,083 hours of conversation across 824,634 podcast episodes and found an abrupt rise in *spontaneous human speech* after ChatGPT shipped, with a synthetic-control analysis tying the shift to the release. Anderson, Galpin, and Juzek ran a smaller unscripted-speech corpus (22.1 million words) and found the effect real but uneven, with *delve* itself not rising significantly. So the direction is established and the size is contested. In written science it is no longer contested at all: Holzwarth, González-Márquez and Kobak (arXiv 2608.10715, 2026) scored 1,194,287 PubMed Central full texts on 379 marker words and found that by December 2025, 89% of biomedical papers showed an excess of LLM vocabulary, with the gap between native and non-native English countries closing. When nine papers in ten carry the signal, its presence in one more tells you almost nothing. Either way, a writer who reaches for one of these words in 2026 may simply be a person who has been listening to other people. Score the cluster, never the word, and never let this dimension decide anything on its own.
 
 **Fix.** Use the plain word. Delve becomes look at. Navigate becomes work through. Intricate becomes detailed. Underscore becomes show. Robust becomes reliable or thorough. Leverage becomes use.
 
@@ -206,6 +235,8 @@ Then grep for provenance artifacts (entry 57). Those are evidence about how the 
 **Looks like.** "Not only X but also Y." "It's not just about the beat; it's the atmosphere." Clipped tailing negations tacked onto a sentence: "The options come from the selected item, no guessing."
 
 **Why it reads as AI.** Overused construction that signals emphasis without earning it. Closely related to entry 1.
+
+**The 2026 stack: "No X. No Y. Just Z."** Practitioners on Reddit describe this as the form that replaced "that's not X" in late 2026, and it shows up in a widely shared list of exhausted formats (r/ChatGPT, 742 points): a run of negated fragments, one of them oddly specific, then a closing "Just" with more fragments. "No car. No TV. No smart fridge that texts her about expired yogurt. Just books. Tea. Quiet." The specific middle item is what makes it feel observed. Cut the stack to the one item that carries information, and say it in a sentence.
 
 **Fix.** State the point plainly. "The heavy beat adds to the aggressive tone." For tailing negations, write the real clause: "The options come from the selected item without forcing the user to guess."
 
@@ -275,6 +306,8 @@ Then grep for provenance artifacts (entry 57). Those are evidence about how the 
 
 **Why it reads as AI.** The model over-qualifies to avoid being wrong.
 
+**It now runs both directions, by family.** Hedging is no longer a general AI trait. In Graphite's 2026 data, GPT-6 Astra uses *may* three times as often as GPT-4.1 and qualifies far more than Claude (*may provide* at 18x the Opus 5.5 rate, *not necessarily* at 17x), while Claude Opus 5.5 reaches for superlatives instead (*the most popular* at 45x the Astra rate, *perhaps the most* at 29x). And in 1.8 million engineering abstracts, Cokyasar (arXiv 2611.11174, 2026) found the post-assistant shift went the other way from the stereotype: hedges like *may* fell 13% and boosters like *clearly* rose 20%. So check for both failures. Stacked hedges are this entry; boosters with no evidence behind them are entries 60 and 61, and in current text they are the more common of the two.
+
 **Fix.** Make the claim or cut the sentence. "The policy may affect outcomes" is enough. One hedge at most.
 
 ## 21. Generic positive conclusions
@@ -291,6 +324,8 @@ Then grep for provenance artifacts (entry 57). Those are evidence about how the 
 
 **Why it reads as AI.** The connective tissue does the work of pretending there's an argument.
 
+**Mostly Gemini now.** Wikipedia lists isolated transition words as an *ineffective* indicator, and the 2026 measurement explains why: the habit has become family-specific. Graphite found Gemini 3.1 Pro uses *additionally* 1,139 times and *furthermore* infinitely more often than GPT-6 Astra (Astra never wrote it), and *furthermore the* at 43 times the human rate. Claude and GPT replaced these openers with synthesis phrases instead (entry 77). A *furthermore* in a 2026 draft is weak evidence on its own; three in a page is a Gemini habit.
+
 **Fix.** Drop the adverb and let the sentence stand. If the connection is real, show it through substance rather than announcing it.
 
 ## 23. Em and en dashes
@@ -301,7 +336,14 @@ Then grep for provenance artifacts (entry 57). Those are evidence about how the 
 
 **Why it reads as AI.** The dash stack reads like punchy sales copy, and models misuse hyphens and en dashes inconsistently.
 
-**Caveat, and it is a real one.** The em dash is no longer good evidence of AI authorship. The Economist's 2026 comparison of its own prose against ChatGPT, Claude, Gemini, and Grok (55,940 sentences, 1.2 million words) found that only Claude used em dashes more often than human writers did; the others used them less. Meanwhile the same study found models use *fewer* commas, semicolons, and parentheses overall (entry 54). So treat a pile of em dashes as a style problem rather than a fingerprint, and do not raise a score on dash count alone. The counterpoint is real too: in the GitHub pull request corpus behind entry 67, the em dash went from 0.2 appearances per 10,000 words in the first four weeks of 2025 to 132.4 in the four weeks ending August 2026. Where the writing is coming out of coding agents, the mark is rising steeply. That still does not make it evidence about any one document. This skill still strips them by default, but that is a house-style choice about how the writing should read, not a detection claim.
+**Caveat: as a detection signal, this entry is now historical.** Wikipedia's editors moved em-dash overuse into their "Historical indicators" section in late 2026 with the range 2022 to September 2026, and the measurements agree.
+
+- **Current models have mostly stopped.** In Graphite's 2026 study against a pre-ChatGPT human baseline, GPT-6 Astra used em dashes at about one-eighth the human rate and Gemini 3.1 Pro had nearly stopped. Claude Opus 5 was the holdout, at about the human rate, and Claude Opus 5.5 (released September 2026) cut it by 99%, from 2.92 to 0.015 per 1,000 words. An independent 80-post test by Arize found the same drop, 12.9 per 1,000 words for Opus 5 against two dashes in roughly 57,000 words for Opus 5.5.
+- **Not every model, though.** Pangram's November 2026 analysis of 2,215 GPT-6.1 Sol answers found an em dash in 29.7% of them (1.32 per 1,000 words), against 0.1% for Claude Haiku 5.5. These days the mark is better at telling models apart than at telling them from people.
+- **And people are picking it up.** A Reddit analytics developer's count of 163 million long posts and comments from 100 large subreddits found em dashes in 6.8% of long posts at the mid-2025 peak, down about 30% after the GPT-5 fix, then creeping back to about seven times the 2021 level in 2026, while comments never passed 1.5%. The same count found *quietly* up 3.7 times and *delve* back to its 2021 level. Czuma (arXiv 2608.05889, 2026, exploratory) counted 146,239 US congressional press releases: em-dash density roughly doubled in 2025, from about 0.11 to 0.217 per 1,000 characters, with three quarters of offices increasing their use.
+- **In agent-written technical text it rose.** In the GitHub pull request corpus behind entry 67, the project's README (September 2026) puts the em dash at 0.2 appearances per 10,000 words at the start of the corpus against about 123 in mid 2026. Those weeks predate Opus 5.5.
+
+What replaced it is the more useful signal. Wikipedia's editors note that models trained to suppress the dash did not switch to colons, semicolons, or parentheses; they switched to periods and commas, so overall variety dropped and the *absence* of any interrupting punctuation became its own tell. That is entry 54. So do not raise a score on dash count in either direction. This skill still strips em dashes by default, and that is a house-style choice about how the writing should read, not a detection claim.
 
 **Fix.** Replace every em and en dash:
 
@@ -350,7 +392,7 @@ Keep hyphens only inside genuinely hyphenated words. The personal-voice skill ap
 
 **Looks like.** Smart quotes instead of straight quotes.
 
-**Why it reads as AI.** ChatGPT in particular defaults to curly quotes.
+**Why it reads as AI.** ChatGPT in particular defaults to curly quotes, and in late 2026 the split is measured and sharp. Pangram's November 2026 analysis of 2,215 GPT-6.1 Sol answers found curly apostrophes in 73.9% of them and curly double quotes in 39.0%, against 0.0% and under 0.1% for Claude Haiku 5.5 and 9.1% and under 0.1% for Gemini 4 Argon. Sol also put an en dash in 11.4% of answers, against 0.4% for the other two. Straight apostrophes inside words ran the other way: 0.5% of Sol answers, 75.4% of Haiku's. Typography is now one of the few signals that points at a specific vendor, which is also why it is weak evidence about authorship: anyone who pasted through a word processor has curly quotes too.
 
 **Fix.** Match whatever the target context uses. In plain-text and code contexts, use straight quotes throughout.
 
@@ -360,13 +402,17 @@ Keep hyphens only inside genuinely hyphenated words. The personal-voice skill ap
 
 **Why it reads as AI.** Chatbot correspondence pasted in as content.
 
-**Fix.** Cut it and start with the answer.
+**The 2026 closer: the binary question.** Chat replies now end by offering the reader a fork. "I'm curious about one thing: is this for A or for B? The answer could change everything." "Which direction would be most helpful?" "Say the word and I'll draft it." Pasted into a post, the habit becomes "curious what others think" at the bottom, which Reddit commenters now read as a tell in its own right.
+
+**Fix.** Cut it and start with the answer. Cut the closing fork too; if the piece really depends on which case the reader is in, cover both cases or pick the likelier one and say so.
 
 ## 30. Knowledge-cutoff disclaimers
 
 **Looks like.** "As of my last training update." "While specific details are limited based on available information." "Up to my knowledge cutoff."
 
 **Why it reads as AI.** Model self-disclosures that don't belong in published content.
+
+**The 2026 forms.** Cutoff statements are historical now; Wikipedia files them under 2022 to 2023. Their descendants are the source-availability hedge from retrieval-backed models ("not widely documented in public sources," "maintains a low profile") and, from mid-2026, the corrective disclaimer about how sources should be read ("should be treated as tradition rather than as evidence," "does not establish"). The second one has its own entry (74).
 
 **Fix.** Find the fact and cite it, or don't make the claim.
 
@@ -385,6 +431,8 @@ Keep hyphens only inside genuinely hyphenated words. The personal-voice skill ap
 **Looks like.** "Let's dive into." "Let's explore." "Let's break this down." "Here's what you need to know." "Without further ado." "In this section, we will discuss."
 
 **Why it reads as AI.** The model announces what it's about to do instead of doing it. The meta-commentary gives the piece a tutorial-script feel.
+
+**The 2026 form is guide scaffolding.** "Let's dive in" has mostly gone; what replaced it announces the document instead of the next paragraph. Graphite's 2026 study grouped it as a theme for both Claude Opus 5.5 (*this guide explains*, *this guide walks you through*, *a practical guide*, *final thoughts*, *bottom line*) and Gemini 3.1 Pro (*this comprehensive guide*, *the ultimate guide to*, *before diving into*, *whether you are a _ or a*), and Gemini pairs it with reader-address reassurance: *you might wonder*, *you are not alone*, *you can confidently*, *elevate your*. Opus 5.5 added help-language on top, with *can help you* at eight times its Opus 5 rate. Cut all of it. A piece that is a guide does not need to say so.
 
 **Fix.** Do the thing. "Let's look at how caching works" becomes "Caching here happens at three layers."
 
@@ -460,6 +508,8 @@ Keep hyphens only inside genuinely hyphenated words. The personal-voice skill ap
 
 **Fix.** Drop the question and state the point. "That leaves one problem" works if you need a bridge; a question usually does not. For headings, use the answer as the heading: "## Why does this matter?" becomes "## It changes who signs off on releases." Keep a question heading only when the piece genuinely does not answer it.
 
+**The self-interview.** The sentence-level version asks and answers itself in fragments: "The result? Freedom." "The truth? Nobody checked." "And the best part?" "Simple? Yes. Easy? No." Its LinkedIn relatives travel with it: "Most people X. Successful people Y." "Stop X. Start Y." "Read that again." The 742-point r/ChatGPT thread listing formats readers can no longer stand puts all of them near the top, and "And honestly?" as a paragraph opener rose about sixfold in long Reddit posts between 2021 and 2026 by one independent count. Fix it the same way: state the answer as a sentence and delete the question.
+
 ---
 
 ## 42. The "it was never X, it is Y" false-depth reveal
@@ -520,6 +570,8 @@ Keep hyphens only inside genuinely hyphenated words. The personal-voice skill ap
 
 **Why it reads as AI.** The words perform emphasis or candor while carrying no information. "Honestly" and "actually" imply a contrast with some unstated dishonest or expected version that never appears. "Simply" and "just" wave away difficulty the reader may not share. "Genuinely" and "meaningfully" try to certify that this instance is the real one, which only raises the question of the others. "Arguably" hedges and boosts at the same time, so the sentence commits to nothing. "Quietly" is the current standout: it manufactures drama by implying the writer noticed something others missed ("quietly became the default," "quietly shipping"), it topped Forbes's May 2026 list of new AI giveaways, and it is second of a thousand words in the pull request measurement behind entry 67, at 63 times the rate it appears outside the cluster. *Deliberately* is eighteenth there, *genuinely* seventh. Delete any of them and the sentence usually means exactly the same thing, which is the test.
 
+**Which ones, by family, as of late 2026.** Graphite's measurement splits them cleanly. Gemini 3.1 Pro is the intensifier model: *incredibly* at 18x the human rate (and 1,835 times the GPT-6 Astra rate), *highly*, *deeply*, *heavily*, *entirely*, *perfectly*, *absolutely*, *profound*, *immense*, *massive*, with intensifier use overall at 13x. Claude Opus 5 leaned on *every single* (112x), *enormously* (45x), *is genuinely* (more than a thousand uses against four in the human set), and *the single most*; Opus 5.5 cut *is genuinely* by a factor of 26 and kept *quietly* (11x), *noticeably*, *sharply*, and *thoughtfully*. GPT-6 Astra uses the fewest intensifiers of the three and qualifies instead (entry 20). The first-person cousins the 2026 reports keep naming, "Honest caveat:" and "to be honest" as sentence openers, belong here too.
+
 **Fix.** Cut the word and check the sentence still stands. It almost always does. Keep an intensifier only when it marks a real contrast the sentence needs ("the build is slow, but the tests are *very* slow" earns it). One survivor per paragraph at most.
 
 ---
@@ -536,7 +588,7 @@ Keep hyphens only inside genuinely hyphenated words. The personal-voice skill ap
 
 **Why it reads as AI.** The metaphor claims something matters structurally without naming what depends on it. "Load-bearing" asserts that removing the thing breaks something, and then never says what breaks. "Doing a lot of work" asserts hidden importance and skips the demonstration. The connective-tissue words are the worst of the set, because they name a relationship the sentence never specifies, which is the same move as the false-depth reveal (entry 42, "the space between them"). They also cluster: once a paragraph has a foundation it tends to grow a spine, then some scaffolding. Travel metaphors (entry 16) behave the same way and often show up in the same paragraph.
 
-**And it is now measured.** In a corpus of 47,464 GitHub pull request descriptions from human-attributed accounts, sampled daily from January 2025 to August 2026, *load-bearing* is the single most characteristic word of the way of writing that grew from about 1% of the corpus to 44.6% of it: 123 times more frequent inside that cluster than outside, 93 per million words against 0.76. *Seam* is sixth, *ladder* eighth, *carries* ninth, *halves* twelfth. Entry 67 has the rest of the list and the caveats.
+**And it is now measured.** In GitHub pull request descriptions from human-attributed accounts, sampled daily since January 2025, *load-bearing* was the most characteristic word of the way of writing that grew from about 1% of the corpus to roughly 40% of it, with *seam*, *ladder*, *carries*, and *halves* close behind. Then it fell off: from the week of 2026-09-21, when Claude Opus 5.5 was released, its weekly count dropped by about 80% while the register kept growing. So this entry describes Opus 5 and earlier most of all, and the newest models replaced the structural metaphor with narrated verdicts (entry 67). Entry 67 has the lists, the dates, and the caveats.
 
 **Fix.** Say what depends on what, and what breaks if it goes.
 
@@ -622,6 +674,8 @@ Swap the literal statement in. If the sentence reads fine, the metaphor was deco
 *Variety, not counts.* Terčon and Dobrovoljc's survey collects the measurements: AI text uses a narrower set of marks, with commas and periods accounting for most cases (Simon et al. 2023), and specifically fewer commas, question marks, dashes, parentheses, semicolons, and colons than human text, with more periods and more single quotes (Desaire et al. 2023; Simon et al. 2023). The Economist's 2026 comparison of 1.2 million words found the same thinning of commas, semicolons, and parentheses, and traced part of it to models not quoting people, because quotation is what pulls attribution punctuation into a sentence.
 
 *Variance, not mean.* This is the correction worth internalizing. Across the studies the survey reviews, sentence-length *variation* is consistently lower in AI text (Zindela 2023; Desaire et al. 2023), while average sentence length has no consensus at all: some studies find models write longer sentences, some shorter, some find no difference. So do not score a draft for having long sentences or short ones. Score the spread. A page where every sentence lands within a few words of the last one is the tell, whatever the average is.
+
+*The late-2026 profile, now that the dashes are gone.* The newest measurements have a direction, and it is short and narrow. Graphite's feature table for Claude Opus 5.5 against pre-ChatGPT human articles: average sentence length 17.3 words against 26.5, standard deviation 7.2 against 16.9, semicolons 0.1 per 1,000 words against 1.4, exclamation marks 0.0 against 2.8, em dashes 0.0 against 3.1. Humans in that study used exclamation marks more than a hundred times as often as each of the three current models and interrupted themselves with parenthetical asides far more. Arena's data on Opus 5.5 found the same move (average sentence length down from 12.1 to 10.0 words, semicolons down from 6.1 to 1.6 per 1,000), and Wikipedia's editors describe GPT-6 output as built from periods and commas in sentences of roughly 8 to 20 words. The Economist's earlier finding that models write *longer* sentences was true of the models it tested and is not true of these, which is exactly why the mean is not scored. The spread is: human writing in Graphite's set varied more than twice as much from sentence to sentence. What to look for now is a page of medium-short sentences, all periods and commas, with not one exclamation, aside, or semicolon anywhere.
 
 *Distance between marks is its own rhythm.* Stanisz, Kwapień, and Drożdż measured the gaps between consecutive punctuation marks, counted in words, across seven Western languages and found they follow a discrete Weibull distribution whose two parameters are stable enough to distinguish languages, individual authors, and even the target language of a translation. The hazard function always increases, meaning the longer a stretch runs without a mark, the more likely the next word brings one. That work is about language universals rather than detection, so treat it as a lens and not a test. The usable idea is that words-between-marks is a rhythm separate from sentence length, and an unpunctuated 30-word run reads as machine-made even when the grammar is fine.
 
@@ -754,6 +808,8 @@ Keep an absolute only when it is literally true and you have checked it. "No cus
 
 **Why it reads as AI.** Two separate observations meet here. Models under-use apostrophes and avoid contractions and colloquialisms: Rudnicka's comparison found models strip informal constructions, and a formal syntactic comparison of LLM and human news writing found human authors reaching for contractions ("haven't"), colloquialisms ("a couple dozen"), and blunter phrasing more often, with the model output reading as an averaged grammatical profile of many human styles. Separately, the uniformity itself is the signal. Human punctuation drifts with register, mood, and how tired the writer was; model punctuation stays textbook-correct at a constant temperature from the first line to the last. A page can be perfectly punctuated and still sound like nobody.
 
+**The contraction half is now family-specific, so do not score it alone.** It held for the 2024 models and is breaking down. Rudnicka and Juzek (arXiv 2608.06589, 2026) ran the same prompts through a 2024 cohort and a 2026 cohort of six models each and found contraction rates in the 2026 group ranging from about 1,200 to over 30,000 per million words, with Claude Haiku 4.5 at the top. Negation contractions averaged 3,139 per million in the 2026 cohort against 97 in 2024, about 32 times as many, which the authors describe as "consistent with, but not conclusive of" a rise. Graphite's 2026 data points the other way for one family: Gemini 3.1 Pro's contractions nearly disappeared between versions. So a page with no contractions is a Gemini-shaped tell or a formal writer, and a page with plenty of them is no evidence of a human. The uniformity half of this entry still holds across families; score that.
+
 **What not to do.** Never introduce errors to sound human. Faking a comma splice or a typo is transparent and it makes the writing worse. Everything below is correct English. It is just the correct English that people actually use.
 
 **Fix.** Match the register the piece is written in.
@@ -795,11 +851,15 @@ The test is to read a paragraph aloud in the voice the piece is meant to have. W
 
 **Looks like.** Plain, concrete, physical English applied to things that are not physical, at high density, in short sentences built on negation. "That assumption is load-bearing." "The old path survived untouched." "The check fires, and nothing else moves." "The two halves are byte-identical." "It quietly stopped being true." One paragraph of it reads as careful and specific. Forty of them read as one writer, because they are.
 
-**Why this entry exists.** The rest of the catalog is compiled from detector research, style guides, and observation. This entry is compiled from a count. Louis Abraham's *load-bearing* project has sampled a hundred newly opened GitHub pull request descriptions a day since January 2025, dropped bot and agent accounts by the shape of their login, and clustered what is left into eight ways of writing by KL-divergence k-means over word counts. As of the 2026-08-17 week, 595 days and 47,464 descriptions in, one of those eight went from about 1% of the corpus at the start of 2025 to 44.6% of the last four weeks, still rising at about 0.8 points a week. The model has no time parameter, so the curve is not a fit; it is a count of descriptions placed by their words alone.
+**Why this entry exists.** The rest of the catalog is compiled from detector research, style guides, and observation. This entry is compiled from a count. Louis Abraham's *load-bearing* project samples newly opened GitHub pull request descriptions every day since January 2025, drops accounts that are not people by the shape of their login, and clusters what is left into ways of writing by KL-divergence k-means over word counts. The model has no time parameter, so the curve is not a fit; it is a count of descriptions placed by their words alone.
 
-Its most characteristic word, at 123 times the rate it appears anywhere outside the cluster, is *load-bearing*. Entry 48 was already in this catalog when that measurement landed.
+As of the analysis generated 2026-11-10 (672 days, 531,322 descriptions, ten clusters), one cluster went from about 1% of the corpus at the start of 2025 to 39.5% of the four weeks ending 2026-11-02, and 41.3% of the last of them, still rising at about 1.2 points a week. Its name word, *load-bearing*, was the top of the list through the summer. Entry 48 was already in this catalog when that measurement landed.
 
-**The clusters inside it.** Multipliers are how much more often the word appears inside the cluster than outside it.
+**A correction to earlier versions of this entry.** This catalog used to cite 47,464 descriptions, eight clusters, a 44.6% share, and *load-bearing* at 123x. Those figures came from an earlier state of the project and do not reproduce from its current method: it has since moved to ten clusters, replaced its three frequency floors with one rule (50 distinct accounts), and changed how the multiplier is computed. The project's own README is clear that these constants are choices. Cite the live page with its date, never a remembered number, including this one.
+
+**Then the vocabulary moved, on a date.** In the week of 2026-09-21, the week Claude Opus 5.5 was released, the cluster kept growing but its signature words fell away. Weekly appearances of *load-bearing* went 97, 72, 69, then 17, 12, 10, 11, 8, 6, 5; *genuinely* fell from about 150 a week to about 20; *deliberately* from about 500 to about 120; *quietly* from about 80 to about 20. Rising over the same weeks: *refused* (about 450 to about 700 a week), *says* (about 575 to over 850), *stand-in* (single digits to about 50). As of November the cluster's top words are *somebody* (26.7x), *nobody* (25.5x), *drew*, *plainly*, *mutation-checked*, *re-measured*, *quietly* (21.2x, eighth), *says*, *rests*, *halves*, *argued*, *refused*, *nowhere*, *judged*, *owed*, *handed*, *decides*, *ruling*, *told*, *whoever*. *load-bearing* is now 249th at 7.3x. That matches what Anthropic said it changed in Opus 5.5 (less jargon, fewer idiosyncratic phrases) and what Arize and Graphite measured outside GitHub (entry 73). The register did not go away. It traded structural metaphors and certifying adverbs for narrated adjudication and reported speech: the test *refused*, the doc *says*, *nobody* asked, the reviewer *judged*, a *stand-in*, what the change is *owed*.
+
+**The clusters inside it.** Multipliers are how much more often the word appeared inside the cluster than outside it, from the summer 2026 fit, before the September shift. Read them as the vocabulary of Claude Opus 5 and earlier; the newer words are in the paragraph above.
 
 1. *Physical nouns for abstractions.* load-bearing (123x), seam (37x), ladder (37x), halves (33x), ceiling, floor, wall, spine, rail, plate, band, leg, hole, envelope, substrate, machinery, carrier, subtree. This is entry 48, and the measurement says it is now the top of the list rather than one item on it.
 2. *Objects given intentions.* carries (36x), sits, holds, fires, refuses, lives, sees, says, asks, declares, drives, owns, walks, rides, decides, proves, treats, reaches, leaves, belongs. The config sits, the check fires, the flag carries, the test refuses, the job decides. It is the mirror of copula avoidance (entry 11): rather than an elaborate verb standing in for *is*, a verb of intention standing in for a thing that has none.
@@ -823,13 +883,19 @@ The register is also self-ratifying. *Quietly* implies the writer noticed someth
 
 The one to watch hardest is the agentive verb, because it is invisible and it is everywhere. When a thing that cannot want anything *refuses*, *decides*, or *asks*, either name the actor who made it do that or use the plain verb.
 
+**Independent confirmation, from outside GitHub.** Clark, Martin and Mahowald (arXiv 2610.29162, October 2026) measured the features that predict human reading difficulty across nine frontier and near-frontier models. Every one of the nine used more inanimate subjects with animate verbs than human writers did ("the data suggests," "the test refuses"), and more low-frequency word sequences; most also used longer dependencies and more stacked nouns. Their explanation is the useful part: models are increasingly trained for information density on math, code, and reasoning, which rewards packing information in over getting it across, and a length-penalty fine-tune pushed a model further from human-like text. So the register is a side effect of what the models are rewarded for, and it costs the reader something measurable.
+
+**The vocabulary of the compressed form.** Users mining their own Claude transcripts in late 2026 (an 811-point r/ClaudeAI thread, with a 535-point one corroborating) list a technical-register set that sits next to this entry: *blast radius*, *footgun*, *escape hatch*, *belt-and-suspenders*, *the culprit*, *the offending line*, *the tell is*, *the kicker*, *the punchline*, *hand-wavy*, *concretely*, *empirically*, *grounded in what's actually*, *sit with it*, *the thing to hold onto*, *Verdict:* as a label, *say the word* as a closer, and a scare-quoted hyphenated coinage standing in for a description (the "let-me-die" scope). None of these is wrong. Several in one reply is the register.
+
+**The compressed form.** A practitioner write-up from June 2026 ("Claudish," slhck.info) names a sibling that shows up after long agent sessions: half-sentences with nouns stacked as modifiers and team jargon left unexplained. "Cap the study-lifecycle handlers so a hung study can't wedge the deep-link." "This is a real fleet-storm collapse." The fix is the same one: write the subject, the verb, and the consequence, and define the coined noun or drop it.
+
 **The caveats, and they are load-bearing.** Three of them.
 
 The study measures pull request descriptions attributed to human accounts, with every bot- and agent-named login removed. Nobody observed an assistant writing any of it. What the data supports is that a way of writing became common; the attribution to coding agents is inference, and the project says so.
 
-Two of its constants were chosen by looking at the answer: the number of clusters, and the frequency floor, both picked so that *load-bearing* would rank first. Across 32 unconditioned fits of the same corpus the arrival itself is solid, and any two runs draw the same weekly shape (mean r = 0.991), but the cluster ends anywhere from 36% to 64% and *load-bearing* is first in only 15 of them, top five in 29. So treat the shape as measured and the exact rank ordering as one fit's answer.
+Its constants are choices, and the project says so. The number of clusters was picked from a window of values that keep the leading cluster coherent, and earlier versions tuned both it and the frequency floor so that *load-bearing* ranked first. The arrival and the weekly shape are robust across fits; the exact share and the rank order of words are one fit's answer, and they have changed every time the method did. Treat the shape and the September shift as measured and any single multiplier as provisional.
 
-And the corpus is technical. A blog post is not going to say *byte-identical*. The vocabulary lists above are for code review, commit messages, PR bodies, and design docs. What transfers to prose is the four moves rather than the words: physical nouns doing abstract work, objects with intentions, adverbs that certify, and negation used as a load-bearing claim.
+And the corpus is technical. A blog post is not going to say *byte-identical*. The vocabulary lists above are for code review, commit messages, PR bodies, and design docs. What transfers to prose is the moves rather than the words: physical nouns doing abstract work, objects with intentions, adverbs that certify, negation used as a load-bearing claim, and, since September 2026, prose that narrates a verdict (*the check refused*, *the spec says*, *nobody owns it*) where it should state a fact.
 
 ---
 
@@ -841,11 +907,15 @@ And the corpus is technical. A blog post is not going to say *byte-identical*. T
 
 **Fix.** Cut validation that does no work. Check the premise before answering it: if the question assumes something false, say so first. Where the draft affirms both sides, decide which one is right and say why, or name the specific condition under which each is right. Pair with entry 37 (balanced both-sides) and entry 20 (hedging).
 
+**The 2026 inversion.** Validation used to come before an answer, and now it also comes after a correction: the model is told it was wrong and immediately agrees, in the same warm register. "You're right to push back on that." "You're completely right to call me out." "Great catch." "Your instinct is right." Reddit threads collecting the phrases that annoy users most in late 2026 put these near the top. It is the same habit as the rest of this entry, and entry 82 covers the move that usually precedes it.
+
 ## 69. Stock names and default characters
 
 **Looks like.** The example customer is Sarah. The protagonist is Emily, or Elara, or Kael. The town is Willow Creek; the company is Acme or TechCorp; the researcher is Dr. Chen.
 
 **Why it reads as AI.** Models reach for the same few names because they are the most probable fill for "a person." Russell, Karpinska and Iyyer (2025) found "Emily" or "Sarah" in about 63% of GPT-4o articles and 70% of Claude articles in their sample, and the expert annotators in that study used it as a tell.
+
+The names rotate with the model. In Pangram's November 2026 sample of 418 GPT-6.1 Sol creative-writing answers, the women were Mara or Maya in 65 responses, usually with the initials M.V. and most often the surname Vale (Mara Velez and Mara Venn also appeared), and the men were Daniel. The same set opened with "The first..." 36 times, against 11 for Claude Haiku 5.5 and once for Gemini. Karen Spinner's July 2026 comparison of about 450 samples counted "Mara" 183 times from GPT-5.2. Elara and Kael were the 2024 to 2025 cast. Assume the current cast is whatever the newest model reaches for, and check the draft for that instead of trusting a list.
 
 **Fix.** Use a real name when there is one (with permission), or pick a deliberate one that fits the setting. In technical writing, a role ("the on-call engineer") is often better than an invented person anyway.
 
@@ -863,6 +933,8 @@ And the corpus is technical. A blog post is not going to say *byte-identical*. T
 
 **Why it reads as AI.** Chakrabarty, Laban and Wu (CHI 2025) had professional writers edit 1,057 model-written paragraphs (the LAMP corpus) using a seven-category taxonomy. Cliché accounted for about 17% of edits and purple prose about 10%, alongside awkward word choice (about 28%), poor sentence structure (about 20%), redundant exposition (about 18%), lack of specificity (about 8%), and tense inconsistency (about 3%). No model family wrote markedly better than the others. The taxonomy doubles as an edit checklist for creative and feature writing.
 
+**The current stock, by family.** EQ-Bench's creative-writing slop lists, recomputed as models ship, show each family has its own clichés as of late 2026: Claude 5 models reach for "like a held breath," "looked at her for a long moment," and "something else entirely"; GPT-6 for "stood close enough," "could not decide whether"; Gemini 3 for "heart hammering against his ribs like a trapped bird," "voice dropping an octave," and "a sharp, metallic tang." StoryScope adds the structural version: model fiction renders emotion as a body sensation far more often than human fiction does.
+
 **Fix.** Keep one image only when it carries information the literal statement cannot. Replace the rest with the observed detail: what the faces actually showed, what the city actually sounded like.
 
 ## 72. The grammatical fingerprint
@@ -879,7 +951,101 @@ And the corpus is technical. A blog post is not going to say *byte-identical*. T
 
 **Why it reads as AI.** Sun, Yin, Xu, Kolter and Liu (ICML 2025) trained classifiers that told five model families apart with about 97% accuracy. Reported habits: ChatGPT opens with "Certainly" or "Below is" and leans on "such as" and "overall"; Claude leans on "here," "according to," and "based on"; ChatGPT bolds and uses headers where Claude uses plain bullets. Markdown structure alone identified the model about 73% of the time, and the signal survived shuffling the words. Formatting is a fingerprint in its own right, which is why it has its own dimension.
 
+**The late-2026 profiles.** Those habits belong to the 2024 models Sun et al. tested. The current generation has moved, and the measurements below are the best available as of November 2026. All of them come from studies of one prompt style each, so read them as tendencies. None of them is a signature.
+
+| Family | Habits that set it apart |
+|---|---|
+| Claude (Opus 5, Opus 5.5, Haiku) | Salience flags (*this matters*, *why X matters*, entry 75), reassurance adjectives (*dependable*, *steady*, *thoughtful*), superlatives (*the most popular*, *one of the best*), straight apostrophes. Opus 5.5 nearly eliminated em dashes and halved its stock "Claudisms" (Arize: 4.79 to 2.38 per 1,000 words) but added about 2.5 times more bold lead-in bullets and 35% more three-part lists. Haiku 4.5 opened 46% of answers in Rudnicka and Juzek's 2026 prompts with a safety disclaimer. |
+| GPT (GPT-6 Astra, GPT-6.1 Sol) | Corrective framing (*not simply*, *rather than relying*, *does not establish*, entry 74), *distinction* and *matters because*, practical-scaffolding words (*a useful starting point*, *a practical way to*), modal hedges (*may*, *can support*, *not necessarily*). Curly apostrophes and quotes, and still some em and en dashes (entry 28). Opening disclaimers nearly gone (0.2% for GPT-5.4 Mini). Least mannered of the three (entry 78). |
+| Gemini (3.1 Pro, 4) | Intensifiers (*incredibly*, *highly*, *massive*, *profound*), formal connectives (*furthermore*, *additionally*, *ultimately*), SEO-guide scaffolding and reader reassurance (entry 32), "is not just a _ it is", *lies in* and *at the heart of*, purpose-driven participial openers (*by prioritizing*, *by understanding*). Contractions nearly gone. |
+
+Two cautions travel with the table. First, Graphite found 65% of all measured tells unique to one family and 55% to 72% unique to one *version* within a family, so the table will be wrong about the next release. Second, the families are not converging on human writing at the same speed: between versions, only Claude's word distribution moved closer to the human baseline (19% closer in Opus 5.5), while GPT-6 Astra's moved 8% further away. A reviewer who learned the tells on one family will miss the other two.
+
 **Fix.** Delete opener phrases outright. Format for the reader's task: headers when someone will navigate, bold for the one thing they must not miss, prose when the ideas connect. If the formatting would be the same whatever the content, it is the model's habit, not the content's need.
+
+## 74. Corrective framing and the "does not establish" disclaimer
+
+**Looks like.** A sentence that tells the reader how *not* to take a claim. "Claims about its suspension should be treated as religious tradition rather than as archaeological explanation." "The site describes these as systems undergoing evaluation, rather than validated clinical tools." "The guidance does not establish that the park has a contamination problem." "A high score does not automatically mean the code is safe." "Price alone does not determine quality." "X should not be confused with Y," when nobody was going to confuse them.
+
+**Why it reads as AI.** It is the newest measured tell, and it arrived on a date. Wikipedia's editors describe it as "extremely uncommon, verging on unheard-of" in model output before mid-2026, roughly coinciding with the July release of GPT-5.6, and now among the most common signs of new AI text. Graphite's 2026 study measured the same move: GPT-6 Astra talks about what things are not at 12 times the human rate, with *not simply* at 157x, *than relying* at 170x, *not automatically* at 233x, and the frame "rather than _ every _ as" at 339x, and its own corrective framing kept rising across versions while its hedging fell. Against Claude Opus 5.5, Astra wrote *does not establish* 275 times as often. It reads as care. What it does is preempt a misreading the reader was not about to make, so the sentence spends itself on a claim nobody advanced, and when it attaches to a source it downgrades that source without saying why.
+
+**How it differs from entry 1.** X-not-Y dramatizes ("it's not a tool, it's a mindset"). This one corrects, in the register of a careful reviewer, and it usually guards an inference, where X-not-Y dramatizes a description. It is also the descendant of the 2024 source-availability hedge (entry 30): same anxiety about sources, now aimed at what the reader might conclude.
+
+**Fix.** Ask whether any reader in this audience would have drawn the inference being blocked. If not, delete the sentence. If yes, say what the source does show and stop: "The guidance covers soil testing for new plantings" instead of "The guidance does not establish that the park has a contamination problem." Keep a correction only where a misreading is likely and costly, and then make it specific: name who reads it the wrong way and what goes wrong if they do.
+
+## 75. Salience flags: "this matters"
+
+**Looks like.** Sentences whose only job is to announce that something is important. "This matters because..." "Why this matters." "The distinction matters." "That's what matters most." "This is just as important." "Here's why that matters." Often a section heading in question form ("Why does this matter?") followed by a paragraph that restates the section above.
+
+**Why it reads as AI.** It is the most consistently measured tell of late 2026 across families. In Graphite's data, *matters because* ran at 357 times the human rate in GPT-6 Astra and 132 times in Claude Opus 5, *the distinction matters* appeared in Astra articles and never once in the 10,000 human ones, and in Opus 5.5 *this matters* ran at 116x and "why _ matters" at 92x. Arize's annotated test of Opus 5 against Opus 5.5 found the "salience flag" the single most common Claude habit in both versions, surviving a release that cut most of the others by half or more. Forbes's May 2026 list had already named *matters* as a giveaway; this is the measurement. It is significance inflation (entry 4) with the inflation made explicit: where entry 4 puffs the sentence up, this one steps outside the sentence to tell you it was important.
+
+**Fix.** Delete the flag and keep the reason, if there is one. "This matters because the cache is shared across tenants" becomes "The cache is shared across tenants, so one tenant's purge empties it for everyone." If deleting the flag leaves nothing behind, the paragraph never established why the point mattered and needs a consequence, not a label. Never use a "why X matters" heading; write the heading as the claim.
+
+## 76. Trade-offs without a cost
+
+**Looks like.** "Faster builds without sacrificing reliability." "Scale without losing the personal touch." "Stronger security without requiring users to change anything." "Flexibility without compromising performance." Every gain arrives free.
+
+**Why it reads as AI.** All three current families do it, which is rare in this catalog. Graphite's 2026 data: *without requiring* at 70x the human rate in GPT-6 Astra, *without losing* at 22x in Astra and 6.1x in Claude Opus 5, *without sacrificing* at 7.8x in Gemini 3.1 Pro, *without compromising* at 5.2x in Gemini. The construction promises a resolution of exactly the tension a reader would want examined, and it is the sentence-level version of the one-move-solves-all convergence (entry 43). IdeaLens's authors (arXiv 2610.06778, 2026) found the idea-level version too: AI-originated content tends toward solutions with no stated downside, and human-originated content discusses downsides and open problems.
+
+**Fix.** Name the cost, or the condition under which there is none. "Builds run 40% faster; the cache adds about 200 MB per runner" is a trade-off. "Faster builds without sacrificing reliability" is an advertisement. If there really is no cost, say why in mechanism terms ("because the cache is keyed by lockfile hash, a stale hit is impossible"), which is the only version a reader can check.
+
+## 77. Synthesis and layering transitions
+
+**Looks like.** Paragraph openers that stitch the previous points together without adding one. "Together, these features..." "Taken together, these..." "This adds another layer." "Another dimension to consider is..." "Looking ahead, ..." "What comes next is..." "In practice, ..." "The result is a..." "By combining X and Y, ..."
+
+**Why it reads as AI.** Graphite's 2026 measurement found these replaced the *furthermore* and *additionally* of earlier models in Claude and GPT (Gemini kept the old ones, entry 22). *Together these* ran at 95x the human rate in GPT-6 Astra and 56x in Claude Opus 5.5, *another dimension* at 117x in Astra, *adds another layer* at 27x and *looking ahead the* at 40x in Opus 5.5, and the frame "the result is a _ that" at 130x in Opus 5.5. They feel like analysis because they gesture at synthesis, but "together, these features make it a strong choice" restates the list and adds a verdict nobody argued for. The forward-looking ones (*looking ahead*, *what comes next*) are the 2026 shape of the "challenges and future prospects" section (entry 9).
+
+**Fix.** Delete the opener and see if the paragraph starts better on its second sentence; it usually does. If the paragraph really is a synthesis, state the new thing the combination produces that no single part does, with a number or an example. A "looking ahead" paragraph needs a date and a named plan, or it goes.
+
+## 78. Mannered prose and the "earns its place" idiom
+
+**Looks like.** Metaphor and flourish standing in for a plain statement. "A dial worth turning" for "a parameter worth varying." "This point earns its keep." "The stand mixer earns its counter space." "The technique earns its place in the toolkit." "Let the data do the talking." Each sentence is fine. The page is a performance.
+
+**Why it reads as AI.** *Mannered prose* is the term Anthropic's own prompting guidance uses for this failure, with "this point earns its keep" as its example, and Graphite scored it directly by having a model judge rate 1,000 matched articles per model on Anthropic's definition. Pre-ChatGPT human articles averaged 6.65 out of 100. Claude Opus 5 scored about 2.5 times that (16.75), as did Gemini 3.1 Pro; Opus 5.5 came down 37% to 10.57, about 1.6 times human; GPT-6 Astra sat at about 1.2 times. The Opus 4 to Opus 5 rise was 19%, so this is a habit that grew with capability before it was trained down. The *earn* idiom is the one that survives: Arize found Opus 5.5 still writing "earns its counter space" after most other stock metaphors fell by 70%, and Forbes had flagged *earn* in May. Entry 71 covers purple prose in fiction; this is the same instinct in explanatory writing, where it is harder to see because each image is small and nearly literal.
+
+**Fix.** Replace each figure with the statement it decorates and keep the figure only if the literal version loses information. "The stand mixer earns its counter space" becomes "If you bake weekly, the stand mixer is worth the counter space; if you don't, it isn't." Ban *earn* as a verb for objects and ideas; a person earns things, a paragraph does not.
+
+## 79. Changelog voice: writing the revision instead of the document
+
+**Looks like.** A second draft written for a reader who memorized the first one. The title describes the change rather than the conclusion ("...but the Cause and the Lever Were Misstated"). A "What changed in v3" table sits at the top. Sections labeled *Revised*, *Retracted*, *Replaced*. Body text organized as "What holds up: ... / What was wrong: ...", refuting claims the current reader never saw. Phrases like "the single most important correction," "the corrections matter because," "does not survive contact with the source data." In edit summaries and commit messages, the same voice reports what was *not* changed: "while preserving the original meaning," "preserved references and categories," "retained existing structure," "avoided introducing new claims," "ensured consistency."
+
+**Why it reads as AI.** It is how a coding agent is trained to hand back work, as a diff, applied to prose where nobody wants a diff. The June 2026 "Claudish" write-up (slhck.info) describes it as the third and least visible level of Claude's accent, appearing when a model revises its own document after review. Wikipedia's editors document the edit-summary form independently, with the observation that does the work: humans rarely describe the things they did not change, while a model prompted to "make X change but preserve Y" reports both. The result reads as careful and is unreadable to anyone arriving fresh.
+
+**Fix.** Write every revision as if it were the first version, for a reader who has seen nothing before. Lead with the current conclusion ("We found Y, and the lever is Z"). Move the change history to the end, or to the commit message, or delete it. In commit messages and edit summaries, say what changed and why, and leave out what stayed the same unless someone would reasonably assume it moved.
+
+## 80. The default argument and interchangeable detail
+
+**Looks like.** An essay whose main argument is the first one anyone would think of, supported by sub-points that are generalized and hedged. Details that would fit any similar subject ("the restaurant's warm atmosphere and attentive staff"). Numbers or methods cited without the context needed to check them ("studies show a 40% improvement"). Every surface tell can be gone and the piece still says nothing a reader could not have predicted from the title.
+
+**Why it reads as AI.** Two 2026 studies measured this at the level of ideas rather than words, and both found the signal survives rewording. Kim, Chang, Pham and Iyyer (*Argument Collapse*, arXiv 2606.01736) compared 1,487 human responses to NYT and Boston Review debates with 23,381 model essays on the same questions: 65.3% of human main arguments were unique within a debate against 3.4% of model ones, 41.0% of human sub-arguments against 9.1%, and prompting for diversity recovered only about half the human range. IdeaLens (Rajendhran, Iyyer and colleagues, arXiv 2610.06778) strips documents down to outlines of discourse roles so the wording is gone, then detects whether the *ideas* came from a model. On 50 stories that people wrote by hand from AI-generated plans, it flagged 68%, while a prose detector flagged 8%. The authors describe AI ideation as favoring details that could fit any similar subject, specifics without checkable context, and claims larger than their evidence; human ideation names sources a reader can look up and discusses downsides and open problems. This is the failure "Why Slop Matters" calls superficial competence, measured.
+
+**Why it matters for this skill.** A humanizing pass rewrites the prose and keeps the ideas. IdeaLens shows that a model-generated plan still reads as model-generated after a person writes every sentence, so no amount of tell-removal fixes a piece whose argument came from a model's default. This is the strongest argument in the catalog for the human-touch list.
+
+**Fix.** Ask what the obvious take on the topic is, and whether the draft is it. If it is, the writer needs a position the model would not have produced: a disagreement with the consensus, a case that does not fit, a cost the obvious take ignores. Replace every interchangeable detail with one that could only belong to this subject. Give every number its denominator, source, and date. Then add the downside or the open problem, because a piece with no unsolved part reads as generated at the level of its ideas even when every sentence is clean.
+
+## 81. Staccato line breaks: the dash's replacement
+
+**Looks like.** One-sentence paragraphs, often one-clause paragraphs, where a writer would have used a comma, a dash, or nothing at all.
+
+"He says this not gently.
+
+Not softly.
+
+But harsh, and with threat and purpose."
+
+In explanatory text it shows up as bullets of one or two words each, and as a short line set alone after a long paragraph for emphasis.
+
+**Why it reads as AI.** It is what the dash turned into. When the newer ChatGPT models stopped producing em dashes, users across several independent r/ChatGPT and r/OpenAI threads from mid to late 2026 (one with 1,628 points) reported the same replacement: a new line every time the model would have reached for a dash, which fiction writers call "cinematic micro-beats," plus the observation that custom instructions against it hold for a few paragraphs and then lapse. The measured punctuation profile points the same way. Current models have shorter sentences with less than half the human spread (entry 54), and a line break is the one interruption left once the dash, the semicolon, and the parenthesis are gone. This is practitioner evidence, not a measurement, but it is the most consistently reported formatting change of the period.
+
+**Fix.** Join the fragments back into the sentence they came from: "He said it harshly, with threat and purpose." Keep a standalone line only where the piece has earned a real pause, about once per piece, and never as a run of three. In lists, merge one-word bullets into a sentence.
+
+## 82. Performed pushback
+
+**Looks like.** Agreement, then a caveat aimed at a claim stronger than the one anyone made. "I'd gently push back on one thing." "One honest caveat." "I'll challenge you on one point." "With one distinction: ..." "What I would not do is..." "That word is doing a lot of work here." The pushback is mild, attached to every answer, and abandoned the moment the reader objects (entry 68).
+
+**Why it reads as AI.** It is the most-discussed new chat habit of late 2026. A 366-point, 231-comment r/ChatGPT thread asks why every request, down to dinner plans, draws a warning, and parallel threads in r/ChatGPT and r/ClaudeAI describe the same move in GPT-5.5 and later, GPT-6, and Claude Opus 5 and 5.5. It reads as the model correcting for its reputation for sycophancy by adding disagreement as a garnish, which is why it rebuts things the user never said and why it folds under any pressure. In prose it becomes the reflexive caveat paragraph, and it is close kin to the corrective disclaimer (entry 74) and the rejected alternative nobody proposed (entry 1): all three spend a sentence on a claim nobody advanced.
+
+**Fix.** Keep a disagreement only if it is with something the draft or the reader actually said, and only if the writer would defend it under pushback. State it as a claim with its reason: "The migration will take longer than two weeks, because the schema change locks the orders table." Cut the cushioning (*gently*, *one honest*, *I'd*). If the caveat is too weak to state plainly, it was not a real objection.
 
 ---
 
@@ -892,6 +1058,9 @@ Every entry above is a signal, not a verdict, and some of the research cuts the 
 - **Vocabulary lists expire.** Juzek and Ward (COLING 2025, and a 2025 follow-up) found neither architecture nor training data explains words like *delve*; human raters in feedback training prefer them, which is how they get in. Lists track a generation of models and its feedback data, so they age. Prefer the term-frequency method in this file over any fixed list, including this one.
 - **Experts are the best detector, and they use the whole picture.** Russell, Karpinska and Iyyer (2025) found a majority vote of five frequent LLM users misclassified 1 of 300 articles, beating most commercial detectors, including on paraphrased text. Their stated reasons, by share of explanations: vocabulary (about 53%), predictable structure (about 36%), grammar too clean (about 25%), lack of originality (about 24%), and quotes (about 22%). No single tell carried the decision; clusters did.
 - **Voice matching can erase culture.** Agarwal, Naaman and Vashistha (CHI 2025) found AI writing suggestions pulled Indian participants toward Western styles. When matching a writer's voice, keep their regional idiom, references, and register; do not "correct" them toward a neutral default.
+- **The famous tells now under-fire on current models.** Graphite tracked eleven well-known tells (*delve*, formulaic closes, hedging, the em dash, and others) across model versions in 2026. Their average strength fell 21% to 53% from each family's earliest to latest model, and GPT-6 Astra used them 29% *less* often than the pre-ChatGPT human writers did. A reviewer scoring a 2026 draft against the 2024 checklist will rate current GPT output as more human than human. That is why the late-2026 entries (74 to 82) and the family table in entry 73 exist, and why the term-frequency method gets more useful with every release.
+- **Most single indicators do not generalize.** El Attar, Dönmez, Maurer and Falenska (arXiv 2606.04177, 2026) tested 284 published stylometric indicators across 30 models and 10 domains and found most of them depend on the model or the domain; only lexical richness held across families. Rudnicka and Juzek (arXiv 2608.06589, 2026) found each model keeps a distinct profile, closer to a human idiolect than to one "AI language," with a clear generational break between 2024 and 2026 models. Score clusters, not single hits, and expect the cluster to differ by family.
+- **Long words and academic vocabulary flag humans.** Karr, Khvatskii, Hua and Chawla (arXiv 2608.11256, 2026) found commercial detectors flagged 9% to 15% of unedited human abstracts from 2023 to 2025, more in non-STEM fields, and that the scores tracked long-token counts and Academic Word List density. A formal human writer looks like a model to a detector. The lexical dimension here inherits that risk, which is one more reason it is capped.
 - **In flagged copy, check the facts.** Russell, Iyyer and colleagues (ACL 2026) estimated about 9% of 186,000 US newspaper articles from summer 2025 were partly or fully AI-generated, rarely disclosed, and concentrated in small outlets and in weather and tech coverage. The study used Pangram's detector and two authors are from Pangram, so read its numbers with that in mind. The editorial point stands either way: where prose reads as generated, verify claims, not just style.
 
 ---
@@ -909,11 +1078,14 @@ What is known so far, and it is thin:
 - **Filipino.** Over-formal literary Tagalog and calque openers (`upang`, `sa pamamagitan ng`) where the editorial register is conversational.
 - **Korean, measured.** Lee (2026, single-author preprint) ran a morphology-aware excess-vocabulary count over 398,000 Korean journal abstracts: 시사하다 ("suggest") appeared in about 21% of 2026 abstracts against about 5% expected, while the plain 알아보다 ("look into") fell to about a quarter of trend. The shift began in late 2024, a year after the English abstracts in the same papers, and translation does not explain it. The first frequency evidence for a non-English register shift; count morphemes, not words, in agglutinative languages.
 
+- **Chinese, measured.** Peng and colleagues (arXiv 2610.22249, 2026) found five commercial models use 不是X而是Y ("not X but Y") 2.5 to 9.2 times as densely as human writers; 52.8% of 307 annotated uses were grammatical but unneeded, and reward models preferred the construction. Entry 1's context test applies unchanged.
+- **Korean poetry, measured.** Park, Yu and Kim (arXiv 2608.28986, Findings of EMNLP 2026) separated model-written Korean poems from human ones on five form-level features, including structural variation, rhythmic irregularity, and how closely orthographic norms are followed, reaching an AUC of 83.6 on seven unseen models including GPT-5.2 and Gemini 3. Model poems are too regular and too correct, which is entry 64 in another language.
+
 The pattern across all five is the same and it is worth naming, because it is the fastest way to build a list for a language not here: **model output lands in whichever register that language already reserves for institutions.** Bureaucratic Russian, official Chinese, translated Korean, formal Tagalog. Ask a native speaker what their language sounds like when a ministry writes it, and that is most of the catalog.
 
 The structural entries transfer better than the lexical ones, which is what the fingerprint research would predict. X-not-Y, the rule of three, the rhetorical wrap-up, signposting, the restatement loop, and the substance failures in entries 58 to 63 are all recognizable in translation. The vocabulary, the punctuation profile, and the formatting tics are not.
 
-Rule packs for the five languages above exist in `slop-gate` (see the sources table). It is a one-author project rather than a research result, so treat the lists as a place to start and check them against a native speaker.
+For Korean and Chinese there are now community humanizer projects with real use behind them (`im-not-ai` for Korean, `shuorenhua` and `qu-ai-wei` for Chinese, the last of which reconciles three rule sets). Rule packs for the five languages above also exist in `slop-gate` (see the sources table). It is a one-author project rather than a research result, so treat the lists as a place to start and check them against a native speaker.
 
 ---
 
@@ -941,7 +1113,7 @@ Four rules travel with the formula, and each of them is a mistake somebody has a
 
 **The baseline must exclude the text you are testing.** If the draft is inside the baseline, you are comparing it partly against itself, and the effect shrinks by however much of the pool it is.
 
-**Floor the count, and know the floor is a choice.** A word appearing twice can post a huge ratio and mean nothing. The *load-bearing* project requires 45 appearances, 25 documents, and 20 distinct accounts, and says outright that the 45 was picked so its title word would clear it. Pick a floor, say what it is, and check what a different one would have dropped.
+**Floor the count, and know the floor is a choice.** A word appearing twice can post a huge ratio and mean nothing. The *load-bearing* project started with three floors (45 appearances, 25 documents, 20 distinct accounts) and said outright that the 45 was picked so its title word would clear it; it now uses a single rule, 50 distinct accounts, chosen as the loosest floor at which two fits agree on half their top twenty. Pick a floor, say what it is, and check what a different one would have dropped.
 
 **No probability floor, though.** Do not discard rare words to clean up the list. Rare-but-concentrated is exactly what the count exists to find; *load-bearing* appeared 101 times in five million.
 
@@ -962,7 +1134,7 @@ For a single draft the analogue is dispersion. A word that appears eight times a
 
 1. **The writer's own earlier writing.** If a voice sample exists, that is the baseline, and it is better than any public corpus because it answers the question that actually matters: what is this draft doing that this person does not do? It finds the draft's borrowed vocabulary and it finds nothing for the writer's real tics, which is correct, since those are voice.
 2. **Any human-written corpus in the same genre.** Their last ten posts, the team's existing docs, the repository's older commit messages.
-3. **Published anchors, when there is nothing else.** Weaker, because the genre will not match. Two usable ones: in the *load-bearing* corpus, *load-bearing* runs 0.76 per million words in ordinary pull requests against 93 per million in the agent register, and the em dash runs 0.2 per 10,000 words in early 2025 against 132.4 in mid 2026.
+3. **Published anchors, when there is nothing else.** Weaker, because the genre will not match. The usable one is the *load-bearing* project's live page, which draws any word's weekly history as a rate per million words (`?w=word` links straight to one) and publishes the counts behind it. Cite the date you read it, because the numbers move every week and the method has changed more than once.
 
 ### Running it on one draft
 
@@ -998,7 +1170,7 @@ Treat the output as a list of places to look, in the same spirit as the counts b
 
 ## Counting instead of guessing
 
-Most of this catalog asks for judgment. These fifteen counts are mechanical, and running them first stops the audit from turning into vibes. They are rules of thumb calibrated by use, not thresholds from a study, so treat a failed count as a place to look rather than a verdict.
+Most of this catalog asks for judgment. These seventeen counts are mechanical, and running them first stops the audit from turning into vibes. They are rules of thumb calibrated by use, not thresholds from a study, so treat a failed count as a place to look rather than a verdict.
 
 | Count | How | Look harder when |
 |-------|-----|------------------|
@@ -1007,7 +1179,7 @@ Most of this catalog asks for judgment. These fifteen counts are mechanical, and
 | Rhythm spread | Longest minus shortest sentence in each paragraph, in words | Under 8 words of spread across a whole paragraph. Spread matters; average sentence length does not (entry 54). |
 | Mark variety | How many distinct punctuation types appear per 500 words | Three or fewer, or a page built only from periods and commas. |
 | Words between marks | Median gap between consecutive punctuation marks, and the longest gap | Any run over about 25 words, or a median that never shifts across paragraphs. |
-| Contraction rate | Contractions per 100 words, in anything conversational | Zero, or "it is" and "do not" where speech would contract (entry 64). |
+| Contraction rate | Contractions per 100 words, in anything conversational | Zero, or "it is" and "do not" where speech would contract (entry 64). Current Claude and GPT models contract freely, so a high rate proves nothing; only the zero is informative |
 | Quoted voices | People quoted by name | Zero in a piece about what people did or said. |
 | Zombie nouns | Words ending `-tion`, `-ment`, `-ance`, `-ity`, `-ness`, per 100 words | More than 4, or 2 in one sentence. |
 | Be-verbs | *is, are, was, were, be, been, being*, per 100 words | More than 3, especially with an abstract subject. |
@@ -1016,6 +1188,9 @@ Most of this catalog asks for judgment. These fifteen counts are mechanical, and
 | Connective density | Count *because, so, but, unless, which means, even though* per paragraph of argument | Zero in a paragraph that is supposed to reason. |
 | Hedge and booster balance | Count hedges (*may, might, appears*) against boosters (*clearly, obviously, undoubtedly, always, never*) | Boosters outnumber hedges in a piece making empirical claims. |
 | Attribution | Count claims about the world against named sources | More claims than sources, or a paraphrase whose source has been dropped. |
+| Salience and correction flags | Count *matters* (as a verb about importance), *does not establish*, *not simply*, *not automatically*, *should be treated as*, *rather than* | More than one per 500 words, or any "why X matters" heading (entries 74, 75). |
+| Costless trade-offs | Count *without sacrificing*, *without losing*, *without compromising*, *without requiring* | Any instance with no cost named anywhere nearby (entry 76). |
+| Interrupting punctuation | Count exclamation marks, parentheses, semicolons, and question marks together, per 1,000 words | Zero across a whole piece in a register where a person would use any of them (entry 54). |
 
 The first five counts, in a similar shape, are the basis of Helen Sword's Writer's Diet test, which grades a passage on be-verbs, zombie nouns, prepositions, ad-words, and the waste words *it*, *this*, *that*, and *there*. Her thresholds are calibrated for academic prose and are worth checking against directly.
 
@@ -1035,6 +1210,7 @@ What to flag:
 - **The thing that is still broken.** Model prose resolves; real accounts leave something open.
 - **A concrete example replacing a category.** One customer, one file, one incident, instead of "teams" or "organizations."
 - **A joke, an aside, or a piece of local slang** that only this writer would use.
+- **A take the default would not produce.** Where the main argument is the obvious one, the place the writer disagrees with it (entry 80).
 
 Frame each one as a question the writer can answer in a sentence ("which two teams stopped holding standups?"), not as an instruction. This list is the part of an audit that most changes the finished piece, and it is the part a tool cannot do for anyone. See "Why Slop Matters" (arXiv 2601.06060) on why: what separates slop from writing is not surface competence but whether any of it required the effort of knowing something, and only the writer holds that.
 
@@ -1052,7 +1228,7 @@ Then ask the three questions the tell list cannot answer, because a draft can pa
 
 Finish with the human-touch list: the two to five places where only the writer can raise the value of the piece.
 
-This is also where both scores get assigned (see the rubrics in `SKILL.md`): the tells named here are the evidence behind them. For ai-smell, structural tells (the top six plus entries 42 to 46, 48 to 50, 53, 55, and 59) carry the most weight, rhythm and voice next, lexical and formatting tells least. For the reader-value score, entries 58 to 63 and the counts above supply the evidence: 58, 59, and 19 for concision, 60 and 61 for calibration, and the specifics count for substance. Cite the specific instances, then score and revise.
+This is also where both scores get assigned (see the rubrics in `SKILL.md`): the tells named here are the evidence behind them. For ai-smell, structural tells (the top six plus entries 42 to 46, 48 to 50, 53, 55, 59, 74 to 77, and 81) carry the most weight, rhythm and voice next, lexical and formatting tells least. For the reader-value score, entries 58 to 63 and the counts above supply the evidence: 58, 59, and 19 for concision, 60 and 61 for calibration, and the specifics count and entry 80 for substance. Entry 79 is a reader-path failure. Cite the specific instances, then score and revise.
 
 Provenance artifacts (entry 57) sit outside the score entirely. Report them separately.
 
@@ -1076,7 +1252,13 @@ The counterweight matters as much as the findings. The em dash was the most conf
 
 **Surface markers rotate; structure does not.** Two 2026 findings make this concrete. The Economist's comparison of 1.2 million words of its own prose against four frontier models found the em dash has stopped working as a marker (only Claude overuses it) and that punctuation *sparseness* now separates the sets better, because models write longer sentences, lean on "and," and do not quote people. Forbes's May 2026 roundup shows the vocabulary layer moving the same way: the delve-and-tapestry set has been scrubbed out of a lot of writing and replaced by plain words used abstractly (quietly, shift, matters, land, real, earn, compound, signal). Anything word-level or punctuation-level in this catalog should be treated as dated on arrival and rechecked. Sarvazyan et al. (2025) is the counterweight: structural and syntactic fingerprints persist across domains and survive paraphrase, which is why the rubric weights structural tics highest.
 
-**The vocabulary can be watched in the open, in something other than abstracts.** The Kobak measurement above ran on PubMed; the *load-bearing* project runs the same idea on GitHub, and continuously. It samples a hundred newly opened pull request descriptions a day, drops bot and agent logins, and fits eight KL-divergence k-means clusters over word counts with no time parameter in the model at all, so the weekly curves are counts of documents rather than fitted trends. One cluster went from about 1% of the corpus in January 2025 to 44.6% of the four weeks ending 2026-08-17 and is still rising. Three things make it worth carrying here. It is a measurement of a *register* rather than of a word list, which is the level the catalog has been arguing matters. Its top word, at 123x, was already entry 48. And it publishes its own arbitrary choices, including the two constants that were tuned until that word ranked first, which is the honesty the other word-frequency sources mostly skip. Entry 67 carries the findings and the caveats.
+**The tells are now per family, and they are measured at scale.** Graphite's 2026 study (Druck, Paredes and Smith) is the largest current-model measurement there is: 10,000 pre-ChatGPT human web articles from Common Crawl, and 10,000 matched articles from each of nine models (GPT-4.1 through GPT-6 Astra, Claude Opus 4 through Opus 5, Gemini 2.5 and 3.1 Pro), each written from a summary of the human article at the same length, plus an October update adding Claude Opus 5.5. A tell is any word, phrase, or gapped frame used at least twice the human rate above a distinct-article floor, which is this catalog's term-frequency method with a bigger corpus. It found 12,877 of them. Four findings changed this catalog. 65% of tells belong to one family, and 55% to 72% to one version, so a single list cannot cover current text. The well-known tells are fading, to the point that GPT-6 Astra uses them less than humans did. What replaced them is consistent across families: salience flags (entry 75), corrective framing (74), costless trade-offs (76), synthesis transitions (77), and mannered prose (78). And em dashes have nearly vanished from two of the three families (entry 23). The study is from a company that sells content services and used a single prompt on web-article topics, and its authors say outright that the tells are not for classifying individual documents. Its data is published, which is what makes it usable.
+
+**Ideas carry the signal after the words are gone.** Two 2026 papers from the same lab moved the measurement from prose to content. *Argument Collapse* (Kim, Chang, Pham and Iyyer) found model essays on public debates converge on the same few main arguments, 3.4% unique within a debate against 65.3% for humans. IdeaLens (Rajendhran, Iyyer and colleagues) detects AI-originated ideas from outlines with the wording stripped out, and it flagged 68% of stories that people wrote by hand from AI plans, against 8% for a prose detector. For an editing skill that is the hardest finding in this file: a humanizing pass can remove every tell in the prose and leave the piece reading as generated at the level of its ideas. Entry 80 carries it, and it is the reason the human-touch list asks for positions and downsides, not just numbers.
+
+**Why the agent register exists, according to the people measuring readability.** Clark, Martin and Mahowald (2026) found all nine models they tested used more inanimate subjects with animate verbs and more rare word sequences than human writers, and most packed in longer dependencies and stacked nouns. Their hypothesis is that training for math, code, and reasoning rewards information density over communication. It is the first account of entry 67 that explains the mechanism behind the symptom, and it predicts the register will spread to whatever genre a reasoning-trained model writes next.
+
+**The vocabulary can be watched in the open, in something other than abstracts.** The Kobak measurement above ran on PubMed; the *load-bearing* project runs the same idea on GitHub, and continuously. It samples newly opened pull request descriptions daily, drops accounts that are not people, and fits ten KL-divergence k-means clusters over word counts with no time parameter in the model at all, so the weekly curves are counts of documents rather than fitted trends. One cluster went from about 1% of the corpus in January 2025 to 39.5% of the four weeks ending 2026-11-02 and is still rising. Four things make it worth carrying here. It is a measurement of a *register* rather than of a word list, which is the level the catalog has been arguing matters. Its top word through the summer was already entry 48. It publishes its own arbitrary choices, which is the honesty the other word-frequency sources mostly skip. And it caught a model release in the act: in the week Claude Opus 5.5 shipped, the cluster kept growing while *load-bearing*, *genuinely*, and *deliberately* fell by 75% to 90%, which is the clearest evidence anywhere that a word list is a snapshot of one model version. Entry 67 carries the findings and the caveats.
 
 **Narrative shape is its own signal.** StoryScope (Russell et al. 2026) analyzed 61,608 stories on discourse-level features rather than style and hit 93.2% separation between human and AI narratives, with about 30 features carrying most of it. AI stories over-explain their themes and run tidy single-track plots; human ones keep ambiguity and temporal mess. That result is why entry 55 exists and why the fix for a flat anecdote is structural, not lexical.
 
@@ -1128,7 +1310,7 @@ These are descriptive field guides, not detectors. No single pattern proves AI a
 | Shrinking Landscape of Linguistic Diversity (2025) | https://arxiv.org/abs/2502.11266 | LLM adoption reduces stylistic diversity; the homogenization the whole skill works against |
 | The Economist on spotting AI writing (2026) | https://www.fastcompany.com/91584243/how-to-identify-ai-generated-writing-viral-report-has-surprising-new-clues-economist | 55,940 sentences, 1.2M words vs. four frontier models. Em dashes no longer diagnostic (only Claude overuses); models use fewer commas, semicolons, parentheses, write longer sentences, overuse "and," don't quote people. Basis for entry 54 and the caveat in entry 23 |
 | Forbes: 15 new giveaway signs of AI writing (May 2026) | https://www.forbes.com/sites/jodiecook/2026/05/21/15-new-giveaway-signs-of-ai-writing-may-2026-update/ | The post-delve vocabulary: quietly, shift, matters, shape, land, actually, real, earn, the work, hold, pull, compound, signal, built different. Feeds entries 10 and 47 |
-| The load-bearing vocabulary of Claude (Louis Abraham, 2026) | https://louisabraham.github.io/load-bearing/ | 47,464 GitHub PR descriptions sampled daily since Jan 2025, clustered by KL-divergence k-means with no time parameter. One way of writing grew from ~1% to 44.6% of the corpus; *load-bearing* is its top word at 123x. Code, data, and the arbitrary choices at https://github.com/louisabraham/load-bearing. Basis for entry 67, and the measurement behind entries 47 and 48 |
+| The load-bearing vocabulary of Claude (Louis Abraham, 2026) | https://louisabraham.github.io/load-bearing/ | 531,322 GitHub PR descriptions sampled daily since Jan 2025 (as of 2026-11-10), clustered by KL-divergence k-means with no time parameter. One way of writing grew from ~1% to 39.5% of the corpus; *load-bearing* led its vocabulary until the week Claude Opus 5.5 shipped, then fell to 249th as *refused*, *says*, and *nobody* rose. Code, data, and the arbitrary choices at https://github.com/louisabraham/load-bearing. Basis for entry 67, and the measurement behind entries 47 and 48 |
 | StoryScope: idiosyncrasies in AI fiction (Russell et al. 2026) | https://arxiv.org/abs/2604.03136 | 61,608 stories scored on discourse-level narrative features; 93.2% human/AI separation from narrative shape alone. AI over-explains themes and favors tidy single-track plots. Basis for entry 55 |
 | Linguistic Characteristics of AI-Generated Text: A Survey (Terčon & Dobrovoljc 2025) | https://arxiv.org/abs/2510.05136 | Synthesis of the measurement literature. AI text is more nominal and impersonal: more nouns, determiners, and prepositions, fewer adjectives and adverbs, lower lexical diversity. Basis for entry 58 |
 | Linguistic shifts in academic writing after ChatGPT (Bao et al. 2025) | https://arxiv.org/abs/2505.12218 | 823,798 arXiv abstracts. More LLM-preferred words and higher lexical density, but simpler syntax, fewer connectives, more positive sentiment, and lower readability. Basis for entries 61 and 63, and for the warning that lexical density is not the target |
@@ -1165,5 +1347,28 @@ These are descriptive field guides, not detectors. No single pattern proves AI a
 | AI use in American newspapers (Russell et al., ACL 2026) | https://arxiv.org/abs/2510.18774 | Journalism prevalence; check facts in flagged copy. Vendor co-authors. When the tells mislead |
 | AI suggestions homogenize writing (Agarwal et al., CHI 2025) | https://arxiv.org/abs/2409.11360 | Cultural flattening; keep idiom when matching voice. When the tells mislead |
 | Korean register shift (Lee 2026) | https://arxiv.org/abs/2609.07447 | Morphology-aware excess vocabulary for Korean. Non-English section |
+| AI Tells (Graphite, Druck, Paredes & Smith, Sept 2026) | https://graphite.io/five-percent/research/ai-tells | 10,000 pre-ChatGPT human articles against 10,000 matched articles from each of nine models. 12,877 tells at 2x human or more; 65% unique to one family; per-family tables; em-dash and punctuation features; mannered-prose scores. Data downloadable. Basis for entries 74 to 78 and the family table in 73 |
+| AI Tells: Opus 5.5 Update (Graphite, Oct 2026) | https://graphite.io/five-percent/research/ai-tells-opus-5-5-update | Opus 5.5 em dashes down 99% from Opus 5 (2.92 to 0.015 per 1,000 words), mannered prose down 37%, word distribution 19% closer to human, still 2,548 tells. *this matters* at 116x, *dependable* at 23x |
+| Wikipedia: Signs of AI writing, 2026 revisions | https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing | Corrective framings dated to mid-2026 and GPT-5.6; identification-by-source phrasing; GPT-6 era vocabulary; em dashes moved to "Historical indicators" (2022 to September 2026); "preserved/retained" edit summaries. Entries 5, 10, 23, 30, 74, 79 |
+| Anthropic says it fixed Claude's writing (Arize, Sept 2026) | https://arize.com/blog/anthropic-says-it-fixed-claudes-writing/ | 80 posts from 20 frozen briefs, Opus 5 against Opus 5.5, human-calibrated span judge. "Claudisms" halved (4.79 to 2.38 per 1,000 words); salience flags still the most common; bold lead-in bullets up 2.5x, three-part lists up 35%; "earns its counter space" survives. Entries 73, 75, 78 |
+| Can Pangram detect GPT-6.1 Sol? (Pangram, Nov 2026) | https://www.pangram.com/blog/can-pangram-detect-gpt-6-1-sol | 2,215 Sol answers to LMSYS prompts. Curly apostrophes in 73.9% (Claude Haiku 5.5: 0%), em dash in 29.7%, en dash in 11.4%; Mara/Maya Vale and Daniel; "The first..." openers. Vendor blog. Entries 23, 28, 69 |
+| Claudish (slhck, June 2026) | https://slhck.info/software/2026/06/22/claudish.html | Three levels of Claude's accent: stock phrasings, compressed jargon, and revisions written as diffs for a reader who saw v1. Practitioner observation, no counts. Entries 67, 79 |
+| IdeaLens (Rajendhran, Iyyer et al. 2026) | https://arxiv.org/abs/2610.06778 | Detects AI-originated ideas from discourse-role outlines with the wording removed. Flags 68% of human-written stories built from AI plans, against 8% for a prose detector. Entry 80 |
+| Argument Collapse (Kim, Chang, Pham & Iyyer 2026) | https://arxiv.org/abs/2606.01736 | 23,381 model essays against 1,487 human debate responses. Unique main arguments 3.4% against 65.3%; diversity prompting recovers about half. Entry 80 |
+| Why is AI-generated language so hard to understand? (Clark, Martin & Mahowald 2026) | https://arxiv.org/abs/2610.29162 | Nine models all over-use inanimate subjects with animate verbs and rare n-grams; density training as the cause. Entry 67 |
+| Not X, but When (Peng et al. 2026) | https://arxiv.org/abs/2610.22249 | Mandarin 不是X而是Y at 2.5 to 9.2 times human density; 52.8% of uses correct but unneeded; reward models prefer it. Entry 1, non-English section |
+| Artificial Epanorthosis (Boggia 2026) | https://arxiv.org/abs/2607.21498 | "Not X but Y" over-used in oratory and abstracts, under-used in casual Q&A and narrative; small samples. Entry 1 |
+| Beyond "AI Language" (Rudnicka & Juzek 2026) | https://arxiv.org/abs/2608.06589 | Same prompts, 2024 against 2026 model cohorts. Generational style break; negation contractions about 32 times as common in 2026; per-model idiolects. Entries 64, 73 |
+| Most biomedical publications show signs of LLM-assisted writing (Holzwarth, González-Márquez & Kobak 2026) | https://arxiv.org/abs/2608.10715 | 1,194,287 PMC full texts; 89% show excess LLM vocabulary by December 2025. Entry 10 |
+| Engineering writing after chat assistants (Cokyasar 2026) | https://arxiv.org/abs/2611.11174 | 1.8M engineering abstracts. LLM words up 82%, hedges down 13%, boosters up 20%. Entry 20 |
+| The em-dash em-beds in Congress (Czuma 2026) | https://arxiv.org/abs/2608.05889 | 146,239 congressional press releases; em-dash density roughly doubled in 2025. Exploratory. Entry 23 |
+| Generalizability of stylometric indicators (El Attar et al. 2026) | https://arxiv.org/abs/2606.04177 | 284 indicators, 30 models, 10 domains; most are model- or domain-dependent, only lexical richness holds. When the tells mislead |
+| Why AI detection fails for academic integrity (Karr et al. 2026) | https://arxiv.org/abs/2608.11256 | Human abstracts flagged 9% to 15%; scores track long words and academic vocabulary. When the tells mislead |
+| Form-level features of Korean LLM poetry (Park, Yu & Kim, EMNLP Findings 2026) | https://arxiv.org/abs/2608.28986 | Too-regular, too-correct form separates model poems. Non-English section |
+| EQ-Bench Creative Writing slop scores | https://eqbench.com/creative_writing.html | Per-model slop scores and over-used fiction phrases, updated as models ship. Claude 5 family: "like a held breath," "for a long moment"; Gemini 3: "heart hammering against his ribs." Entry 71 |
+| Reddit practitioner threads, July to November 2026 | https://old.reddit.com/r/ChatGPT/comments/1vlddcq/ (formats readers can no longer stand, 742 points), https://old.reddit.com/r/ChatGPT/comments/1xahk2m/ (reflexive pushback, 366 points), https://old.reddit.com/r/ClaudeAI/comments/1vrlrud/ (Claude-isms mined from transcripts, 811 points), https://old.reddit.com/r/ChatGPT/comments/1wd56qb/ (line breaks for dashes) | Anecdote, but heavily corroborated across threads. Line breaks replacing the dash, performed pushback, instant concession, the self-interview fragment, "No X. No Y. Just Z.", binary-choice closers. Entries 12, 29, 41, 67, 68, 81, 82 |
+| Em dash vs 163M Reddit posts (KissMyPost, 2026) | https://old.reddit.com/r/ChatGPT/comments/1xe8ink/ | 10.9M long posts and 152M long comments, 2021 to 2026: em dash 7x the 2021 level in 2026 after a 30% dip; *quietly* up 3.7x; *delve* back to baseline. Posted by the developer of an analytics product; CSVs linked. Entries 10, 23 |
+| vale-ai-tells (tbhb) | https://github.com/tbhb/vale-ai-tells | Vale style package with rules for the agent register: inanimate subjects with bare verbs, pseudo-clefts ("what changed is the direction"), shell-noun copulas ("the problem is that"), survival and motion metaphors, *earns*. The closest linter to entry 67 |
+| avoid-ai-writing (conorbronsdon) | https://github.com/conorbronsdon/avoid-ai-writing | Audit-and-rewrite skill with a corpus-backed CI gate; "performed insight" and crowd-contrast teasers; flags negative parallelism only at density |
 | awesome-slop (index) | https://github.com/hwajongpark/awesome-slop | Small but current index of slop research, linters, classifiers, humanizers, and word lists, organized by language. Useful as a survey of what exists; not itself a source |
 | slop-gate | https://github.com/hwajongpark/slop-gate | Zero-dependency CLI that flags the em dash and about 40 English tells in CI, with opt-in translationese rule packs for Korean, Russian, Chinese, Vietnamese, and Filipino. The only pointer here for non-English tells; a one-author project, so treat the packs as a starting list |
